@@ -43,3 +43,4 @@
 * [Day 40: Troubleshooting Internet Accessibility for an EC2-Hosted Application](day-40-troubleshooting-internet-accessibility-for-an-ec2-hosted-application.md)
 * [Day 41: Securing Data with AWS KMS](day-41-securing-data-with-aws-kms.md)
 * [Day 42: Building and Managing NoSQL Databases with AWS DynamoDB](day-42-building-and-managing-nosql-databases-with-aws-dynamodb.md)
+* [Day 43: Scaling and Managing Kubernetes Clusters with Amazon EKS](day-43-scaling-and-managing-kubernetes-clusters-with-amazon-eks.md)
