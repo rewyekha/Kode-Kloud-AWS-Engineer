@@ -44,5 +44,5 @@
 * [Day 41: Securing Data with AWS KMS](day-41-securing-data-with-aws-kms.md)
 * [Day 42: Building and Managing NoSQL Databases with AWS DynamoDB](day-42-building-and-managing-nosql-databases-with-aws-dynamodb.md)
 * [Day 43: Scaling and Managing Kubernetes Clusters with Amazon EKS](day-43-scaling-and-managing-kubernetes-clusters-with-amazon-eks.md)
-* [Page 1](page-1-1.md)
+* [Day 44: Implementing Auto Scaling for High Availability in AWS](day-44-implementing-auto-scaling-for-high-availability-in-aws.md)
 * [Day 45: Configure NAT Gateway for Internet Access in a Private VPC](day-45-configure-nat-gateway-for-internet-access-in-a-private-vpc.md)
