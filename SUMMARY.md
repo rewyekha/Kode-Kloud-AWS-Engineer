@@ -46,3 +46,4 @@
 * [Day 43: Scaling and Managing Kubernetes Clusters with Amazon EKS](day-43-scaling-and-managing-kubernetes-clusters-with-amazon-eks.md)
 * [Day 44: Implementing Auto Scaling for High Availability in AWS](day-44-implementing-auto-scaling-for-high-availability-in-aws.md)
 * [Day 45: Configure NAT Gateway for Internet Access in a Private VPC](day-45-configure-nat-gateway-for-internet-access-in-a-private-vpc.md)
+* [Day 46: Event-Driven Processing with Amazon S3 and Lambda](day-46-event-driven-processing-with-amazon-s3-and-lambda.md)
