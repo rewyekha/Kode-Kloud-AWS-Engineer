@@ -1,4 +1,4 @@
-# Page 1
+# Day 44: Implementing Auto Scaling for High Availability in AWS
 
 The DevOps team is tasked with setting up a highly available web application using AWS. To achieve this, they plan to use an Auto Scaling Group (ASG) to ensure that the required number of EC2 instances are always running, and an Application Load Balancer (ALB) to distribute traffic across these instances. The goal of this task is to set up an ASG that automatically scales EC2 instances based on **CPU utilization**, and an ALB that directs incoming traffic to the instances. The EC2 instances should have Nginx installed and running to serve web traffic.
 
@@ -298,6 +298,6 @@ aws ec2 delete-security-group --group-id $SG_ID
 
 Author: DevOps Engineering TeamPlatform: AWS (us-east-1)Documentation Type: GitBook / Runbook / Lab Evidence
 
-<figure><img src=".gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src=".gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
