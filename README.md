@@ -1,10 +1,9 @@
 ---
 description: Created by Reyas Khan
 ---
+# Table of contents
 
-# SUMMARY
-
-* [Day 1 - AWS SSH Key Creation](https://github.com/rewyekha/Kode-Kloud/blob/aws/Day-1-aws-ssh-key-creation.md)
+* [Day 1 - AWS SSH Key Creation](day-1-aws-ssh-key-creation.md)
 * [Day 2 - Security group](day-2-security-group.md)
 * [Day 3: Create Subnet](day-3-create-subnet.md)
 * [Day 4: Enable Versioning for S3 Bucket](day-4-enable-versioning-for-s3-bucket.md)
@@ -26,3 +25,30 @@ description: Created by Reyas Khan
 * [Day 20: Create IAM Role for EC2 with Policy Attachment](day-20-create-iam-role-for-ec2-with-policy-attachment.md)
 * [Day 21: Setting Up an EC2 Instance with an Elastic IP for Application Hosting](day-21-setting-up-an-ec2-instance-with-an-elastic-ip-for-application-hosting.md)
 * [Day 22: Configuring Secure SSH Access to an EC2 Instance](day-22-configuring-secure-ssh-access-to-an-ec2-instance.md)
+* [Day 23: Data Migration Between S3 Buckets Using AWS CLI](day-23-data-migration-between-s3-buckets-using-aws-cli.md)
+* [Day 24: Setting Up an Application Load Balancer for an EC2 Instance](day-24-setting-up-an-application-load-balancer-for-an-ec2-instance.md)
+* [Day 25: Setting Up an EC2 Instance and CloudWatch Alarm](day-25-setting-up-an-ec2-instance-and-cloudwatch-alarm.md)
+* [Day 26: Configuring an EC2 Instance as a Web Server with Nginx](day-26-configuring-an-ec2-instance-as-a-web-server-with-nginx.md)
+* [Day 27: Configuring a Public VPC with an EC2 Instance for Internet Access](day-27-configuring-a-public-vpc-with-an-ec2-instance-for-internet-access.md)
+* [Day 28: Creating a Private ECR Repository](day-28-creating-a-private-ecr-repository.md)
+* [Day 29: Establishing Secure Communication Between Public and Private VPCs via VPC Peering](day-29-establishing-secure-communication-between-public-and-private-vpcs-via-vpc-peering.md)
+* [Day 30: Enable Internet Access for Private EC2 using NAT Instance](day-30-enable-internet-access-for-private-ec2-using-nat-instance.md)
+* [Day 31: Configuring a Private RDS Instance for Application Development](day-31-configuring-a-private-rds-instance-for-application-development.md)
+* [Day 32: Snapshot and Restoration of an RDS Instance](day-32-snapshot-and-restoration-of-an-rds-instance.md)
+* [Day 33: Create a Lambda Function](day-33-create-a-lambda-function.md)
+* [Day 34: Create a Lambda Function Using CLI](day-34-create-a-lambda-function-using-cli.md)
+* [Day 35: Deploying and Managing Applications on AWS](day-35-deploying-and-managing-applications-on-aws.md)
+* [Day 36: Load Balancing EC2 Instances with Application Load Balancer](day-36-load-balancing-ec2-instances-with-application-load-balancer.md)
+* [Day 37: Managing EC2 Access with S3 Role-based Permissions](day-37-managing-ec2-access-with-s3-role-based-permissions.md)
+* [Day 38: Deploying Containerized Applications with Amazon ECS](day-38-deploying-containerized-applications-with-amazon-ecs.md)
+* [Day 39: Hosting a Static Website on AWS S3](day-39-hosting-a-static-website-on-aws-s3.md)
+* [Day 40: Troubleshooting Internet Accessibility for an EC2-Hosted Application](day-40-troubleshooting-internet-accessibility-for-an-ec2-hosted-application.md)
+* [Day 41: Securing Data with AWS KMS](day-41-securing-data-with-aws-kms.md)
+* [Day 42: Building and Managing NoSQL Databases with AWS DynamoDB](day-42-building-and-managing-nosql-databases-with-aws-dynamodb.md)
+* [Day 43: Scaling and Managing Kubernetes Clusters with Amazon EKS](day-43-scaling-and-managing-kubernetes-clusters-with-amazon-eks.md)
+* [Day 44: Implementing Auto Scaling for High Availability in AWS](day-44-implementing-auto-scaling-for-high-availability-in-aws.md)
+* [Day 45: Configure NAT Gateway for Internet Access in a Private VPC](day-45-configure-nat-gateway-for-internet-access-in-a-private-vpc.md)
+* [Day 46: Event-Driven Processing with Amazon S3 and Lambda](day-46-event-driven-processing-with-amazon-s3-and-lambda.md)
+* [Day 47: Integrating AWS SQS and SNS for Reliable Messaging](day-47-integrating-aws-sqs-and-sns-for-reliable-messaging.md)
+* [Day 47: Integrating AWS SQS and SNS for Reliable Messaging](day-47-integrating-aws-sqs-and-sns-for-reliable-messaging-1.md)
+* [Day 49: Centralized Audit Logging with VPC Peering](day-49-centralized-audit-logging-with-vpc-peering.md)
