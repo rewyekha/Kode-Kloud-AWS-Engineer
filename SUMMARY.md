@@ -48,5 +48,5 @@
 * [Day 45: Configure NAT Gateway for Internet Access in a Private VPC](day-45-configure-nat-gateway-for-internet-access-in-a-private-vpc.md)
 * [Day 46: Event-Driven Processing with Amazon S3 and Lambda](day-46-event-driven-processing-with-amazon-s3-and-lambda.md)
 * [Day 47: Integrating AWS SQS and SNS for Reliable Messaging](day-47-integrating-aws-sqs-and-sns-for-reliable-messaging.md)
-* [Page 1](page-1-1.md)
+* [Day 47: Integrating AWS SQS and SNS for Reliable Messaging](day-47-integrating-aws-sqs-and-sns-for-reliable-messaging-1.md)
 * [Day 49: Centralized Audit Logging with VPC Peering](day-49-centralized-audit-logging-with-vpc-peering.md)
