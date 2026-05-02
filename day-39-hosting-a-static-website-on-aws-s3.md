@@ -464,5 +464,5 @@ If the bucket policy is applied before disabling the public access block, the `p
 
 _Lab completed on 2026-04-10 | AWS Region: us-east-1 | Platform: KodeKloud_
 
-<figure><img src=".gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (6) (1).png" alt=""><figcaption></figcaption></figure>
 
