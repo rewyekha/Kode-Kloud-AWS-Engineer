@@ -10,21 +10,19 @@ Your task is to:
    * Task 2: `taskId`: '2', description: 'Build To-Do App', status: 'in-progress'
 3. Verify that Task 1 has a status of 'completed' and Task 2 has a status of 'in-progress'.
 
-Ensure the DynamoDB table is created successfully and that both tasks are inserted correctly with the appropriate statuses.\
-`Notes:`
+Ensure the DynamoDB table is created successfully and that both tasks are inserted correctly with the appropriate statuses.
+**Notes:**
 
 * Create the resources only in `us-east-1` region.
-
-
 
 ***
 
 ## Nautilus To-Do App - DynamoDB Setup
 
-**Lab Objective**\
+**Lab Objective**
 Create a DynamoDB table `nautilus-tasks` and insert sample tasks for the Nautilus To-Do application using AWS CLI.
 
-**Region**: `us-east-1`\
+**Region**: `us-east-1`
 **Billing Mode**: Pay-per-request
 
 ***

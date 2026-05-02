@@ -6,7 +6,7 @@
 
 ### **Question / Task**
 
-> The Networking Team requested a public VPC to host public-facing services.\
+> The Networking Team requested a public VPC to host public-facing services.
 > **Requirements:**
 >
 > 1. Create a VPC named `xfusion-pub-vpc`.
@@ -41,7 +41,7 @@ aws ec2 create-vpc \
 }
 ```
 
-**Explanation:**\
+**Explanation:**
 This creates a new VPC with CIDR `10.0.0.0/16` and tags it `xfusion-pub-vpc`.
 
 ***
@@ -72,7 +72,7 @@ aws ec2 create-subnet \
 }
 ```
 
-**Explanation:**\
+**Explanation:**
 A subnet is created. By default, AWS does **not** assign public IPs. We fix that in the next step.
 
 ***
@@ -87,7 +87,7 @@ aws ec2 modify-subnet-attribute \
   --map-public-ip-on-launch
 ```
 
-**Explanation:**\
+**Explanation:**
 All instances launched in this subnet will automatically receive a public IP.
 
 ***
@@ -112,7 +112,7 @@ aws ec2 create-internet-gateway \
 }
 ```
 
-**Explanation:**\
+**Explanation:**
 This creates an IGW to enable internet access.
 
 ***
@@ -127,7 +127,7 @@ aws ec2 attach-internet-gateway \
   --vpc-id vpc-08814bd2a2571d089
 ```
 
-**Explanation:**\
+**Explanation:**
 Now the VPC can route traffic to the internet.
 
 ***
@@ -178,7 +178,7 @@ aws ec2 associate-route-table \
 }
 ```
 
-**Explanation:**\
+**Explanation:**
 This makes the subnet a **public subnet**, allowing instances to access the internet.
 
 ***
@@ -212,7 +212,7 @@ aws ec2 authorize-security-group-ingress \
   --cidr 0.0.0.0/0
 ```
 
-**Explanation:**\
+**Explanation:**
 This allows SSH from anywhere for management.
 
 ***
@@ -227,7 +227,7 @@ aws ec2 create-key-pair \
 chmod 400 xfusion-key.pem
 ```
 
-**Explanation:**\
+**Explanation:**
 This creates an SSH key to access the EC2 instance.
 
 ***
@@ -259,7 +259,7 @@ aws ec2 run-instances \
 }
 ```
 
-**Explanation:**\
+**Explanation:**
 The EC2 instance is launched in the public subnet with SSH access enabled.
 
 ***
@@ -297,8 +297,8 @@ PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
 ...
 ```
 
-**Explanation:**\
-SSH works and instance can reach the internet. ✅
+**Explanation:**
+SSH works and instance can reach the internet.
 
 ***
 
@@ -316,7 +316,7 @@ SSH works and instance can reach the internet. ✅
 
 ***
 
-✅ **The public-facing VPC environment is ready for applications.**
+ **The public-facing VPC environment is ready for applications.**
 
 ***
 

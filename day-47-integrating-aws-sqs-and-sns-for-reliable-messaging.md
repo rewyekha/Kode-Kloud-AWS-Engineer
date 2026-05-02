@@ -21,12 +21,9 @@ aws sns publish --topic-arn $topicarn --message 'Low Priority message 1' --messa
 aws sns publish --topic-arn $topicarn --message 'Low Priority message 2' --message-attributes '{"priority" : { "DataType":"String", "StringValue":"low"}}'
 ```
 
-\
-`Notes:`
+**Notes:**
 
 * Create the resources only in `us-east-1` region.
-
-
 
 ***
 
@@ -51,11 +48,11 @@ The goal of this lab was to ensure that **high‑priority messages are always pr
 * Consume messages using an **AWS Lambda function**
 * Automate infrastructure provisioning using **CloudFormation**
 * Validate correct behavior through CLI and AWS Console
-* Pass automated lab verification successfully ✅
+* Pass automated lab verification successfully
 
 ***
 
-### 🧱 Architecture Summary
+### Architecture Summary
 
 | Component         | Purpose                              |
 | ----------------- | ------------------------------------ |
@@ -69,7 +66,7 @@ The goal of this lab was to ensure that **high‑priority messages are always pr
 
 ***
 
-### 🔄 Message Flow Diagram
+### Message Flow Diagram
 
 ![](.gitbook/assets/unknown.png)
 
@@ -161,7 +158,7 @@ topicarn=$(aws sns list-topics \
 
 #### Step 6: Publish Test Messages
 
-**🔴 High Priority Messages**
+** High Priority Messages**
 
 ```bash
 aws sns publish --topic-arn $topicarn \
@@ -173,7 +170,7 @@ aws sns publish --topic-arn $topicarn \
   --message-attributes '{"priority":{"DataType":"String","StringValue":"high"}}'
 ```
 
-**🔵 Low Priority Messages**
+** Low Priority Messages**
 
 ```bash
 aws sns publish --topic-arn $topicarn \
@@ -229,7 +226,7 @@ Key takeaways:
 
 ***
 
-### 📎 Appendix
+### Appendix
 
 * Region: **us-east-1**
 * Stack Name: **xfusion-priority-stack**
@@ -237,8 +234,6 @@ Key takeaways:
 * Deployment Method: **Infrastructure as Code (IaC)**
 
 ***
-
-
 
 <figure><img src=".gitbook/assets/image (111).png" alt=""><figcaption></figcaption></figure>
 

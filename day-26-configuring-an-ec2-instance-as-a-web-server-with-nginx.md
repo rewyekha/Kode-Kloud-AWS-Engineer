@@ -2,8 +2,8 @@
 
 This guide demonstrates how to launch a **Ubuntu 20.04 EC2 instance** for the Nautilus project with **Nginx installed**, accessible via HTTP and SSH.
 
-**Region:** `us-east-1`\
-**Instance Name:** `datacenter-ec2`\
+**Region:** `us-east-1`
+**Instance Name:** `datacenter-ec2`
 **AMI:** `ami-0fb0b230890ccd1e6` (Ubuntu 20.04 LTS)
 
 ***
@@ -24,7 +24,7 @@ This guide demonstrates how to launch a **Ubuntu 20.04 EC2 instance** for the Na
 ```bash
 ~ on ☁️ (us-east-1) ➜  EXISTING_ID=$(aws ec2 describe-instances \
 >   --filters "Name=tag:Name,Values=$INSTANCE_NAME" \
->   --query "Reservations[*].Instances[*].InstanceId" --output text --region $REGION) 
+>   --query "Reservations[*].Instances[*].InstanceId" --output text --region $REGION)
 
 ~ on ☁️ (us-east-1) ➜  if [ -n "$EXISTING_ID" ]; then
 >     aws ec2 terminate-instances --instance-ids $EXISTING_ID --region $REGION
@@ -168,7 +168,7 @@ Web server is ready: http://54.91.95.154
 
 ***
 
-### ✅ **Access the Web Server**
+### **Access the Web Server**
 
 * Open browser: `http://54.91.95.154` → should show **Nginx default page**
 * SSH access (lab / troubleshooting):

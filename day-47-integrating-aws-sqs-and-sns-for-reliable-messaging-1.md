@@ -8,12 +8,9 @@ The Nautilus DevOps team needs to implement a Lambda function using a CloudForma
 4. Ensure the status code is `200`.
 5. Create and use the IAM role named `lambda_execution_role`.
 
-\
-`Notes:`
+**Notes:**
 
 * Create the resources only in `us-east-1` region.
-
-
 
 ## Day 48: Automating Infrastructure Deployment with AWS CloudFormation
 
@@ -60,7 +57,7 @@ Credentials are provided via the `showcreds` command on the `aws-client` host.
 | Region    | us-east-1       |
 | Auth      | Via `showcreds` |
 
-> ⚠️ Do not hardcode credentials in templates or documentation.
+>  Do not hardcode credentials in templates or documentation.
 
 ***
 
@@ -156,7 +153,7 @@ aws cloudformation wait stack-create-complete \
   --region us-east-1
 ```
 
-> ✅ No output indicates successful completion. The command blocks until the stack reaches `CREATE_COMPLETE` or fails.
+>  No output indicates successful completion. The command blocks until the stack reaches `CREATE_COMPLETE` or fails.
 
 ***
 
@@ -215,11 +212,11 @@ cat response.json
 
 | Check                           | Expected Result                | Status |
 | ------------------------------- | ------------------------------ | ------ |
-| Stack status                    | `CREATE_COMPLETE`              | ✅      |
-| IAM role created                | `lambda_execution_role` exists | ✅      |
-| Lambda function created         | `nautilus-lambda` exists       | ✅      |
-| Lambda invocation response code | `200`                          | ✅      |
-| Lambda response body            | `Welcome to KKE AWS Labs!`     | ✅      |
+| Stack status                    | `CREATE_COMPLETE`              |       |
+| IAM role created                | `lambda_execution_role` exists |       |
+| Lambda function created         | `nautilus-lambda` exists       |       |
+| Lambda invocation response code | `200`                          |       |
+| Lambda response body            | `Welcome to KKE AWS Labs!`     |       |
 
 ***
 

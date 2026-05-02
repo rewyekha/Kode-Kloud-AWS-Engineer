@@ -7,8 +7,6 @@ The Nautilus DevOps team continues to explore serverless architecture by setting
 3. Create Lambda Function: Create a Lambda function named `xfusion-lambda-cli` using the zipped file and specify `Python` as the runtime.
 4. IAM Role: Use the IAM role named `lambda_execution_role`. Use AWS CLI which is already configured on the `aws-client` host.
 
-
-
 ## AWS Lambda: Create and Deploy a Python Serverless Function via CLI
 
 > **Platform:** KodeKloud | **Cloud:** AWS | **Region:** us-east-1 **Difficulty:** Beginner | **Topic:** AWS Lambda, Python, IAM, Serverless, AWS CLI

@@ -6,33 +6,18 @@ During the migration process, several resources were created under the AWS accou
 
 2\) Before submitting your task, make sure instance is in `terminated` state.
 
-Use below given AWS Credentials: (You can run the `showcreds` command on `aws-client` host to retrieve these credentials)
+> **Note:** Run `showcreds` on the `aws-client` host to retrieve temporary AWS credentials, then configure the AWS CLI using `aws configure`.
 
-| Console URL | [https://045946725843.signin.aws.amazon.com/console?region=us-east-1](https://045946725843.signin.aws.amazon.com/console?region=us-east-1) |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| Username    | kk\_labs\_user\_825244                                                                                                                     |
-| Password    | q@sbG^@im5yl                                                                                                                               |
-| Start Time  | Wed Feb 25 05:07:55 UTC 2026                                                                                                               |
-| End Time    | Wed Feb 25 06:07:55 UTC 2026                                                                                                               |
-
-\
-`Notes:`
+**Notes:**
 
 * Create the resources only in `us-east-1` region.
-* To `display` or `hide` the terminal of the AWS client machine, you can use the expand toggle button as shown below:\
-  ![toggle button](https://res.cloudinary.com/dezmljkdo/image/upload/v1678742174/AWS%20Lambda/expand_panel_hjgfkl.png)
-
-
-
-<figure><img src=".gitbook/assets/image (43).png" alt=""><figcaption></figcaption></figure>
+  <figure><img src=".gitbook/assets/image (43).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src=".gitbook/assets/image (44).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src=".gitbook/assets/image (45).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src=".gitbook/assets/image (42).png" alt=""><figcaption></figcaption></figure>
-
-
 
 ***
 
@@ -134,7 +119,7 @@ terminated
 
 ***
 
-### ✅ Summary
+### Summary
 
 | Task         | Detail                         |
 | ------------ | ------------------------------ |
@@ -143,6 +128,6 @@ terminated
 | Action       | Terminated using AWS CLI       |
 | Verification | Instance state is `terminated` |
 
-**Status:** ✅ Completed
+**Status:**  Completed
 
 ***

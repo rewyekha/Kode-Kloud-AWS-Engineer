@@ -8,10 +8,7 @@ Create a volume with the following requirements:
 * Volume `type` must be `gp3`.
 * Volume `size` must be `2 GiB`.
 
-Use below given AWS Credentials: (You can run the `showcreds` command on `aws-client` host to retrieve these credentials)
-
-\
-`Notes:`
+**Notes:**
 
 * Create the resources only in `us-east-1` region.
 
@@ -19,7 +16,7 @@ Below is the **clean, exam-style solution** to create the required **AWS EBS vol
 
 ***
 
-### ✅ Task Summary
+### Task Summary
 
 You need to create an **EBS volume** with the following specifications:
 
@@ -33,7 +30,7 @@ You need to create an **EBS volume** with the following specifications:
 
 ***
 
-### 🔐 Step 1: Load AWS Credentials
+### Step 1: Load AWS Credentials
 
 On the **aws-client host**, run:
 
@@ -43,11 +40,11 @@ showcreds
 
 This command exports temporary AWS credentials (`AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_SESSION_TOKEN`) into your environment.
 
-✅ **Do not hardcode credentials manually**
+ **Do not hardcode credentials manually**
 
 ***
 
-### 🌍 Step 2: Set AWS Region
+### Step 2: Set AWS Region
 
 Ensure the region is set correctly:
 
@@ -69,7 +66,7 @@ us-east-1
 
 ***
 
-### 💽 Step 3: Create the EBS Volume
+### Step 3: Create the EBS Volume
 
 Run the following command:
 
@@ -81,7 +78,7 @@ aws ec2 create-volume \
   --tag-specifications 'ResourceType=volume,Tags=[{Key=Name,Value=xfusion-volume}]'
 ```
 
-📌 **Important Notes**
+ **Important Notes**
 
 * Volume size is in **GiB** → `--size 2`
 * `gp3` is explicitly specified
@@ -90,7 +87,7 @@ aws ec2 create-volume \
 
 ***
 
-### 🔍 Step 4: Verify the Volume
+### Step 4: Verify the Volume
 
 ```bash
 aws ec2 describe-volumes \
@@ -111,17 +108,17 @@ Expected output (example):
 
 ***
 
-### ✅ Final Validation Checklist
+### Final Validation Checklist
 
-✔ Volume name: `xfusion-volume`\
-✔ Volume type: `gp3`\
-✔ Size: `2 GiB`\
-✔ Region: `us-east-1`\
-✔ Status: `available`
+* Volume name: `xfusion-volume`
+* Volume type: `gp3`
+* Size: `2 GiB`
+* Region: `us-east-1`
+* Status: `available`
 
 ***
 
-### 🏁 Conclusion
+### Conclusion
 
 The **xfusion-volume** EBS resource has been successfully created following AWS best practices and regional constraints. This aligns perfectly with the Nautilus DevOps team’s **incremental migration strategy**, ensuring controlled rollout and reduced risk.
 
@@ -162,6 +159,6 @@ The **xfusion-volume** EBS resource has been successfully created following AWS 
 |  vol-02b73ec5973bc1d47 |  2 |  gp3 |  us-east-1a |  available  |
 +------------------------+----+------+-------------+-------------+
 
-~ on ☁️  (us-east-1) ➜  
+~ on ☁️  (us-east-1) ➜
 
 ```

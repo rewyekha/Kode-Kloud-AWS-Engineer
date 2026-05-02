@@ -28,7 +28,7 @@
 
 The Nautilus DevOps team needs to enable internet access for an EC2 instance running in a **private subnet**, so it can upload a test file to a public S3 bucket. To minimize costs, the team has chosen to use a **NAT Instance** instead of a NAT Gateway.
 
-> ⚠️ **Note:** `iptables` is not installed by default on Amazon Linux 2023. It must be installed and enabled before configuring NAT.
+> **Note:** `iptables` is not installed by default on Amazon Linux 2023. It must be installed and enabled before configuring NAT.
 
 ***
 
@@ -90,11 +90,11 @@ The following resources already exist in the environment:
 
 ### Lab Objectives
 
-* ✅ Create a new **public subnet** named `datacenter-pub-subnet` in the existing VPC
-* ✅ Launch a **NAT Instance** named `datacenter-nat-instance` in the public subnet using Amazon Linux 2023
-* ✅ Configure the NAT instance with `iptables` MASQUERADE rules
-* ✅ Route private subnet traffic through the NAT instance
-* ✅ Verify `datacenter-test.txt` appears in the S3 bucket
+*  Create a new **public subnet** named `datacenter-pub-subnet` in the existing VPC
+*  Launch a **NAT Instance** named `datacenter-nat-instance` in the public subnet using Amazon Linux 2023
+*  Configure the NAT instance with `iptables` MASQUERADE rules
+*  Route private subnet traffic through the NAT instance
+*  Verify `datacenter-test.txt` appears in the S3 bucket
 
 ***
 
@@ -546,7 +546,7 @@ EOF
 
 #### Launch the NAT Instance
 
-> ⚠️ The `--source-dest-check` flag is **not** supported in `run-instances`. It must be disabled separately using `modify-instance-attribute` after launch.
+>  The `--source-dest-check` flag is **not** supported in `run-instances`. It must be disabled separately using `modify-instance-attribute` after launch.
 
 ```bash
 aws ec2 run-instances \
@@ -656,7 +656,7 @@ aws s3 ls s3://datacenter-nat-17811 --region us-east-1
 2026-03-23 07:21:09         21 datacenter-test.txt
 ```
 
-✅ **Lab Complete!** The file `datacenter-test.txt` is present in the S3 bucket, confirming that the private EC2 instance successfully reached the internet through the NAT instance.
+ **Lab Complete!** The file `datacenter-test.txt` is present in the S3 bucket, confirming that the private EC2 instance successfully reached the internet through the NAT instance.
 
 ***
 

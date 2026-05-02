@@ -4,35 +4,22 @@ When establishing infrastructure on the AWS cloud, Identity and Access Managemen
 
 Create an IAM policy named `iampolicy_jim` in `us-east-1` region, it must allow read-only access to the EC2 console, i.e this policy must allow users to view all instances, AMIs, and snapshots in the Amazon EC2 console.
 
-Use below given AWS Credentials: (You can run the `showcreds` command on `aws-client` host to retrieve these credentials)
+> **Note:** Run `showcreds` on the `aws-client` host to retrieve temporary AWS credentials, then configure the AWS CLI using `aws configure`.
 
-| Console URL | [https://766182622417.signin.aws.amazon.com/console?region=us-east-1](https://766182622417.signin.aws.amazon.com/console?region=us-east-1) |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| Username    | kk\_labs\_user\_115190                                                                                                                     |
-| Password    | 3HMiUcM0uQOD                                                                                                                               |
-| Start Time  | Sun Mar 01 11:16:11 UTC 2026                                                                                                               |
-| End Time    | Sun Mar 01 12:16:11 UTC 2026                                                                                                               |
-
-\
-`Notes:`
+**Notes:**
 
 * Create the resources only in `us-east-1` region.
-* To `display` or `hide` the terminal of the AWS client machine, you can use the expand toggle button as shown below:\
-  ![toggle button](https://res.cloudinary.com/dezmljkdo/image/upload/v1678742174/AWS%20Lambda/expand_panel_hjgfkl.png)
+  Here is your complete **GitBook documentation** covering:
 
-
-
-Here is your complete **GitBook documentation** covering:
-
-* ✅ GUI Method
-* ✅ CLI Method (with your actual output)
-* ✅ How to write IAM JSON
-* ✅ Where to get policy JSON
-* ✅ IAM Policy rules & structure
+*  GUI Method
+*  CLI Method (with your actual output)
+*  How to write IAM JSON
+*  Where to get policy JSON
+*  IAM Policy rules & structure
 
 ***
 
-### 📌 Objective
+### Objective
 
 Create an IAM policy named:
 
@@ -55,7 +42,7 @@ We will use:
 
 ***
 
-## 🖥 Method 1: Using AWS Console (GUI)
+## Method 1: Using AWS Console (GUI)
 
 ### Step 1: Login to AWS Console
 
@@ -112,7 +99,7 @@ Click **Create policy**
 
 ***
 
-### ✅ Verify in Console
+### Verify in Console
 
 Go to:
 
@@ -125,11 +112,11 @@ Confirm:
 
 ***
 
-## 🖥 Method 2: Using AWS CLI
+## Method 2: Using AWS CLI
 
 ***
 
-### 🔹 Step 1: Set Region
+### Step 1: Set Region
 
 ```bash
 ~ on ☁️  (us-east-1) ➜  aws configure set region us-east-1
@@ -137,7 +124,7 @@ Confirm:
 
 ***
 
-### 🔹 Step 2: Create Policy JSON File
+### Step 2: Create Policy JSON File
 
 ```bash
 ~ on ☁️  (us-east-1) ➜  vi iampolicy_jim.json
@@ -164,7 +151,7 @@ Save and exit.
 
 ***
 
-### 🔹 Step 3: Create IAM Policy
+### Step 3: Create IAM Policy
 
 ```bash
 ~ on ☁️  (us-east-1) ➜  aws iam create-policy \
@@ -173,7 +160,7 @@ Save and exit.
   --region us-east-1
 ```
 
-#### ✅ Your CLI Output
+#### Your CLI Output
 
 ```json
 {
@@ -194,7 +181,7 @@ Save and exit.
 
 ***
 
-### 🔹 Step 4: Verify Policy Exists
+### Step 4: Verify Policy Exists
 
 ```bash
 ~ on ☁️  (us-east-1) ➜  aws iam list-policies --scope Local --region us-east-1
@@ -235,13 +222,13 @@ Output:
 
 ***
 
-## 📘 Where Do We Get the Policy JSON?
+## Where Do We Get the Policy JSON?
 
 There are **3 main ways**:
 
 ***
 
-### 1️⃣ AWS Documentation (Recommended Source)
+### 1. AWS Documentation (Recommended Source)
 
 AWS provides official documentation listing all EC2 actions:
 
@@ -263,7 +250,7 @@ This helps you identify:
 
 ***
 
-### 2️⃣ Use AWS Managed Policies as Reference
+### 2. Use AWS Managed Policies as Reference
 
 You can inspect AWS managed policy:
 
@@ -275,7 +262,7 @@ View its JSON and replicate minimal permissions.
 
 ***
 
-### 3️⃣ Write It Yourself (Custom Policy)
+### 3. Write It Yourself (Custom Policy)
 
 To allow read-only access:
 
@@ -303,7 +290,7 @@ Describe*
 
 ***
 
-## 📜 IAM Policy JSON Structure Explained
+## IAM Policy JSON Structure Explained
 
 Every IAM policy contains:
 
@@ -320,7 +307,7 @@ Every IAM policy contains:
 }
 ```
 
-#### 🔹 Version
+#### Version
 
 Always use:
 
@@ -328,12 +315,12 @@ Always use:
 2012-10-17
 ```
 
-#### 🔹 Effect
+#### Effect
 
 * `"Allow"`
 * or `"Deny"`
 
-#### 🔹 Action
+#### Action
 
 Defines what operations are allowed.
 
@@ -343,7 +330,7 @@ Example:
 ec2:Describe*
 ```
 
-#### 🔹 Resource
+#### Resource
 
 Defines which resources.
 
@@ -357,30 +344,30 @@ means all EC2 resources.
 
 ***
 
-## 🔐 IAM Policy Rules & Best Practices
+## IAM Policy Rules & Best Practices
 
-✅ Follow **Least Privilege Principle**\
+* Follow **Least Privilege Principle**
 Grant only required permissions.
 
-✅ Avoid `"Action": "*"`
+* Avoid `"Action": "*"`
 
-✅ Restrict resource scope when possible
+* Restrict resource scope when possible
 
-✅ Test policy before attaching to production users
-
-***
-
-## 🎯 Final Result
-
-✔ Policy Name: `iampolicy_jim`\
-✔ Region: `us-east-1`\
-✔ Access: Read-only EC2 console\
-✔ Created via: GUI & CLI\
-✔ Verified via CLI
+* Test policy before attaching to production users
 
 ***
 
-## 🏁 Conclusion
+## Final Result
+
+* Policy Name: `iampolicy_jim`
+* Region: `us-east-1`
+* Access: Read-only EC2 console
+* Created via: GUI & CLI
+* Verified via CLI
+
+***
+
+## Conclusion
 
 The IAM policy **iampolicy\_jim** was successfully created using both:
 

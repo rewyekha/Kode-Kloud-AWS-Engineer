@@ -10,18 +10,10 @@ Task Requirements:
 4. Upload the `index.html` file from the `/root/` directory of the AWS client host to the S3 bucket.
 5. Verify that the website is accessible directly through the S3 website URL.
 
-\
-`Notes:`
+**Notes:**
 
 * Create the resources only in `us-east-1` region.
-* To `display` or `hide` the terminal of the AWS client machine, you can use the expand toggle button as shown below:\
-  ![toggle button](https://res.cloudinary.com/dezmljkdo/image/upload/v1678742174/AWS%20Lambda/expand_panel_hjgfkl.png)
-
-
-
-
-
-## AWS S3: Host a Static Website with Public Access
+  ## AWS S3: Host a Static Website with Public Access
 
 > **Platform:** KodeKloud | **Cloud:** AWS | **Region:** us-east-1 **Difficulty:** Beginner | **Topic:** AWS S3, Static Website Hosting, Bucket Policy, Public Access
 
@@ -68,10 +60,7 @@ The Nautilus DevOps team has been tasked with creating an internal information p
 
 | Field         | Value                                                                 |
 | ------------- | --------------------------------------------------------------------- |
-| Console URL   | `https://230266393235.signin.aws.amazon.com/console?region=us-east-1` |
-| Username      | `kk_labs_user_915151`                                                 |
-| Password      | `URD2k0C%1RId`                                                        |
-| Region        | `us-east-1`                                                           |
+> **Note:** Run `showcreds` on the `aws-client` host to retrieve temporary AWS credentials, then configure the AWS CLI using `aws configure`.
 | Access Method | AWS CLI on `aws-client` host                                          |
 | Source file   | `/root/index.html`                                                    |
 | Bucket name   | `xfusion-web-30228`                                                   |

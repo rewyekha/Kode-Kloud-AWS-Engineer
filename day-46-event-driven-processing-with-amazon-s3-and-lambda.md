@@ -16,7 +16,7 @@ The DevOps team is working on automating file management between two S3 buckets.
 * Create the resources only in `us-east-1` region.
 * To display or hide the terminal of the AWS client machine, you can use the expand toggle button as shown below.
 
-## AWS S3 to S3 File Automation using Lambda + DynamoDB (KodeKloud Lab)
+## AWS S3 to S3 File Automation using Lambda + DynamoDB
 
 ### Lab Overview
 
@@ -327,7 +327,7 @@ aws s3 ls s3://xfusion-private-20362/
 2026-04-27 15:20:06        164 sample.zip
 ```
 
-✅ Lambda successfully copied file.
+* Lambda successfully copied file.
 
 ***
 
@@ -368,7 +368,7 @@ aws dynamodb scan \
 }
 ```
 
-✅ Logs successfully written.
+* Logs successfully written.
 
 ***
 
@@ -376,13 +376,13 @@ aws dynamodb scan \
 
 | Check                  | Status |
 | ---------------------- | ------ |
-| Public Bucket Created  | ✅      |
-| Private Bucket Created | ✅      |
-| Lambda Created         | ✅      |
-| Trigger Configured     | ✅      |
-| File Copied            | ✅      |
-| DynamoDB Logs Created  | ✅      |
-| Lab Passed             | ✅      |
+| Public Bucket Created  |       |
+| Private Bucket Created |       |
+| Lambda Created         |       |
+| Trigger Configured     |       |
+| File Copied            |       |
+| DynamoDB Logs Created  |       |
+| Lab Passed             |       |
 
 ***
 
@@ -411,7 +411,5 @@ aws s3 cp /root/sample.zip s3://xfusion-public-3381/
 * Media processing pipelines
 
 ***
-
-
 
 <figure><img src=".gitbook/assets/image (109).png" alt=""><figcaption></figcaption></figure>

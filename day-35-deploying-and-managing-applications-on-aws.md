@@ -46,10 +46,7 @@ The Nautilus DevOps team needs a new private RDS instance for their application.
 
 | Field         | Value                                                                 |
 | ------------- | --------------------------------------------------------------------- |
-| Console URL   | `https://113662677848.signin.aws.amazon.com/console?region=us-east-1` |
-| Username      | `kk_labs_user_665192`                                                 |
-| Password      | `m0Y2Cv9r^i^M`                                                        |
-| Region        | `us-east-1`                                                           |
+> **Note:** Run `showcreds` on the `aws-client` host to retrieve temporary AWS credentials, then configure the AWS CLI using `aws configure`.
 | Access Method | AWS CLI on `aws-client` host                                          |
 
 ***
@@ -686,10 +683,6 @@ _Lab completed on 2026-04-01 | AWS Region: us-east-1 | Platform: KodeKloudbas_
 
 <figure><img src=".gitbook/assets/image (95).png" alt=""><figcaption></figcaption></figure>
 
-
-
 <figure><img src=".gitbook/assets/image (97).png" alt=""><figcaption></figcaption></figure>
-
-
 
 <figure><img src=".gitbook/assets/image (98).png" alt=""><figcaption></figcaption></figure>

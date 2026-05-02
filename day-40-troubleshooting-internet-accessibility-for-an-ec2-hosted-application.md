@@ -7,10 +7,9 @@ As a member of the Nautilus DevOps Team, your task is to perform the following:
 1. Verify VPC Configuration: Ensure that the VPC `devops-vpc` is properly configured to allow internet access.
 2. Ensure Accessibility: Make sure the EC2 instance `devops-ec2` running the Nginx server is accessible from the internet on port 80.
 
-Use below given AWS Credentials: (You can run the `showcreds` command on `aws-client` host to retrieve these credentials)\
-`Notes:`
+**Notes:**
 
-* Create the resources only in `us-east-1` region.<br>
+* Create the resources only in `us-east-1` region.
 
 ***
 

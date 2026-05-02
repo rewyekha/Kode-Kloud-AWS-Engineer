@@ -19,7 +19,6 @@ This guide describes how the Nautilus DevOps team set up an Amazon EC2 instance 
 
 ### Prerequisites
 
-* AWS account access with credentials for `kk_labs_user_418850`.
 * Region set to `us-east-1`.
 * Access to the existing SNS topic `xfusion-sns-topic`.
 
@@ -97,8 +96,6 @@ aws cloudwatch describe-alarms \
 
 The EC2 instance and CloudWatch alarm were successfully created according to the lab requirements. The alarm monitors CPU utilization and is configured to notify the existing SNS topic when CPU usage exceeds the specified threshold.
 
-
-
 <figure><img src=".gitbook/assets/image (70).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src=".gitbook/assets/image (71).png" alt=""><figcaption></figcaption></figure>
@@ -115,10 +112,6 @@ The EC2 instance and CloudWatch alarm were successfully created according to the
 
 <figure><img src=".gitbook/assets/image (77).png" alt=""><figcaption></figcaption></figure>
 
-
-
 <figure><img src=".gitbook/assets/image (78).png" alt=""><figcaption></figcaption></figure>
-
-
 
 <figure><img src=".gitbook/assets/image (79).png" alt=""><figcaption></figcaption></figure>

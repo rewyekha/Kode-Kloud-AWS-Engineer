@@ -9,12 +9,9 @@ The DevOps team is tasked with setting up a highly available web application usi
 5. Configure health checks on the ALB to ensure it routes traffic only to healthy instances.
 6. Verify that the ALB's DNS name is accessible and that it displays the default Nginx page served by the EC2 instances.
 
-\
-`Notes:`
+**Notes:**
 
 * Create the resources only in `us-east-1` region.
-
-
 
 ## Overview
 
@@ -278,7 +275,7 @@ This lab demonstrates a fully functional, production‑aligned AWS architecture 
 * Load-balanced Nginx web servers
 * Robust health checks and fault tolerance
 
-✅ Lab Status: PASSED
+* Lab Status: PASSED
 
 ***
 

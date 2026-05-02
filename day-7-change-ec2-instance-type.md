@@ -6,17 +6,9 @@ During the migration process, the Nautilus DevOps team created several EC2 insta
 
 2\) Make sure the ec2 instance `datacenter-ec2` is in `running` state after the change.
 
-Use below given AWS Credentials: (You can run the `showcreds` command on `aws-client` host to retrieve these credentials)
+> **Note:** Run `showcreds` on the `aws-client` host to retrieve temporary AWS credentials, then configure the AWS CLI using `aws configure`.
 
-| Console URL | [https://481362523914.signin.aws.amazon.com/console?region=us-east-1](https://481362523914.signin.aws.amazon.com/console?region=us-east-1) |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| Username    | kk\_labs\_user\_398509                                                                                                                     |
-| Password    | Y6G45Zo4P^Sy                                                                                                                               |
-| Start Time  | Mon Jan 12 04:51:53 UTC 2026                                                                                                               |
-| End Time    | Mon Jan 12 05:51:53 UTC 2026                                                                                                               |
-
-\
-`Notes:`
+**Notes:**
 
 * Create the resources only in `us-east-1` region.
 * Find EC2 instance **datacenter-ec2**
@@ -27,7 +19,7 @@ Use below given AWS Credentials: (You can run the `showcreds` command on `aws-cl
 
 ***
 
-### 🔹 Step 0: Login to aws-client & load credentials
+### Step 0: Login to aws-client & load credentials
 
 ```bash
 ssh aws-client
@@ -44,7 +36,7 @@ export AWS_DEFAULT_REGION=us-east-1
 
 ***
 
-### 🔹 Step 1: Get Instance ID for `datacenter-ec2`
+### Step 1: Get Instance ID for `datacenter-ec2`
 
 ```bash
 aws ec2 describe-instances \
@@ -53,7 +45,7 @@ aws ec2 describe-instances \
   --output text
 ```
 
-📌 Save the output (example):
+* Save the output (example):
 
 ```
 i-0abc12345def67890
@@ -67,7 +59,7 @@ INSTANCE_ID=i-0abc12345def67890
 
 ***
 
-### 🔹 Step 2: Ensure Status Checks Are Complete
+### Step 2: Ensure Status Checks Are Complete
 
 ```bash
 aws ec2 describe-instance-status \
@@ -76,7 +68,7 @@ aws ec2 describe-instance-status \
   --output text
 ```
 
-✅ Proceed **only if output is**:
+* Proceed **only if output is**:
 
 ```
 ok
@@ -86,7 +78,7 @@ ok
 
 ***
 
-### 🔹 Step 3: Stop the Instance (Required to change type)
+### Step 3: Stop the Instance (Required to change type)
 
 ```bash
 aws ec2 stop-instances --instance-ids $INSTANCE_ID
@@ -100,7 +92,7 @@ aws ec2 wait instance-stopped --instance-ids $INSTANCE_ID
 
 ***
 
-### 🔹 Step 4: Change Instance Type to `t2.nano`
+### Step 4: Change Instance Type to `t2.nano`
 
 ```bash
 aws ec2 modify-instance-attribute \
@@ -110,7 +102,7 @@ aws ec2 modify-instance-attribute \
 
 ***
 
-### 🔹 Step 5: Start the Instance
+### Step 5: Start the Instance
 
 ```bash
 aws ec2 start-instances --instance-ids $INSTANCE_ID
@@ -124,7 +116,7 @@ aws ec2 wait instance-running --instance-ids $INSTANCE_ID
 
 ***
 
-### 🔹 Step 6: Final Verification
+### Step 6: Final Verification
 
 #### Check instance state
 
@@ -157,20 +149,3 @@ t2.nano
 ```
 
 ***
-
-### ✅ Final Checklist (Exam Ready)
-
-✔ Correct instance identified (`datacenter-ec2`)\
-✔ Status checks verified\
-✔ Instance stopped before modification\
-✔ Instance type changed to `t2.nano`\
-✔ Instance restarted and running\
-✔ Region used: `us-east-1`
-
-***
-
-#### 🧠 Exam Tip (Very Important)
-
-> **You cannot change EC2 instance type while it is running**\
-> Stopping → modifying → starting is **mandatory**
-

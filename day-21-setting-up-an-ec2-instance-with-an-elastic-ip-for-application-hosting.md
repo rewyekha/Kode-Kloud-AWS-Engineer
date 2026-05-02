@@ -4,31 +4,18 @@ The Nautilus DevOps Team has received a new request from the Development Team to
 
 Create an EC2 instance named `xfusion-ec2` using any linux AMI like ubuntu, the Instance type must be `t2.micro` and associate an `Elastic IP` address with this instance, name it as `xfusion-eip`.
 
-Use below given AWS Credentials: (You can run the `showcreds` command on `aws-client` host to retrieve these credentials)
+> **Note:** Run `showcreds` on the `aws-client` host to retrieve temporary AWS credentials, then configure the AWS CLI using `aws configure`.
 
-| Console URL | [https://138251745622.signin.aws.amazon.com/console?region=us-east-1](https://138251745622.signin.aws.amazon.com/console?region=us-east-1) |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| Username    | kk\_labs\_user\_631272                                                                                                                     |
-| Password    | ES^B!0x^s1P%                                                                                                                               |
-| Start Time  | Wed Mar 04 00:57:46 UTC 2026                                                                                                               |
-| End Time    | Wed Mar 04 01:57:46 UTC 2026                                                                                                               |
-
-\
-`Notes:`
+**Notes:**
 
 * Create the resources only in `us-east-1` region.
-* To `display` or `hide` the terminal of the AWS client machine, you can use the expand toggle button as shown below:\
-  ![toggle button](https://res.cloudinary.com/dezmljkdo/image/upload/v1678742174/AWS%20Lambda/expand_panel_hjgfkl.png)
+ ***
 
-
-
-***
-
-## 📘 Create EC2 Instance and Associate Elastic IP
+## Create EC2 Instance and Associate Elastic IP
 
 ***
 
-## 📝 Question
+## Question
 
 The Nautilus DevOps Team received a request from the Development Team to:
 
@@ -42,13 +29,13 @@ This ensures the instance has a stable public IP for application access.
 
 ***
 
-## 💻 Solution Using AWS CLI
+## Solution Using AWS CLI
 
 > Region: `us-east-1`
 
 ***
 
-### 1️⃣ Get Latest Ubuntu AMI
+### 1. Get Latest Ubuntu AMI
 
 ```bash
 aws ec2 describe-images \
@@ -77,7 +64,7 @@ ami-04680790a315cd58d
 
 ***
 
-### 2️⃣ Launch EC2 Instance
+### 2. Launch EC2 Instance
 
 ```bash
 aws ec2 run-instances \
@@ -106,7 +93,7 @@ aws ec2 run-instances \
 
 ***
 
-### 3️⃣ Wait Until Instance is Running
+### 3. Wait Until Instance is Running
 
 ```bash
 aws ec2 describe-instances \
@@ -127,7 +114,7 @@ aws ec2 describe-instances \
 
 ***
 
-### 4️⃣ Allocate Elastic IP
+### 4. Allocate Elastic IP
 
 ```bash
 aws ec2 allocate-address \
@@ -146,7 +133,7 @@ aws ec2 allocate-address \
 
 ***
 
-### 5️⃣ Tag Elastic IP as xfusion-eip
+### 5. Tag Elastic IP as xfusion-eip
 
 ```bash
 aws ec2 create-tags \
@@ -159,7 +146,7 @@ aws ec2 create-tags \
 
 ***
 
-### 6️⃣ Associate Elastic IP to Instance
+### 6. Associate Elastic IP to Instance
 
 ```bash
 aws ec2 associate-address \
@@ -178,7 +165,7 @@ aws ec2 associate-address \
 
 ***
 
-### 7️⃣ Final Verification
+### 7. Final Verification
 
 #### Check Instance Public IP
 
@@ -232,7 +219,7 @@ aws ec2 describe-addresses --region us-east-1
 
 ***
 
-## 🌐 Solution Using AWS Console (GUI)
+## Solution Using AWS Console (GUI)
 
 ***
 
@@ -296,22 +283,22 @@ Save changes.
 
 ***
 
-## ✅ Final Validation Checklist
+## Final Validation Checklist
 
 | Requirement                  | Status |
 | ---------------------------- | ------ |
-| Region us-east-1             | ✅      |
-| Ubuntu Linux AMI             | ✅      |
-| Instance Name xfusion-ec2    | ✅      |
-| Instance Type t2.micro       | ✅      |
-| Elastic IP allocated         | ✅      |
-| Elastic IP named xfusion-eip | ✅      |
-| Elastic IP associated        | ✅      |
-| Stable Public IP assigned    | ✅      |
+| Region us-east-1             |       |
+| Ubuntu Linux AMI             |       |
+| Instance Name xfusion-ec2    |       |
+| Instance Type t2.micro       |       |
+| Elastic IP allocated         |       |
+| Elastic IP named xfusion-eip |       |
+| Elastic IP associated        |       |
+| Stable Public IP assigned    |       |
 
 ***
 
-## 🎯 Final Result
+## Final Result
 
 ```
 Instance Name: xfusion-ec2
@@ -324,11 +311,7 @@ Region: us-east-1
 
 ***
 
-✅ Task Completed Successfully.
-
-
+* Task Completed Successfully.
 
 <figure><img src=".gitbook/assets/image (39).png" alt=""><figcaption></figcaption></figure>
-
-
 

@@ -291,7 +291,7 @@ curl http://devops-alb-1557128968.us-east-1.elb.amazonaws.com
 
 ***
 
-#### ✅ Summary
+#### Summary
 
 * EC2 instance deployed with Ubuntu 22.04 and Nginx installed.
 * Security groups configured for HTTP traffic.
@@ -299,8 +299,6 @@ curl http://devops-alb-1557128968.us-east-1.elb.amazonaws.com
 * ALB is publicly accessible, routing traffic to the EC2 instance successfully.
 
 ***
-
-
 
 <figure><img src=".gitbook/assets/image (20).png" alt=""><figcaption></figcaption></figure>
 

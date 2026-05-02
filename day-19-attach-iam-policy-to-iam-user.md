@@ -4,29 +4,16 @@ The Nautilus DevOps team has been creating a couple of services on AWS cloud. Th
 
 An IAM user named `iamuser_siva` and a policy named `iampolicy_siva` already exist. Attach the IAM policy `iampolicy_siva` to the IAM user `iamuser_siva`.
 
-Use below given AWS Credentials: (You can run the `showcreds` command on `aws-client` host to retrieve these credentials)
+> **Note:** Run `showcreds` on the `aws-client` host to retrieve temporary AWS credentials, then configure the AWS CLI using `aws configure`.
 
-| Console URL | [https://090742440071.signin.aws.amazon.com/console?region=us-east-1](https://090742440071.signin.aws.amazon.com/console?region=us-east-1) |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| Username    | kk\_labs\_user\_743140                                                                                                                     |
-| Password    | IhT1@QZl3XC4                                                                                                                               |
-| Start Time  | Mon Mar 02 04:00:53 UTC 2026                                                                                                               |
-| End Time    | Mon Mar 02 05:00:53 UTC 2026                                                                                                               |
-
-\
-`Notes:`
+**Notes:**
 
 * Create the resources only in `us-east-1` region.
-* To `display` or `hide` the terminal of the AWS client machine, you can use the expand toggle button as shown below:\
-  ![toggle button](https://res.cloudinary.com/dezmljkdo/image/upload/v1678742174/AWS%20Lambda/expand_panel_hjgfkl.png)
-
-
-
-## 📘 Day 19: Attach IAM Policy to IAM User (AWS Task Guide)
+  ## Day 19: Attach IAM Policy to IAM User (AWS Task Guide)
 
 ***
 
-### ❓ What is the objective?
+### What is the objective?
 
 Attach an existing IAM policy:
 
@@ -48,27 +35,25 @@ us-east-1
 
 ***
 
-## 🔐 Step 1: Login to AWS Console
+## Step 1: Login to AWS Console
 
 Use the provided credentials:
 
-* **Console URL:**\
-  `https://090742440071.signin.aws.amazon.com/console?region=us-east-1`
-* **Username:** `kk_labs_user_743140`
-* **Password:** `IhT1@QZl3XC4`
+* **Console URL:**
+  `the AWS Management Console URL
 * **Region:** us-east-1
 
-⚠️ Ensure the region is set to **N. Virginia (us-east-1)** from the top-right corner.
+* Ensure the region is set to **N. Virginia (us-east-1)** from the top-right corner.
 
 ***
 
-## 🖥️ Method 1: Attach Policy Using AWS Console
+## Method 1: Attach Policy Using AWS Console
 
 ***
 
-### ❓ How to attach the policy?
+### How to attach the policy?
 
-#### 1️⃣ Go to IAM Dashboard
+#### 1. Go to IAM Dashboard
 
 Search for **IAM** in AWS services.
 
@@ -78,7 +63,7 @@ Open:
 
 ***
 
-#### 2️⃣ Navigate to Users
+#### 2. Navigate to Users
 
 * Click **Users**
 * Select user:
@@ -89,7 +74,7 @@ iamuser_siva
 
 ***
 
-#### 3️⃣ Add Permission
+#### 3. Add Permission
 
 * Go to **Permissions** tab
 * Click **Add permissions**
@@ -111,7 +96,7 @@ iampolicy_siva
 
 ***
 
-### ✅ Verification
+### Verification
 
 Under **Permissions policies**, you should see:
 
@@ -125,11 +110,11 @@ Status: Attached
 
 ***
 
-## 🖥️ Method 2: Attach Policy Using AWS CLI (Recommended for DevOps)
+## Method 2: Attach Policy Using AWS CLI (Recommended for DevOps)
 
 ***
 
-### ❓ How to configure AWS CLI?
+### How to configure AWS CLI?
 
 On `aws-client` host, retrieve credentials:
 
@@ -154,7 +139,7 @@ Default output format: json
 
 ***
 
-### ❓ How to attach the policy via CLI?
+### How to attach the policy via CLI?
 
 Run:
 
@@ -167,13 +152,13 @@ aws iam attach-user-policy \
 
 ***
 
-### ✅ Expected Output
+### Expected Output
 
 If successful, there will be **no output** returned.
 
 ***
 
-### 🔎 How to Verify via CLI?
+### How to Verify via CLI?
 
 ```bash
 aws iam list-attached-user-policies \
@@ -196,23 +181,23 @@ aws iam list-attached-user-policies \
 
 ***
 
-## 🚨 Common Errors & Troubleshooting
+## Common Errors & Troubleshooting
 
 ***
 
-### ❌ Error 1: NoSuchEntity
+### Error 1: NoSuchEntity
 
 ```bash
 An error occurred (NoSuchEntity) when calling the AttachUserPolicy operation:
 The user with name iamuser_siva cannot be found.
 ```
 
-#### 🔎 Cause:
+#### Cause:
 
 * User does not exist
 * Wrong region (IAM is global, but CLI region must still be set properly)
 
-#### ✅ Fix:
+#### Fix:
 
 Verify user exists:
 
@@ -222,18 +207,18 @@ aws iam get-user --user-name iamuser_siva
 
 ***
 
-### ❌ Error 2: Policy Not Found
+### Error 2: Policy Not Found
 
 ```bash
 An error occurred (NoSuchEntity) when calling the AttachUserPolicy operation:
 Policy arn not found
 ```
 
-#### 🔎 Cause:
+#### Cause:
 
 Incorrect ARN or policy name.
 
-#### ✅ Fix:
+#### Fix:
 
 List policies:
 
@@ -243,34 +228,34 @@ aws iam list-policies --scope Local
 
 ***
 
-### ❌ Error 3: AccessDenied
+### Error 3: AccessDenied
 
 ```bash
 An error occurred (AccessDenied) when calling the AttachUserPolicy operation:
 User is not authorized to perform: iam:AttachUserPolicy
 ```
 
-#### 🔎 Cause:
+#### Cause:
 
 Logged-in IAM user lacks permission.
 
-#### ✅ Fix:
+#### Fix:
 
 Ensure your lab user has IAM admin privileges.
 
 ***
 
-## 🎯 Final Outcome
+## Final Outcome
 
-✔ IAM user `iamuser_siva` exists\
-✔ IAM policy `iampolicy_siva` exists\
-✔ Policy successfully attached\
-✔ Verified via console or CLI\
-✔ Resources used in `us-east-1`
+* IAM user `iamuser_siva` exists
+* IAM policy `iampolicy_siva` exists
+* Policy successfully attached
+* Verified via console or CLI
+* Resources used in `us-east-1`
 
 ***
 
-## 📝 Final CLI Command Summary
+## Final CLI Command Summary
 
 ```bash
 aws configure

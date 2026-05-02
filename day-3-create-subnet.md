@@ -4,21 +4,11 @@ The Nautilus DevOps team is strategizing the migration of a portion of their inf
 
 For this task, create one subnet named `datacenter-subnet` under default VPC.
 
-Use below given AWS Credentials: (You can run the `showcreds` command on `aws-client` host to retrieve these credentials)
+> **Note:** Run `showcreds` on the `aws-client` host to retrieve temporary AWS credentials, then configure the AWS CLI using `aws configure`.
 
-| Console URL | [https://074952969475.signin.aws.amazon.com/console?region=us-east-1](https://074952969475.signin.aws.amazon.com/console?region=us-east-1) |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| Username    | kk\_labs\_user\_801499                                                                                                                     |
-| Password    | frWB@GSo%aX4                                                                                                                               |
-| Start Time  | Fri Jan 09 15:46:30 UTC 2026                                                                                                               |
-| End Time    | Fri Jan 09 16:46:30 UTC 2026                                                                                                               |
-
-\
-`Notes:`
+**Notes:**
 
 * Create the resources only in `us-east-1` region.
-
-
 
 ```
 ~ on ☁️  (us-east-1) ➜  aws ec2 describe-vpcs \
@@ -75,7 +65,7 @@ vpc-02fed80ae8f7dfe05
 |  subnet-09819702f88a771c7|  vpc-02fed80ae8f7dfe05  |  172.31.100.0/24  |
 +--------------------------+-------------------------+-------------------+
 
-~ on ☁️  (us-east-1) ➜  
+~ on ☁️  (us-east-1) ➜
 ```
 
 <figure><img src=".gitbook/assets/image (49).png" alt=""><figcaption></figcaption></figure>

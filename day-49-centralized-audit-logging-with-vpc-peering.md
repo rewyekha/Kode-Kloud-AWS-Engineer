@@ -18,12 +18,9 @@ The Nautilus DevOps team needs to build a secure and scalable log aggregation se
 * On the public instance, configure a cron job to push that same file to the created S3 bucket.
 * The uploaded file must be stored in the S3 bucket under the path `devops-priv-vpc/boot/boots.log`.
 
-\
-`Notes:`
+**Notes:**
 
 * Create the resources only in `us-east-1` region.
-
-
 
 ## AWS Datacenter Log Aggregation Setup
 
@@ -630,7 +627,7 @@ aws s3 ls s3://datacenter-s3-logs-30900/datacenter-priv-vpc/boot/
 2026-05-02 09:05:02         27 boots.log
 ```
 
-✅ **Lab complete** — `boots.log` is successfully stored at `s3://datacenter-s3-logs-30900/datacenter-priv-vpc/boot/boots.log` and both cron jobs run every minute automatically.
+ **Lab complete** — `boots.log` is successfully stored at `s3://datacenter-s3-logs-30900/datacenter-priv-vpc/boot/boots.log` and both cron jobs run every minute automatically.
 
 ***
 

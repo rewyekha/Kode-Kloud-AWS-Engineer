@@ -38,7 +38,7 @@ This lab covers the end-to-end setup of an EC2-to-S3 integration on AWS. The Nau
 
 | Parameter         | Value                                                               |
 | ----------------- | ------------------------------------------------------------------- |
-| Console URL       | https://254597876252.signin.aws.amazon.com/console?region=us-east-1 |
+> **Note:** Run `showcreds` on the `aws-client` host to retrieve temporary AWS credentials, then configure the AWS CLI using `aws configure`.
 | IAM Username      | kk\_labs\_user\_214087                                              |
 | Region            | us-east-1                                                           |
 | EC2 Instance Name | datacenter-ec2                                                      |

@@ -4,16 +4,9 @@ The Nautilus DevOps team has been creating a couple of services on AWS cloud. Th
 
 An instance named `datacenter-ec2` and a volume named `datacenter-volume` already exists in `us-east-1` region. Attach the `datacenter-volume` volume to the `datacenter-ec2` instance, make sure to set the device name to `/dev/sdb` while attaching the volume.
 
-Use below given AWS Credentials: (You can run the `showcreds` command on `aws-client` host to retrieve these credentials)
+> **Note:** Run `showcreds` on the `aws-client` host to retrieve temporary AWS credentials, then configure the AWS CLI using `aws configure`.
 
-| Console URL | [https://115244785922.signin.aws.amazon.com/console?region=us-east-1](https://115244785922.signin.aws.amazon.com/console?region=us-east-1) |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| Username    | kk\_labs\_user\_646052                                                                                                                     |
-| Password    | JNVhdgvwl@Z9                                                                                                                               |
-| Start Time  | Mon Feb 23 08:48:30 UTC 2026                                                                                                               |
-| End Time    | Mon Feb 23 09:48:30 UTC 2026                                                                                                               |
-
-`Notes:`
+**Notes:**
 
 * Create the resources only in `us-east-1` region.
 

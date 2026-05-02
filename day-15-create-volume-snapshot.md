@@ -10,21 +10,10 @@ Create a snapshot of an existing volume named `nautilus-vol` in `us-east-1` regi
 
 3\) Make sure the snapshot status is `completed` before submitting the task.
 
-Use below given AWS Credentials: (You can run the `showcreds` command on `aws-client` host to retrieve these credentials)
+> **Note:** Run `showcreds` on the `aws-client` host to retrieve temporary AWS credentials, then configure the AWS CLI using `aws configure`.
 
-| Console URL | [https://284304506227.signin.aws.amazon.com/console?region=us-east-1](https://284304506227.signin.aws.amazon.com/console?region=us-east-1) |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| Username    | kk\_labs\_user\_956360                                                                                                                     |
-| Password    | WNb^I@ZtP^!1                                                                                                                               |
-| Start Time  | Thu Feb 26 05:02:08 UTC 2026                                                                                                               |
-| End Time    | Thu Feb 26 06:02:08 UTC 2026                                                                                                               |
-
-\
-`Notes:`
+**Notes:**
 
 * Create the resources only in `us-east-1` region.
-* To `display` or `hide` the terminal of the AWS client machine, you can use the expand toggle button as shown below:\
-  ![toggle button](https://res.cloudinary.com/dezmljkdo/image/upload/v1678742174/AWS%20Lambda/expand_panel_hjgfkl.png)
-
-<figure><img src=".gitbook/assets/image (55).png" alt=""><figcaption></figcaption></figure>
+  <figure><img src=".gitbook/assets/image (55).png" alt=""><figcaption></figcaption></figure>
 

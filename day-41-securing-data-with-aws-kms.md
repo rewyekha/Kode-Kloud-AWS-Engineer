@@ -8,12 +8,10 @@ Specific Requirements:
 2. Encrypt the provided `SensitiveData.txt` file (located in /root/), base64 encode the ciphertext, and save the encrypted version as `EncryptedData.bin` in the `/root/` directory.
 3. Try to decrypt the same and verify that the decrypted data matches the original file.
 
-Make sure that the KMS key is correctly configured. The validation script will test your configuration by decrypting the `EncryptedData.bin` file using the KMS key you created.\
-`Notes:`
+Make sure that the KMS key is correctly configured. The validation script will test your configuration by decrypting the `EncryptedData.bin` file using the KMS key you created.
+**Notes:**
 
 * Create the resources only in `us-east-1` region.
-
-
 
 ## AWS KMS Encryption and Decryption Workflow
 

@@ -11,15 +11,9 @@ Please make sure instance initialisation has been completed before submitting th
 
 Use below given AWS Credentials. (You can run the `showcreds` command on `aws-client` host to retrieve these credentials)
 
-| Console URL | [https://045946725843.signin.aws.amazon.com/console?region=us-east-1](https://045946725843.signin.aws.amazon.com/console?region=us-east-1) |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| Username    | kk\_labs\_user\_565961                                                                                                                     |
-| Password    | b!BR^eBOZl%5                                                                                                                               |
-| Start Time  | Wed Feb 11 05:28:31 UTC 2026                                                                                                               |
-| End Time    | Wed Feb 11 06:28:31 UTC 2026                                                                                                               |
+> **Note:** Run `showcreds` on the `aws-client` host to retrieve temporary AWS credentials, then configure the AWS CLI using `aws configure`.
 
-\
-`Notes:`
+**Notes:**
 
 * Create the resources only in `us-east-1` region.
 
@@ -41,9 +35,7 @@ The Nautilus DevOps team is migrating services to AWS. This guide explains how t
 
 | Field       | Value                                                                              |
 | ----------- | ---------------------------------------------------------------------------------- |
-| Console URL | [AWS Console](https://045946725843.signin.aws.amazon.com/console?region=us-east-1) |
-| Username    | `kk_labs_user_565961`                                                              |
-| Password    | `b!BR^eBOZl%5`                                                                     |
+> **Note:** Run `showcreds` on the `aws-client` host to retrieve temporary AWS credentials, then configure the AWS CLI using `aws configure`.
 
 > You can also retrieve credentials via `showcreds` command on the `aws-client` host if using CLI.
 
@@ -53,7 +45,7 @@ The Nautilus DevOps team is migrating services to AWS. This guide explains how t
 
 #### Step 1: Log in and Verify Region
 
-1. Open [AWS Console](https://045946725843.signin.aws.amazon.com/console?region=us-east-1).
+1. Open [AWS Console](the AWS Management Console URL).
 2. Enter **Username** and **Password**.
 3. Ensure the **region is set to `us-east-1`** (top-right corner).
 

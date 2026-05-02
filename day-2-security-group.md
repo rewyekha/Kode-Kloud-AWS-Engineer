@@ -9,22 +9,15 @@ For this task, create a security group under default VPC with the following requ
 * Add the inbound rule of type `HTTP`, with port range of `80`. Enter the source CIDR range of `0.0.0.0/0`.
 * Add another inbound rule of type `SSH`, with port range of `22`. Enter the source CIDR range of `0.0.0.0/0`.
 
-Use below given AWS Credentials: (You can run the `showcreds` command on `aws-client` host to retrieve these credentials)
-
-| Console URL | [https://813673435456.signin.aws.amazon.com/console?region=us-east-1](https://813673435456.signin.aws.amazon.com/console?region=us-east-1) |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| Username    | kk\_labs\_user\_903896                                                                                                                     |
-| Password    | 5^nC0QP7K^Mb                                                                                                                               |
+> **Note:** Run `showcreds` on the `aws-client` host to retrieve temporary AWS credentials, then configure the AWS CLI using `aws configure`.
 
 <figure><img src=".gitbook/assets/image (47).png" alt=""><figcaption></figcaption></figure>
 
-
-
 Below are the **AWS CLI steps** to create the required security group in the **default VPC** and add the inbound rules.
 
-> ⚠️ Assumption:\
-> • You are logged into the **aws-client** host\
-> • AWS credentials are already configured using `showcreds`\
+>  Assumption:
+> • You are logged into the **aws-client** host
+> • AWS credentials are already configured using `showcreds`
 > • Region is already set (or you can add `--region <region>` if needed)
 
 ***
@@ -110,7 +103,7 @@ aws ec2 describe-security-groups \
 
 ***
 
-✅ **Result**
+ **Result**
 
 * Security Group Name: `xfusion-sg`
 * VPC: Default VPC

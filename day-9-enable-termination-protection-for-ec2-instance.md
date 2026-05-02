@@ -4,17 +4,9 @@ As part of the migration, there were some components created under the AWS accou
 
 An instance named `nautilus-ec2` already exists in `us-east-1` region. Enable `termination protection` for the same.
 
-Use below given AWS Credentials: (You can run the `showcreds` command on `aws-client` host to retrieve these credentials)
+> **Note:** Run `showcreds` on the `aws-client` host to retrieve temporary AWS credentials, then configure the AWS CLI using `aws configure`.
 
-| Console URL | [https://000311537719.signin.aws.amazon.com/console?region=us-east-1](https://000311537719.signin.aws.amazon.com/console?region=us-east-1) |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| Username    | kk\_labs\_user\_896671                                                                                                                     |
-| Password    | 0@@^%dQMdtQy                                                                                                                               |
-| Start Time  | Sat Jan 17 03:49:10 UTC 2026                                                                                                               |
-| End Time    | Sat Jan 17 04:49:10 UTC 2026                                                                                                               |
-
-\
-`Notes:`
+**Notes:**
 
 * Create the resources only in `us-east-1` region.
 
@@ -39,14 +31,12 @@ i-0854cd505f18ee159
     "InstanceId": "i-0854cd505f18ee159"
 }
 
-~ on ☁️  (us-east-1) ➜  
+~ on ☁️  (us-east-1) ➜
 ```
 
 ***
 
-## ✅ Day 9: Enable Termination Protection for EC2 Instance
-
-### 🔹 Objective
+### Objective
 
 Enable **termination protection** for an existing EC2 instance named **`nautilus-ec2`** in the **`us-east-1`** region.
 
@@ -54,7 +44,7 @@ Termination protection prevents accidental deletion of critical EC2 instances.
 
 ***
 
-### 📌 Important Constraints
+### Important Constraints
 
 * **Region:** `us-east-1` only
 * **Instance already exists** (do NOT create a new one)
@@ -62,15 +52,15 @@ Termination protection prevents accidental deletion of critical EC2 instances.
 
 ***
 
-### 🧠 What is Termination Protection?
+### What is Termination Protection?
 
 In **Amazon EC2**, termination protection is a safety feature that blocks the **Terminate** action until protection is disabled.
 
 ***
 
-## 🧪 Method 1: AWS CLI (Recommended for KodeKloud)
+## Method 1: AWS CLI
 
-#### 🔹 Step 1: Login to aws-client host
+#### Step 1: Login to aws-client host
 
 ```bash
 ssh aws-client
@@ -78,7 +68,7 @@ ssh aws-client
 
 ***
 
-#### 🔹 Step 2: Load AWS credentials
+#### Step 2: Load AWS credentials
 
 ```bash
 showcreds
@@ -88,7 +78,7 @@ Copy the **AWS\_ACCESS\_KEY\_ID**, **AWS\_SECRET\_ACCESS\_KEY**, and **AWS\_SESS
 
 ***
 
-#### 🔹 Step 3: Configure AWS CLI
+#### Step 3: Configure AWS CLI
 
 ```bash
 aws configure
@@ -103,7 +93,7 @@ Enter:
 
 ***
 
-#### 🔹 Step 4: Get Instance ID of `nautilus-ec2`
+#### Step 4: Get Instance ID of `nautilus-ec2`
 
 ```bash
 aws ec2 describe-instances \
@@ -112,7 +102,7 @@ aws ec2 describe-instances \
   --output text
 ```
 
-📌 Example output:
+* Example output:
 
 ```
 i-0abc12345def6789
@@ -120,7 +110,7 @@ i-0abc12345def6789
 
 ***
 
-#### 🔹 Step 5: Enable Termination Protection
+#### Step 5: Enable Termination Protection
 
 ```bash
 aws ec2 modify-instance-attribute \
@@ -128,11 +118,11 @@ aws ec2 modify-instance-attribute \
   --disable-api-termination
 ```
 
-✅ If no output appears, the command was **successful**.
+* If no output appears, the command was **successful**.
 
 ***
 
-#### 🔹 (Optional) Verify Protection Status
+#### (Optional) Verify Protection Status
 
 ```bash
 aws ec2 describe-instance-attribute \
@@ -152,19 +142,18 @@ Expected output:
 
 ***
 
-## 🖥️ Method 2: AWS Console (GUI)
+## Method 2: AWS Console (GUI)
 
-#### 🔹 Step 1: Login to Console
+#### Step 1: Login to Console
 
-Open **AWS Management Console**\
-🔗 [https://000311537719.signin.aws.amazon.com/console](https://000311537719.signin.aws.amazon.com/console)
+Open **AWS Management Console**
 
 * **Region:** `us-east-1`
 * **Username & Password:** (as provided)
 
 ***
 
-#### 🔹 Step 2: Navigate to EC2
+#### Step 2: Navigate to EC2
 
 ```
 Services → EC2 → Instances
@@ -172,20 +161,20 @@ Services → EC2 → Instances
 
 ***
 
-#### 🔹 Step 3: Select the instance
+#### Step 3: Select the instance
 
 * Find instance named **`nautilus-ec2`**
 * Select the checkbox
 
 ***
 
-#### 🔹 Step 4: Enable Termination Protection
+#### Step 4: Enable Termination Protection
 
 ```
 Actions → Instance settings → Change termination protection
 ```
 
-* Select ✅ **Enable**
+* Select **Enable**
 * Click **Save**
 
 <figure><img src=".gitbook/assets/image (51).png" alt=""><figcaption></figcaption></figure>
@@ -196,7 +185,7 @@ Actions → Instance settings → Change termination protection
 
 ***
 
-#### 🔹 Step 5: Verify
+#### Step 5: Verify
 
 * Select the instance
 * Go to **Details tab**
@@ -208,17 +197,11 @@ Termination protection: Enabled
 
 ***
 
-## 🧾 Final Validation Checklist
+## Final Validation Checklist
 
-✅ Instance name: `nautilus-ec2`\
-✅ Region: `us-east-1`\
-✅ Termination protection: **Enabled**\
-✅ No new resources created
+* Instance name: `nautilus-ec2`
+* Region: `us-east-1`
+* Termination protection: **Enabled**
+* No new resources created
 
 ***
-
-### 🏁 KodeKloud Exam Tip
-
-> **Termination protection is NOT enabled by default.**\
-> Always use `modify-instance-attribute --disable-api-termination` for CLI questions.
-

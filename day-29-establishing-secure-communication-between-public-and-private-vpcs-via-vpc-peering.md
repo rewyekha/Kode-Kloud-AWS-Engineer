@@ -203,6 +203,4 @@ This setup demonstrates secure private communication without requiring internet 
 
 <figure><img src=".gitbook/assets/image (84).png" alt=""><figcaption></figcaption></figure>
 
-
-
 <figure><img src=".gitbook/assets/image (85).png" alt=""><figcaption></figcaption></figure>

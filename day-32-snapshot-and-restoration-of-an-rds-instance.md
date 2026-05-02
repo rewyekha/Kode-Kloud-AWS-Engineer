@@ -7,24 +7,16 @@ As a member of the Nautilus DevOps Team, your task is to perform the following:
 1. Take a Snapshot: Take a snapshot of the `devops-rds` RDS instance and name it `devops-snapshot` (please wait `devops-rds` instance to be in `available` state).
 2. Restore the Snapshot: Restore the snapshot to a new RDS instance named `devops-snapshot-restore`.
 3. Configure the New RDS Instance: Ensure that the new RDS instance has a class of `db.t3.micro`.
-4. Verify the New RDS Instance: The new RDS instance must be in the `Available` state upon completion of the restoration process.<br>
+4. Verify the New RDS Instance: The new RDS instance must be in the `Available` state upon completion of the restoration process.
 
-Use below given AWS Credentials: (You can run the `showcreds` command on `aws-client` host to retrieve these credentials)
-
-\
-`Notes:`
+**Notes:**
 
 * Create the resources only in `us-east-1` region.
-* To `display` or `hide` the terminal of the AWS client machine, you can use the expand toggle button as shown below:\
-  ![toggle button](https://res.cloudinary.com/dezmljkdo/image/upload/v1678742174/AWS%20Lambda/expand_panel_hjgfkl.png)
-
-
-
-***
+ ***
 
 ## RDS: Snapshot and Restore an Instance Using AWS CLI
 
-> **Platform:** AWS | **Series:** Nautilus DevOps — Stratos Datacenter\
+> **Platform:** AWS | **Series:** Nautilus DevOps — Stratos Datacenter
 > **Difficulty:** Intermediate | **Topic:** AWS RDS, Snapshots, Restore, AWS CLI
 
 ***

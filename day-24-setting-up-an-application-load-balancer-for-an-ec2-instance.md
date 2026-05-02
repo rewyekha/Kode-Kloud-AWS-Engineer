@@ -9,18 +9,10 @@ The Nautilus DevOps team is currently working on setting up a simple application
 5. The ALB should route traffic on port `80` to port `80` of the `nautilus-ec2` instance.
 6. Make appropriate changes in the default security group attached to the EC2 instance if necessary.
 
-Use below given AWS Credentials: (You can run the `showcreds` command on `aws-client` host to retrieve these credentials)
-
-\
-`Notes:`
+**Notes:**
 
 * Create the resources only in `us-east-1` region.
-* To `display` or `hide` the terminal of the AWS client machine, you can use the expand toggle button as shown below:\
-  ![toggle button](https://res.cloudinary.com/dezmljkdo/image/upload/v1678742174/AWS%20Lambda/expand_panel_hjgfkl.png)
-
-
-
-***
+ ***
 
 ## AWS Application Load Balancer in Front of EC2 (Nginx)
 
@@ -428,13 +420,13 @@ EC2 Instance (Nginx :80)
 
 ## Key Lessons Learned
 
-#### 1️⃣ Health checks do not guarantee internet accessibility
+#### 1. Health checks do not guarantee internet accessibility
 
 ALB health checks originate from **inside the VPC**, so they can succeed even when public access is blocked.
 
 ***
 
-#### 2️⃣ Always verify ALB security groups
+#### 2. Always verify ALB security groups
 
 A common mistake is missing:
 
@@ -444,7 +436,7 @@ HTTP 80 → 0.0.0.0/0
 
 ***
 
-#### 3️⃣ Debugging checklist for ALB
+#### 3. Debugging checklist for ALB
 
 Check in this order:
 
@@ -455,51 +447,27 @@ Check in this order:
 5. ALB security group
 6. EC2 security group
 
-
-
 <figure><img src=".gitbook/assets/image (58).png" alt=""><figcaption></figcaption></figure>
-
-
 
 <figure><img src=".gitbook/assets/image (59).png" alt=""><figcaption></figcaption></figure>
 
-
-
 <figure><img src=".gitbook/assets/image (60).png" alt=""><figcaption></figcaption></figure>
-
-
 
 <figure><img src=".gitbook/assets/image (61).png" alt=""><figcaption></figcaption></figure>
 
-
-
 <figure><img src=".gitbook/assets/image (62).png" alt=""><figcaption></figcaption></figure>
-
-
 
 <figure><img src=".gitbook/assets/image (63).png" alt=""><figcaption></figcaption></figure>
 
-
-
 <figure><img src=".gitbook/assets/image (64).png" alt=""><figcaption></figcaption></figure>
-
-
 
 <figure><img src=".gitbook/assets/image (65).png" alt=""><figcaption></figcaption></figure>
 
-
-
 <figure><img src=".gitbook/assets/image (66).png" alt=""><figcaption></figcaption></figure>
-
-
 
 <figure><img src=".gitbook/assets/image (67).png" alt=""><figcaption></figcaption></figure>
 
-
-
 <figure><img src=".gitbook/assets/image (68).png" alt=""><figcaption></figcaption></figure>
-
-
 
 <figure><img src=".gitbook/assets/image (69).png" alt=""><figcaption></figcaption></figure>
 

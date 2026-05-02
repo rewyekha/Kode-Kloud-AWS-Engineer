@@ -18,15 +18,9 @@ The Nautilus DevOps team is tasked with deploying a containerized application us
    * Create a service named `nautilus-service` on the `nautilus-cluster` to run the task.
    * Ensure the service runs at least one task.
 
-Use below given AWS Credentials: (You can run the `showcreds` command on `aws-client` host to retrieve these credentials)
-
-`Notes:`
+**Notes:**
 
 * Create the resources only in `us-east-1` region.
-
-
-
-
 
 <figure><img src=".gitbook/assets/image (7) (1).png" alt=""><figcaption></figcaption></figure>
 

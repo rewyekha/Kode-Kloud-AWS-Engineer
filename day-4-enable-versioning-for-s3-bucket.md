@@ -4,17 +4,9 @@ Data protection and recovery are fundamental aspects of data management. It's es
 
 The s3 bucket name is `nautilus-s3-16746`, enable `versioning` for this bucket.
 
-Use below given AWS Credentials: (You can run the `showcreds` command on `aws-client` host to retrieve these credentials)
+> **Note:** Run `showcreds` on the `aws-client` host to retrieve temporary AWS credentials, then configure the AWS CLI using `aws configure`.
 
-| Console URL | [https://449849970459.signin.aws.amazon.com/console?region=us-east-1](https://449849970459.signin.aws.amazon.com/console?region=us-east-1) |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| Username    | kk\_labs\_user\_859752                                                                                                                     |
-| Password    | q8@4gf9AaqVJ                                                                                                                               |
-| Start Time  | Fri Jan 09 16:00:38 UTC 2026                                                                                                               |
-| End Time    | Fri Jan 09 17:00:38 UTC 2026                                                                                                               |
-
-\
-`Notes:`
+**Notes:**
 
 * Create the resources only in `us-east-1` region.
 
@@ -49,7 +41,7 @@ Run the following command to ensure the bucket exists and is accessible:
 aws s3api head-bucket --bucket nautilus-s3-16746
 ```
 
-✅ No output indicates the bucket exists and access is permitted.
+* No output indicates the bucket exists and access is permitted.
 
 ***
 
@@ -86,7 +78,7 @@ Expected output:
 
 ***
 
-### ✅ Result
+### Result
 
 * Versioning has been **successfully enabled**
 * Bucket: **nautilus-s3-16746**
@@ -99,8 +91,6 @@ Expected output:
 * S3 versioning is a **bucket-level setting** and applies to all objects
 * Once enabled, versioning **cannot be disabled**, only suspended
 * Existing objects will remain unversioned until modified
-
-
 
 ```
 ~ on ☁️  (us-east-1) ➜  aws s3api head-bucket --bucket nautilus-s3-16746
@@ -116,5 +106,5 @@ Expected output:
     "Status": "Enabled"
 }
 
-~ on ☁️  (us-east-1) ➜  
+~ on ☁️  (us-east-1) ➜
 ```

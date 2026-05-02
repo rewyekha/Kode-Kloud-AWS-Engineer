@@ -6,13 +6,10 @@ To minimize external exposure, the EKS cluster endpoint must be kept private. Ad
 
 Your task is to create an EKS cluster named `xfusion-eks`, with Custom configuration, use IAM role for the cluster named `eksClusterRole`. Additionally, ensure that `EKS Auto Mode` is disabled and that the cluster endpoint access is set to private.
 
-Finally, verify that the EKS cluster is successfully created with the correct configuration and is ready for workloads.\
-`Notes:`
+Finally, verify that the EKS cluster is successfully created with the correct configuration and is ready for workloads.
+**Notes:**
 
 * Create the resources only in `us-east-1` region.
-* To `display` or `hide` the terminal of the AWS client machine, you can use the expand toggle button as shown below:<br>
-
-
 
 ## Amazon EKS Cluster Provisioning (CLI Guide)
 

@@ -46,10 +46,7 @@ The DevOps team has been tasked with setting up this RDS instance, ensuring that
 
 | Field         | Value                                                                 |
 | ------------- | --------------------------------------------------------------------- |
-| Console URL   | `https://467239208986.signin.aws.amazon.com/console?region=us-east-1` |
-| Username      | `kk_labs_user_836851`                                                 |
-| Password      | `5A3vQ0boc8HH`                                                        |
-| Region        | `us-east-1`                                                           |
+> **Note:** Run `showcreds` on the `aws-client` host to retrieve temporary AWS credentials, then configure the AWS CLI using `aws configure`.
 | Access Method | AWS CLI on `aws-client` host                                          |
 
 ***

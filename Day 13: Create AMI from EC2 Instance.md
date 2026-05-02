@@ -6,25 +6,12 @@ For this task, create an AMI from an existing EC2 instance named `xfusion-ec2` w
 
 * Name of the AMI should be `xfusion-ec2-ami`, make sure AMI is in `available` state.
 
-Use below given AWS Credentials: (You can run the `showcreds` command on `aws-client` host to retrieve these credentials)
+> **Note:** Run `showcreds` on the `aws-client` host to retrieve temporary AWS credentials, then configure the AWS CLI using `aws configure`.
 
-| Console URL | [https://062665041731.signin.aws.amazon.com/console?region=us-east-1](https://062665041731.signin.aws.amazon.com/console?region=us-east-1) |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| Username    | kk\_labs\_user\_570106                                                                                                                     |
-| Password    | PKHqFdydT09G                                                                                                                               |
-| Start Time  | Tue Feb 24 06:42:14 UTC 2026                                                                                                               |
-| End Time    | Tue Feb 24 07:42:14 UTC 2026                                                                                                               |
-
-\
-`Notes:`
+**Notes:**
 
 * Create the resources only in `us-east-1` region.
-* To `display` or `hide` the terminal of the AWS client machine, you can use the expand toggle button as shown below:\
-  ![toggle button](https://res.cloudinary.com/dezmljkdo/image/upload/v1678742174/AWS%20Lambda/expand_panel_hjgfkl.png)
-
-
-
-```abap
+  ```abap
 This documentation describes the step-by-step process of creating an Amazon Machine Image (AMI) from an existing EC2 instance named `xfusion-ec2` using AWS CLI and includes the outputs encountered during the process. It also highlights a minor query issue and its resolution.
 
 ---
@@ -38,10 +25,8 @@ This documentation describes the step-by-step process of creating an Amazon Mach
 - AWS CLI configured with appropriate credentials.
 - Target EC2 instance exists with the tag `Name=xfusion-ec2`.
 - Region set to `us-east-1`.
-- AWS Console URL: https://062665041731.signin.aws.amazon.com/console?region=us-east-1
-- Credentials:
-  - Username: `kk_labs_user_570106`
-  - Password: `PKHqFdydT09G`
+- Region: `us-east-1`
+- Credentials: Retrieved via `showcreds` on the `aws-client` host.
 
 ---
 
@@ -50,9 +35,9 @@ This documentation describes the step-by-step process of creating an Amazon Mach
 Run the following command to find the instance ID of the EC2 instance tagged as `xfusion-ec2`:
 
 ```bash
-aws ec2 describe-instances \
-    --filters "Name=tag:Name,Values=xfusion-ec2" \
-    --query "Reservations[].Instances[].InstanceId" \
+aws ec2 describe-instances
+    --filters "Name=tag:Name,Values=xfusion-ec2"
+    --query "Reservations[].Instances[].InstanceId"
     --output table
 ````
 
@@ -75,10 +60,10 @@ The instance ID is `i-0d408098b1c5ebf80`.
 Create the AMI named `xfusion-ec2-ami` from the instance with no reboot:
 
 ```bash
-aws ec2 create-image \
-    --instance-id i-0d408098b1c5ebf80 \
-    --name "xfusion-ec2-ami" \
-    --description "AMI for xfusion-ec2 migration" \
+aws ec2 create-image
+    --instance-id i-0d408098b1c5ebf80
+    --name "xfusion-ec2-ami"
+    --description "AMI for xfusion-ec2 migration"
     --no-reboot
 ```
 
@@ -99,9 +84,9 @@ AMI creation started with Image ID `ami-08f86cc56f14a407f`.
 Attempt to query the AMI state with:
 
 ```bash
-aws ec2 describe-images \
-    --image-ids ami-08f86cc56f14a407f \
-    --query "Images[0].State" \
+aws ec2 describe-images
+    --image-ids ami-08f86cc56f14a407f
+    --query "Images[0].State"
     --output table
 ```
 
@@ -122,9 +107,9 @@ aws ec2 describe-images \
 To confirm error handling, a wrong AMI ID was queried:
 
 ```bash
-aws ec2 describe-images \
-    --image-ids ami-0f123456789abcdef \
-    --query "Images[0].State" \
+aws ec2 describe-images
+    --image-ids ami-0f123456789abcdef
+    --query "Images[0].State"
     --output table
 ```
 
@@ -141,9 +126,9 @@ An error occurred (InvalidAMIID.NotFound) when calling the DescribeImages operat
 Switching the output format to `text` fixed the problem:
 
 ```bash
-aws ec2 describe-images \
-  --image-ids ami-08f86cc56f14a407f \
-  --query "Images[0].State" \
+aws ec2 describe-images
+  --image-ids ami-08f86cc56f14a407f
+  --query "Images[0].State"
   --output text
 ```
 

@@ -2,16 +2,10 @@
 
 The Nautilus DevOps team needs to set up a new EC2 instance that can be accessed securely from their landing host (`aws-client`). The instance should be of type `t2.micro` and named `devops-ec2`. A new SSH key with name `id_rsa` should be created on the `aws-client` host under the`/root/.ssh/` folder, if it doesn't already exist. This key should then be added to the `root` user's authorised keys on the EC2 instance, allowing passwordless SSH access from the `aws-client` host.
 
-Use below given AWS Credentials: (You can run the `showcreds` command on `aws-client` host to retrieve these credentials)\
-`Notes:`
+**Notes:**
 
 * Create the resources only in `us-east-1` region.
-* To `display` or `hide` the terminal of the AWS client machine, you can use the expand toggle button as shown below:\
-  ![toggle button](https://res.cloudinary.com/dezmljkdo/image/upload/v1678742174/AWS%20Lambda/expand_panel_hjgfkl.png)
-
-
-
-***
+ ***
 
 ### Solution
 
@@ -115,11 +109,7 @@ You are successfully logged in to the `devops-ec2` instance as root **without pa
 * Allowed SSH inbound on security group for your IP.
 * Connected securely via SSH with passwordless login.
 
-Lab complete ✅
-
-
+Lab complete
 
 <figure><img src=".gitbook/assets/image (57).png" alt=""><figcaption></figcaption></figure>
-
-
 
