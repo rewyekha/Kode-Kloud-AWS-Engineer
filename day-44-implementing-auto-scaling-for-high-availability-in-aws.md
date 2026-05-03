@@ -14,8 +14,6 @@ The DevOps team is tasked with setting up a highly available web application usi
 
 * Create the resources only in `us-east-1` region.
 
-
-
 ## Overview
 
 This document provides a complete, production‑grade GitBook-style documentation of setting up a highly available web application on AWS using Auto Scaling Groups (ASG) and an Application Load Balancer (ALB). The entire setup is executed using the AWS CLI in the `us-east-1` region and validated end‑to‑end.The solution provisions EC2 instances running Nginx, scales them automatically based on CPU utilization, and exposes the application via an internet‑facing ALB.
@@ -298,6 +296,6 @@ aws ec2 delete-security-group --group-id $SG_ID
 
 Author: DevOps Engineering TeamPlatform: AWS (us-east-1)Documentation Type: GitBook / Runbook / Lab Evidence
 
-<figure><img src=".gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src=".gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>

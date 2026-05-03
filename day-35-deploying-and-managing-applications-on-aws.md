@@ -686,10 +686,6 @@ _Lab completed on 2026-04-01 | AWS Region: us-east-1 | Platform: KodeKloudbas_
 
 <figure><img src=".gitbook/assets/image (95).png" alt=""><figcaption></figcaption></figure>
 
-
-
-<figure><img src=".gitbook/assets/image (97).png" alt=""><figcaption></figcaption></figure>
-
-
+<figure><img src=".gitbook/assets/image (96).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src=".gitbook/assets/image (98).png" alt=""><figcaption></figcaption></figure>
