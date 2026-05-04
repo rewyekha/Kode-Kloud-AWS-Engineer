@@ -21,22 +21,22 @@ Task Requirements:
 
 ### Table of Contents
 
-1. [Lab Overview](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#lab-overview)
-2. [Lab Objectives](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#lab-objectives)
-3. [Prerequisites](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#prerequisites)
-4. [Architecture](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#architecture)
-5. [Solution](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#solution)
-   * [Step 1: Verify the Source File](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#step-1-verify-the-source-file)
-   * [Step 2: Create the S3 Bucket](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#step-2-create-the-s3-bucket)
-   * [Step 3: Disable Public Access Block](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#step-3-disable-public-access-block)
-   * [Step 4: Create and Apply the Bucket Policy](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#step-4-create-and-apply-the-bucket-policy)
-   * [Step 5: Enable Static Website Hosting](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#step-5-enable-static-website-hosting)
-   * [Step 6: Upload index.html to the Bucket](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#step-6-upload-indexhtml-to-the-bucket)
-   * [Step 7: Verify the Upload](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#step-7-verify-the-upload)
-   * [Step 8: Verify Website is Publicly Accessible](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#step-8-verify-website-is-publicly-accessible)
-6. [Lab Complete](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#lab-complete)
-7. [Key Concepts](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#key-concepts)
-8. [Resource Reference](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#resource-reference)
+1. [Lab Overview](#lab-overview)
+2. [Lab Objectives](#lab-objectives)
+3. [Prerequisites](#prerequisites)
+4. [Architecture](#architecture)
+5. [Solution](#solution)
+   * [Step 1: Verify the Source File](#step-1-verify-the-source-file)
+   * [Step 2: Create the S3 Bucket](#step-2-create-the-s3-bucket)
+   * [Step 3: Disable Public Access Block](#step-3-disable-public-access-block)
+   * [Step 4: Create and Apply the Bucket Policy](#step-4-create-and-apply-the-bucket-policy)
+   * [Step 5: Enable Static Website Hosting](#step-5-enable-static-website-hosting)
+   * [Step 6: Upload index.html to the Bucket](#step-6-upload-indexhtml-to-the-bucket)
+   * [Step 7: Verify the Upload](#step-7-verify-the-upload)
+   * [Step 8: Verify Website is Publicly Accessible](#step-8-verify-website-is-publicly-accessible)
+6. [Lab Complete](#lab-complete)
+7. [Key Concepts](#key-concepts)
+8. [Resource Reference](#resource-reference)
 
 ***
 

@@ -15,7 +15,7 @@ description: Created by Reyas Khan
 * [Day 10: Attach Elastic IP to EC2 Instance](day-10-attach-elastic-ip-to-ec2-instance.md)
 * [Day 11: Attach Elastic Network Interface to EC2 Instance](day-11-attach-elastic-network-interface-to-ec2-instance.md)
 * [Day 12: Attach Volume to EC2 Instance](day-12-attach-volume-to-ec2-instance.md)
-* [Day 13: Create AMI from EC2 Instance](page-1.md)
+* [Day 13: Create AMI from EC2 Instance](Day%2013:%20Create%20AMI%20from%20EC2%20Instance.md)
 * [Day 14: Terminate EC2 Instance](day-14-terminate-ec2-instance.md)
 * [Day 15: Create Volume Snapshot](day-15-create-volume-snapshot.md)
 * [Day 16: Create IAM User](day-16-create-iam-user.md)

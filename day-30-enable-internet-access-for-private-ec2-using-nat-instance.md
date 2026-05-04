@@ -8,19 +8,19 @@
 
 ***
 
-1. [Lab Overview](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#lab-overview)
-2. [Architecture Diagram](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#architecture-diagram)
-3. [Prerequisites & Existing Resources](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#prerequisites--existing-resources)
-4. [Lab Objectives](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#lab-objectives)
-5. [Phase 1: Gather Existing Resource Information](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#phase-1-gather-existing-resource-information)
-6. [Phase 2: Create Public Subnet](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#phase-2-create-public-subnet)
-7. [Phase 3: Internet Gateway Setup](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#phase-3-internet-gateway-setup)
-8. [Phase 4: Security Group for NAT Instance](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#phase-4-security-group-for-nat-instance)
-9. [Phase 5: Launch the NAT Instance](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#phase-5-launch-the-nat-instance)
-10. [Phase 6: Update Private Subnet Route Table](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#phase-6-update-private-subnet-route-table)
-11. [Phase 7: Verify the Setup](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#phase-7-verify-the-setup)
-12. [Key Concepts](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#key-concepts)
-13. [Resource Summary](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#resource-summary)
+1. [Lab Overview](#lab-overview)
+2. [Architecture Diagram](#architecture-diagram)
+3. [Prerequisites & Existing Resources](#prerequisites--existing-resources)
+4. [Lab Objectives](#lab-objectives)
+5. [Phase 1: Gather Existing Resource Information](#phase-1-gather-existing-resource-information)
+6. [Phase 2: Create Public Subnet](#phase-2-create-public-subnet)
+7. [Phase 3: Internet Gateway Setup](#phase-3-internet-gateway-setup)
+8. [Phase 4: Security Group for NAT Instance](#phase-4-security-group-for-nat-instance)
+9. [Phase 5: Launch the NAT Instance](#phase-5-launch-the-nat-instance)
+10. [Phase 6: Update Private Subnet Route Table](#phase-6-update-private-subnet-route-table)
+11. [Phase 7: Verify the Setup](#phase-7-verify-the-setup)
+12. [Key Concepts](#key-concepts)
+13. [Resource Summary](#resource-summary)
 
 ***
 

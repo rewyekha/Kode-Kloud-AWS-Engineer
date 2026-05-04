@@ -8,20 +8,20 @@
 
 ### Table of Contents
 
-1. [Lab Overview](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#lab-overview)
-2. [Lab Objectives](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#lab-objectives)
-3. [Prerequisites](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#prerequisites)
-4. [Architecture](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#architecture)
-5. [Phase 1: Set Environment Variables](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#phase-1-set-environment-variables)
-6. [Phase 2: Gather VPC and Subnet Information](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#phase-2-gather-vpc-and-subnet-information)
-7. [Phase 3: Create DB Subnet Group](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#phase-3-create-db-subnet-group)
-8. [Phase 4: Create Security Group for RDS](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#phase-4-create-security-group-for-rds)
-9. [Phase 5: Create the RDS Instance](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#phase-5-create-the-rds-instance)
-10. [Phase 6: Wait for Instance to Become Available](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#phase-6-wait-for-instance-to-become-available)
-11. [Phase 7: Validate the RDS Instance](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#phase-7-validate-the-rds-instance)
-12. [Summary](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#summary)
-13. [Key Concepts](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#key-concepts)
-14. [Resource Reference](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#resource-reference)
+1. [Lab Overview](#lab-overview)
+2. [Lab Objectives](#lab-objectives)
+3. [Prerequisites](#prerequisites)
+4. [Architecture](#architecture)
+5. [Phase 1: Set Environment Variables](#phase-1-set-environment-variables)
+6. [Phase 2: Gather VPC and Subnet Information](#phase-2-gather-vpc-and-subnet-information)
+7. [Phase 3: Create DB Subnet Group](#phase-3-create-db-subnet-group)
+8. [Phase 4: Create Security Group for RDS](#phase-4-create-security-group-for-rds)
+9. [Phase 5: Create the RDS Instance](#phase-5-create-the-rds-instance)
+10. [Phase 6: Wait for Instance to Become Available](#phase-6-wait-for-instance-to-become-available)
+11. [Phase 7: Validate the RDS Instance](#phase-7-validate-the-rds-instance)
+12. [Summary](#summary)
+13. [Key Concepts](#key-concepts)
+14. [Resource Reference](#resource-reference)
 
 ***
 

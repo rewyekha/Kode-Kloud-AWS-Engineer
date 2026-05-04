@@ -15,19 +15,19 @@ The Nautilus DevOps team continues to explore serverless architecture by setting
 
 ### Table of Contents
 
-1. [Lab Overview](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#lab-overview)
-2. [Lab Objectives](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#lab-objectives)
-3. [Prerequisites](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#prerequisites)
-4. [Architecture](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#architecture)
-5. [Phase 1: Set Environment Variables](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#phase-1-set-environment-variables)
-6. [Phase 2: Create the Python Script](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#phase-2-create-the-python-script)
-7. [Phase 3: Zip the Script](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#phase-3-zip-the-script)
-8. [Phase 4: Get the IAM Role ARN](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#phase-4-get-the-iam-role-arn)
-9. [Phase 5: Create the Lambda Function](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#phase-5-create-the-lambda-function)
-10. [Phase 6: Invoke and Verify the Function](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#phase-6-invoke-and-verify-the-function)
-11. [Lab Complete](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#lab-complete)
-12. [Key Concepts](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#key-concepts)
-13. [Resource Reference](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#resource-reference)
+1. [Lab Overview](#lab-overview)
+2. [Lab Objectives](#lab-objectives)
+3. [Prerequisites](#prerequisites)
+4. [Architecture](#architecture)
+5. [Phase 1: Set Environment Variables](#phase-1-set-environment-variables)
+6. [Phase 2: Create the Python Script](#phase-2-create-the-python-script)
+7. [Phase 3: Zip the Script](#phase-3-zip-the-script)
+8. [Phase 4: Get the IAM Role ARN](#phase-4-get-the-iam-role-arn)
+9. [Phase 5: Create the Lambda Function](#phase-5-create-the-lambda-function)
+10. [Phase 6: Invoke and Verify the Function](#phase-6-invoke-and-verify-the-function)
+11. [Lab Complete](#lab-complete)
+12. [Key Concepts](#key-concepts)
+13. [Resource Reference](#resource-reference)
 
 ***
 

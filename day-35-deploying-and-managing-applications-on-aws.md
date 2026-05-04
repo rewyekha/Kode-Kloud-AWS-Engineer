@@ -8,20 +8,20 @@
 
 ### Table of Contents
 
-1. [Lab Overview](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#lab-overview)
-2. [Lab Objectives](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#lab-objectives)
-3. [Prerequisites](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#prerequisites)
-4. [Architecture](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#architecture)
-5. [Phase 1: Set Environment Variables](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#phase-1-set-environment-variables)
-6. [Phase 2: Gather VPC and EC2 Information](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#phase-2-gather-vpc-and-ec2-information)
-7. [Phase 3: Create DB Subnet Group and Security Groups](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#phase-3-create-db-subnet-group-and-security-groups)
-8. [Phase 4: Create the RDS Instance](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#phase-4-create-the-rds-instance)
-9. [Phase 5: Generate SSH Key and Add to EC2](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#phase-5-generate-ssh-key-and-add-to-ec2)
-10. [Phase 6: Configure and Deploy the PHP File](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#phase-6-configure-and-deploy-the-php-file)
-11. [Phase 7: Verify the Application](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#phase-7-verify-the-application)
-12. [Lab Complete](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#lab-complete)
-13. [Key Concepts](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#key-concepts)
-14. [Resource Reference](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#resource-reference)
+1. [Lab Overview](#lab-overview)
+2. [Lab Objectives](#lab-objectives)
+3. [Prerequisites](#prerequisites)
+4. [Architecture](#architecture)
+5. [Phase 1: Set Environment Variables](#phase-1-set-environment-variables)
+6. [Phase 2: Gather VPC and EC2 Information](#phase-2-gather-vpc-and-ec2-information)
+7. [Phase 3: Create DB Subnet Group and Security Groups](#phase-3-create-db-subnet-group-and-security-groups)
+8. [Phase 4: Create the RDS Instance](#phase-4-create-the-rds-instance)
+9. [Phase 5: Generate SSH Key and Add to EC2](#phase-5-generate-ssh-key-and-add-to-ec2)
+10. [Phase 6: Configure and Deploy the PHP File](#phase-6-configure-and-deploy-the-php-file)
+11. [Phase 7: Verify the Application](#phase-7-verify-the-application)
+12. [Lab Complete](#lab-complete)
+13. [Key Concepts](#key-concepts)
+14. [Resource Reference](#resource-reference)
 
 ***
 

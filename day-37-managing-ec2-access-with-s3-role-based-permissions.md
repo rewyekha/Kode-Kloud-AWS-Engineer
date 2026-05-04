@@ -8,14 +8,14 @@
 
 ### Table of Contents
 
-1. [Lab Task Overview](https://claude.ai/chat/85f5b2d7-5dbe-46f3-abb7-eb5d74f7a104#lab-task-overview)
-2. [Environment Details](https://claude.ai/chat/85f5b2d7-5dbe-46f3-abb7-eb5d74f7a104#environment-details)
-3. [Step 1 — Verify the EC2 Instance](https://claude.ai/chat/85f5b2d7-5dbe-46f3-abb7-eb5d74f7a104#step-1--verify-the-ec2-instance)
-4. [Step 2 — Create SSH Key Pair and Authorize on EC2](https://claude.ai/chat/85f5b2d7-5dbe-46f3-abb7-eb5d74f7a104#step-2--create-ssh-key-pair-and-authorize-on-ec2)
-5. [Step 3 — Create a Private S3 Bucket](https://claude.ai/chat/85f5b2d7-5dbe-46f3-abb7-eb5d74f7a104#step-3--create-a-private-s3-bucket)
-6. [Step 4 — Create IAM Policy, Role, and Attach to EC2](https://claude.ai/chat/85f5b2d7-5dbe-46f3-abb7-eb5d74f7a104#step-4--create-iam-policy-role-and-attach-to-ec2)
-7. [Step 5 — Test S3 Access from the EC2 Instance](https://claude.ai/chat/85f5b2d7-5dbe-46f3-abb7-eb5d74f7a104#step-5--test-s3-access-from-the-ec2-instance)
-8. [Lab Completion Summary](https://claude.ai/chat/85f5b2d7-5dbe-46f3-abb7-eb5d74f7a104#lab-completion-summary)
+1. [Lab Task Overview](#lab-task-overview)
+2. [Environment Details](#environment-details)
+3. [Step 1 — Verify the EC2 Instance](#step-1--verify-the-ec2-instance)
+4. [Step 2 — Create SSH Key Pair and Authorize on EC2](#step-2--create-ssh-key-pair-and-authorize-on-ec2)
+5. [Step 3 — Create a Private S3 Bucket](#step-3--create-a-private-s3-bucket)
+6. [Step 4 — Create IAM Policy, Role, and Attach to EC2](#step-4--create-iam-policy-role-and-attach-to-ec2)
+7. [Step 5 — Test S3 Access from the EC2 Instance](#step-5--test-s3-access-from-the-ec2-instance)
+8. [Lab Completion Summary](#lab-completion-summary)
 
 ***
 
@@ -38,7 +38,6 @@ This lab covers the end-to-end setup of an EC2-to-S3 integration on AWS. The Nau
 
 | Parameter         | Value                                                               |
 | ----------------- | ------------------------------------------------------------------- |
-> **Note:** Run `showcreds` on the `aws-client` host to retrieve temporary AWS credentials, then configure the AWS CLI using `aws configure`.
 | IAM Username      | kk\_labs\_user\_214087                                              |
 | Region            | us-east-1                                                           |
 | EC2 Instance Name | datacenter-ec2                                                      |
@@ -50,6 +49,8 @@ This lab covers the end-to-end setup of an EC2-to-S3 integration on AWS. The Nau
 | S3 Bucket         | datacenter-s3-254597876252                                          |
 | IAM Role          | datacenter-role                                                     |
 | IAM Policy        | datacenter-s3-policy                                                |
+
+> **Note:** Run `showcreds` on the `aws-client` host to retrieve temporary AWS credentials, then configure the AWS CLI using `aws configure`.
 
 ***
 
