@@ -862,9 +862,9 @@ EOF
 2026-05-02 09:05:02    27    s3://datacenter-s3-logs-30900/datacenter-priv-vpc/boot/boots.log
 ```
 
-<figure><img src=".gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src=".gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src=".gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 

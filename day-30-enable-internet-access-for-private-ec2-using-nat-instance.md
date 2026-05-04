@@ -717,7 +717,6 @@ Amazon Linux 2023 uses `nftables` as its default firewall framework and does **n
 
 ***
 
-<figure><img src=".gitbook/assets/image (87).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (86).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src=".gitbook/assets/Screenshot 2026-03-23 125419.png" alt=""><figcaption></figcaption></figure>
-

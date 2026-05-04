@@ -295,6 +295,6 @@ aws ec2 delete-security-group --group-id $SG_ID
 
 Author: DevOps Engineering TeamPlatform: AWS (us-east-1)Documentation Type: GitBook / Runbook / Lab Evidence
 
-<figure><img src=".gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src=".gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>

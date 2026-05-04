@@ -13,7 +13,7 @@
 * [Day 10: Attach Elastic IP to EC2 Instance](day-10-attach-elastic-ip-to-ec2-instance.md)
 * [Day 11: Attach Elastic Network Interface to EC2 Instance](day-11-attach-elastic-network-interface-to-ec2-instance.md)
 * [Day 12: Attach Volume to EC2 Instance](day-12-attach-volume-to-ec2-instance.md)
-* [Day 13: Create AMI from EC2 Instance](Day%2013:%20Create%20AMI%20from%20EC2%20Instance.md)
+* [Day 13: Create AMI from EC2 Instance](day-13-create-ami-from-ec2-instance.md)
 * [Day 14: Terminate EC2 Instance](day-14-terminate-ec2-instance.md)
 * [Day 15: Create Volume Snapshot](day-15-create-volume-snapshot.md)
 * [Day 16: Create IAM User](day-16-create-iam-user.md)
@@ -50,3 +50,4 @@
 * [Day 47: Integrating AWS SQS and SNS for Reliable Messaging](day-47-integrating-aws-sqs-and-sns-for-reliable-messaging.md)
 * [Day 47: Integrating AWS SQS and SNS for Reliable Messaging](day-47-integrating-aws-sqs-and-sns-for-reliable-messaging-1.md)
 * [Day 49: Centralized Audit Logging with VPC Peering](day-49-centralized-audit-logging-with-vpc-peering.md)
+* [Day 50: Expanding EC2 Instance Storage for Development Needs](day-50-expanding-ec2-instance-storage-for-development-needs.md)
