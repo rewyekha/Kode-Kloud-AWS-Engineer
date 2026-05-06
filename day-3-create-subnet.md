@@ -1,34 +1,24 @@
 # Day 3: Create Subnet
 
-The Nautilus DevOps team is strategizing the migration of a portion of their infrastructure to the AWS cloud. Recognizing the scale of this undertaking, they have opted to approach the migration in incremental steps rather than as a single massive transition.
+The Nautilus DevOps team is migrating infrastructure to AWS. For this task, create one subnet named `datacenter-subnet` under the default VPC.
 
-For this task, create one subnet named `datacenter-subnet` under default VPC.
-
-Use below given AWS Credentials: (You can run the `showcreds` command on `aws-client` host to retrieve these credentials)
-
-| Console URL | [https://074952969475.signin.aws.amazon.com/console?region=us-east-1](https://074952969475.signin.aws.amazon.com/console?region=us-east-1) |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| Username    | kk\_labs\_user\_801499                                                                                                                     |
-| Password    | frWB@GSo%aX4                                                                                                                               |
-| Start Time  | Fri Jan 09 15:46:30 UTC 2026                                                                                                               |
-| End Time    | Fri Jan 09 16:46:30 UTC 2026                                                                                                               |
-
-\
-`Notes:`
+**Notes:**
 
 * Create the resources only in `us-east-1` region.
 
+---
 
+## AWS CLI Steps
 
-```
-~ on ☁️  (us-east-1) ➜  aws ec2 describe-vpcs \
+```bash
+aws ec2 describe-vpcs \
   --filters Name=isDefault,Values=true \
   --region us-east-1 \
   --query "Vpcs[0].VpcId" \
   --output text
 vpc-02fed80ae8f7dfe05
 
-~ on ☁️  (us-east-1) ➜  aws ec2 create-subnet \
+aws ec2 create-subnet \
   --vpc-id vpc-02fed80ae8f7dfe05 \
   --cidr-block 172.31.100.0/24 \
   --availability-zone us-east-1a \
@@ -59,12 +49,12 @@ vpc-02fed80ae8f7dfe05
     }
 }
 
-~ on ☁️  (us-east-1) ➜  aws ec2 create-tags \
+aws ec2 create-tags \
   --resources subnet-09819702f88a771c7 \
   --tags Key=Name,Value=datacenter-subnet \
   --region us-east-1
 
-~ on ☁️  (us-east-1) ➜  aws ec2 describe-subnets \
+aws ec2 describe-subnets \
   --filters Name=tag:Name,Values=datacenter-subnet \
   --region us-east-1 \
   --query "Subnets[*].[SubnetId,VpcId,CidrBlock]" \
@@ -74,8 +64,6 @@ vpc-02fed80ae8f7dfe05
 +--------------------------+-------------------------+-------------------+
 |  subnet-09819702f88a771c7|  vpc-02fed80ae8f7dfe05  |  172.31.100.0/24  |
 +--------------------------+-------------------------+-------------------+
-
-~ on ☁️  (us-east-1) ➜  
 ```
 
 <figure><img src=".gitbook/assets/image (49).png" alt=""><figcaption></figcaption></figure>

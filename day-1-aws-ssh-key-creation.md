@@ -1,2 +1,1 @@
-# Day 1 - AWS SSH Key Creation
-
+# Day 1: AWS SSH Key Creation

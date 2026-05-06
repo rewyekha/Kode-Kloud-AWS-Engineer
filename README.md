@@ -1,13 +1,9 @@
----
-description: Created by Reyas Khan
----
-
-# SUMMARY
+# KodeKloud AWS Engineer
 
 <figure><img src=".gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
-* [Day 1 - AWS SSH Key Creation](day-1-aws-ssh-key-creation.md)
-* [Day 2 - Security group](day-2-security-group.md)
+* [Day 1: AWS SSH Key Creation](day-1-aws-ssh-key-creation.md)
+* [Day 2: Security Group](day-2-security-group.md)
 * [Day 3: Create Subnet](day-3-create-subnet.md)
 * [Day 4: Enable Versioning for S3 Bucket](day-4-enable-versioning-for-s3-bucket.md)
 * [Day 5: Create GP3 Volume](day-5-create-gp3-volume.md)

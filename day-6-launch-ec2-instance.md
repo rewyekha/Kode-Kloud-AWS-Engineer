@@ -1,53 +1,22 @@
 # Day 6: Launch EC2 Instance
 
-The Nautilus DevOps team is strategizing the migration of a portion of their infrastructure to the AWS cloud. Recognizing the scale of this undertaking, they have opted to approach the migration in incremental steps rather than as a single massive transition. To achieve this, they have segmented large tasks into smaller, more manageable units.
+The Nautilus DevOps team is migrating infrastructure to AWS. For this task, create an EC2 instance with the following requirements:
 
-For this task, create an EC2 instance with following requirements:
+1. The name of the instance must be `xfusion-ec2`.
+2. Use the `Amazon Linux` AMI to launch this instance.
+3. The instance type must be `t2.micro`.
+4. Create a new RSA key pair named `xfusion-kp`.
+5. Attach the default (available by default) security group.
 
-1\) The name of the instance must be `xfusion-ec2`.
-
-2\) You can use the `Amazon Linux` AMI to launch this instance.
-
-3\) The Instance type must be `t2.micro`.
-
-4\) Create a new RSA key pair named `xfusion-kp`.
-
-5\) Attach the default (available by default) security group.<br>
-
-Use below given AWS Credentials: (You can run the `showcreds` command on `aws-client` host to retrieve these credentials)
-
-| Console URL | [https://886264053901.signin.aws.amazon.com/console?region=us-east-1](https://886264053901.signin.aws.amazon.com/console?region=us-east-1) |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| Username    | kk\_labs\_user\_331265                                                                                                                     |
-| Password    | AY6ql2Pf3YbV                                                                                                                               |
-| Start Time  | Sat Jan 10 15:37:03 UTC 2026                                                                                                               |
-| End Time    | Sat Jan 10 16:37:03 UTC 2026                                                                                                               |
-
-\
-`Notes:`
+**Notes:**
 
 * Create the instance in `us-east-1` region.
-* To `display` or `hide` the
 
-Below is a **clear, step-by-step AWS CLI solution** to create the required **EC2 instance** from the **aws-client host**, exactly matching the task constraints.
+---
 
-***
+## AWS CLI Steps
 
-### ✅ Task Requirements Recap
-
-| Requirement    | Value                           |
-| -------------- | ------------------------------- |
-| Instance name  | `xfusion-ec2`                   |
-| AMI            | Amazon Linux                    |
-| Instance type  | `t2.micro`                      |
-| Key pair       | New RSA key pair → `xfusion-kp` |
-| Security group | Default (pre-existing)          |
-| Region         | `us-east-1`                     |
-| Credentials    | Via `showcreds`                 |
-
-***
-
-### 🔐 Step 1: Load AWS Credentials
+### Step 1: Load AWS Credentials
 
 On the **aws-client** host:
 
@@ -57,11 +26,7 @@ showcreds
 
 This exports the temporary AWS credentials into your shell environment.
 
-✅ Do **not** manually configure keys.
-
-***
-
-### 🌍 Step 2: Set AWS Region
+### Step 2: Set AWS Region
 
 ```bash
 aws configure set region us-east-1
@@ -79,9 +44,7 @@ Expected:
 us-east-1
 ```
 
-***
-
-### 🔑 Step 3: Create RSA Key Pair
+### Step 3: Create RSA Key Pair
 
 ```bash
 aws ec2 create-key-pair \
@@ -97,12 +60,7 @@ Set correct permissions:
 chmod 400 xfusion-kp.pem
 ```
 
-✔ RSA key pair `xfusion-kp` created\
-✔ Private key saved locally
-
-***
-
-### 📦 Step 4: Get Latest Amazon Linux AMI (Recommended Way)
+### Step 4: Get Latest Amazon Linux AMI
 
 Fetch the latest Amazon Linux 2 AMI using AWS SSM:
 
@@ -119,9 +77,7 @@ Verify:
 echo $AMI_ID
 ```
 
-***
-
-### 🔐 Step 5: Get Default Security Group ID
+### Step 5: Get Default Security Group ID
 
 ```bash
 SG_ID=$(aws ec2 describe-security-groups \
@@ -130,9 +86,7 @@ SG_ID=$(aws ec2 describe-security-groups \
   --output text)
 ```
 
-***
-
-### 🚀 Step 6: Launch the EC2 Instance
+### Step 6: Launch the EC2 Instance
 
 ```bash
 aws ec2 run-instances \
@@ -149,9 +103,7 @@ Expected result:
 * Instance launches in **running** or **pending** state
 * Tagged as `xfusion-ec2`
 
-***
-
-### 🔍 Step 7: Verify the Instance
+### Step 7: Verify the Instance
 
 ```bash
 aws ec2 describe-instances \
@@ -170,29 +122,13 @@ Expected output:
 +-------------+------------+-------------+
 ```
 
-***
+---
 
-### ✅ Final Checklist
+## Result
 
-✔ Instance name: **xfusion-ec2**\
-✔ AMI: **Amazon Linux**\
-✔ Instance type: **t2.micro**\
-✔ Key pair: **xfusion-kp (RSA)**\
-✔ Security group: **default**\
-✔ Region: **us-east-1**
-
-***
-
-### 🏁 Conclusion
-
-The EC2 instance has been **successfully created** following AWS best practices and the Nautilus DevOps team’s **incremental migration strategy**.
-
-If you want, I can also:
-
-* SSH into the instance
-* Attach an EBS volume
-* Add IAM role
-* Convert this to **Terraform or CloudFormation**
-* Explain each command in interview format
-
-Just say the word 🚀
+* Instance name: **xfusion-ec2**
+* AMI: **Amazon Linux**
+* Instance type: **t2.micro**
+* Key pair: **xfusion-kp (RSA)**
+* Security group: **default**
+* Region: **us-east-1**

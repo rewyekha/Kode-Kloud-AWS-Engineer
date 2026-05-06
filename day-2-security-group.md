@@ -1,45 +1,31 @@
-# Day 2 - Security group
+# Day 2: Security Group
 
-The Nautilus DevOps team is strategizing the migration of a portion of their infrastructure to the AWS cloud. Recognizing the scale of this undertaking, they have opted to approach the migration in incremental steps rather than as a single massive transition. To achieve this, they have segmented large tasks into smaller, more manageable units. This granular approach enables the team to execute the migration in gradual phases, ensuring smoother implementation and minimizing disruption to ongoing operations. By breaking down the migration into smaller tasks, the Nautilus DevOps team can systematically progress through each stage, allowing for better control, risk mitigation, and optimization of resources throughout the migration process.
-
-For this task, create a security group under default VPC with the following requirements:
+The Nautilus DevOps team is migrating infrastructure to AWS. For this task, create a security group under the default VPC with the following requirements:
 
 * Name of the security group is `xfusion-sg`.
 * The description must be `Security group for Nautilus App Servers`
-* Add the inbound rule of type `HTTP`, with port range of `80`. Enter the source CIDR range of `0.0.0.0/0`.
-* Add another inbound rule of type `SSH`, with port range of `22`. Enter the source CIDR range of `0.0.0.0/0`.
-
-Use below given AWS Credentials: (You can run the `showcreds` command on `aws-client` host to retrieve these credentials)
-
-| Console URL | [https://813673435456.signin.aws.amazon.com/console?region=us-east-1](https://813673435456.signin.aws.amazon.com/console?region=us-east-1) |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| Username    | kk\_labs\_user\_903896                                                                                                                     |
-| Password    | 5^nC0QP7K^Mb                                                                                                                               |
+* Add an inbound rule of type `HTTP`, with port range of `80` and source CIDR `0.0.0.0/0`.
+* Add an inbound rule of type `SSH`, with port range of `22` and source CIDR `0.0.0.0/0`.
 
 <figure><img src=".gitbook/assets/image (47).png" alt=""><figcaption></figcaption></figure>
 
+**Notes:**
 
+* You are logged into the **aws-client** host.
+* AWS credentials are already configured using `showcreds`.
+* Region is already set to `us-east-1`.
 
-Below are the **AWS CLI steps** to create the required security group in the **default VPC** and add the inbound rules.
+---
 
-> ⚠️ Assumption:\
-> • You are logged into the **aws-client** host\
-> • AWS credentials are already configured using `showcreds`\
-> • Region is already set (or you can add `--region <region>` if needed)
+## AWS CLI Steps
 
-***
-
-### 1. Verify AWS CLI Configuration
-
-(Optional but recommended)
+### Step 1: Verify AWS CLI Configuration
 
 ```bash
 aws sts get-caller-identity
 ```
 
-***
-
-### 2. Get the Default VPC ID
+### Step 2: Get the Default VPC ID
 
 You must create the security group inside the **default VPC**.
 
@@ -52,9 +38,7 @@ VPC_ID=$(aws ec2 describe-vpcs \
 echo $VPC_ID
 ```
 
-***
-
-### 3. Create the Security Group
+### Step 3: Create the Security Group
 
 Create a security group named **xfusion-sg** with the given description.
 
@@ -69,9 +53,7 @@ SG_ID=$(aws ec2 create-security-group \
 echo $SG_ID
 ```
 
-***
-
-### 4. Add Inbound Rule for HTTP (Port 80)
+### Step 4: Add Inbound Rule for HTTP (Port 80)
 
 Allow HTTP access from anywhere.
 
@@ -83,9 +65,7 @@ aws ec2 authorize-security-group-ingress \
   --cidr 0.0.0.0/0
 ```
 
-***
-
-### 5. Add Inbound Rule for SSH (Port 22)
+### Step 5: Add Inbound Rule for SSH (Port 22)
 
 Allow SSH access from anywhere.
 
@@ -97,9 +77,7 @@ aws ec2 authorize-security-group-ingress \
   --cidr 0.0.0.0/0
 ```
 
-***
-
-### 6. Verify the Security Group
+### Step 6: Verify the Security Group
 
 Confirm that the rules were added correctly.
 
@@ -108,13 +86,12 @@ aws ec2 describe-security-groups \
   --group-ids $SG_ID
 ```
 
-***
+---
 
-✅ **Result**
+## Result
 
 * Security Group Name: `xfusion-sg`
 * VPC: Default VPC
 * Inbound Rules:
-  * HTTP (80) → `0.0.0.0/0`
-  * SSH (22) → `0.0.0.0/0`
-
+  * HTTP (80) -> `0.0.0.0/0`
+  * SSH (22) -> `0.0.0.0/0`
