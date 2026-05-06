@@ -9,6 +9,8 @@ An IAM user named `iamuser_siva` and a policy named `iampolicy_siva` already exi
 **Notes:**
 
 * Create the resources only in `us-east-1` region.
+* To `display` or `hide` the terminal of the AWS client machine, you can use the expand toggle button as shown below:\
+  ![toggle button](https://res.cloudinary.com/dezmljkdo/image/upload/v1678742174/AWS%20Lambda/expand_panel_hjgfkl.png)
   ## Day 19: Attach IAM Policy to IAM User (AWS Task Guide)
 
 ***

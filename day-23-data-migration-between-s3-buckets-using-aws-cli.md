@@ -15,6 +15,8 @@ Use AWS CLI: Use the AWS CLI to perform the creation and data migration tasks.
 **Notes:**
 
 * Create the resources only in `us-east-1` region.
+* To `display` or `hide` the terminal of the AWS client machine, you can use the expand toggle button as shown below:\
+  ![toggle button](https://res.cloudinary.com/dezmljkdo/image/upload/v1678742174/AWS%20Lambda/expand_panel_hjgfkl.png)
 
 As part of a data migration project, the team lead has tasked the team with migrating data from an existing S3 bucket to a new S3 bucket.
 

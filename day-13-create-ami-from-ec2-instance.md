@@ -11,6 +11,8 @@ For this task, create an AMI from an existing EC2 instance named `xfusion-ec2` w
 **Notes:**
 
 * Create the resources only in `us-east-1` region.
+* To `display` or `hide` the terminal of the AWS client machine, you can use the expand toggle button as shown below:\
+  ![toggle button](https://res.cloudinary.com/dezmljkdo/image/upload/v1678742174/AWS%20Lambda/expand_panel_hjgfkl.png)
 
 This document describes the step-by-step process of creating an Amazon Machine Image (AMI) from an existing EC2 instance named `xfusion-ec2` using the AWS CLI. It includes the command outputs encountered during the process and documents a minor query formatting issue along with its resolution.
 

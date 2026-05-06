@@ -8,6 +8,8 @@ Create an IAM group named `iamgroup_ammar`.
 **Notes:**
 
 * Create the resources only in `us-east-1` region.
+* To `display` or `hide` the terminal of the AWS client machine, you can use the expand toggle button as shown below:\
+  ![toggle button](https://res.cloudinary.com/dezmljkdo/image/upload/v1678742174/AWS%20Lambda/expand_panel_hjgfkl.png)
   ## Create IAM Group: `iamgroup_ammar`
 
 ### Overview

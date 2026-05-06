@@ -11,6 +11,8 @@ During the migration process, several resources were created under the AWS accou
 **Notes:**
 
 * Create the resources only in `us-east-1` region.
+* To `display` or `hide` the terminal of the AWS client machine, you can use the expand toggle button as shown below:\
+  ![toggle button](https://res.cloudinary.com/dezmljkdo/image/upload/v1678742174/AWS%20Lambda/expand_panel_hjgfkl.png)
   <figure><img src=".gitbook/assets/image (43).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src=".gitbook/assets/image (44).png" alt=""><figcaption></figcaption></figure>
