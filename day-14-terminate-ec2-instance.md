@@ -1,28 +1,13 @@
 # Day 14: Terminate EC2 Instance
 
-During the migration process, several resources were created under the AWS account. Later on, some of these resources became obsolete as alternative solutions were implemented. Similarly, there is an instance that needs to be deleted as it is no longer in use.
+An EC2 instance named `xfusion-ec2` in the `us-east-1` region is no longer in use and must be deleted.
 
-1\) Delete the ec2 instance named `xfusion-ec2` present in `us-east-1` region.
+1. Delete the EC2 instance named `xfusion-ec2` present in `us-east-1` region.
+2. Before submitting your task, make sure the instance is in `terminated` state.
 
-2\) Before submitting your task, make sure instance is in `terminated` state.
-
-Use below given AWS Credentials: (You can run the `showcreds` command on `aws-client` host to retrieve these credentials)
-
-| Console URL | [https://045946725843.signin.aws.amazon.com/console?region=us-east-1](https://045946725843.signin.aws.amazon.com/console?region=us-east-1) |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| Username    | kk\_labs\_user\_825244                                                                                                                     |
-| Password    | q@sbG^@im5yl                                                                                                                               |
-| Start Time  | Wed Feb 25 05:07:55 UTC 2026                                                                                                               |
-| End Time    | Wed Feb 25 06:07:55 UTC 2026                                                                                                               |
-
-\
-`Notes:`
+**Notes:**
 
 * Create the resources only in `us-east-1` region.
-* To `display` or `hide` the terminal of the AWS client machine, you can use the expand toggle button as shown below:\
-  ![toggle button](https://res.cloudinary.com/dezmljkdo/image/upload/v1678742174/AWS%20Lambda/expand_panel_hjgfkl.png)
-
-
 
 <figure><img src=".gitbook/assets/image (43).png" alt=""><figcaption></figcaption></figure>
 
@@ -32,17 +17,13 @@ Use below given AWS Credentials: (You can run the `showcreds` command on `aws-cl
 
 <figure><img src=".gitbook/assets/image (42).png" alt=""><figcaption></figcaption></figure>
 
+---
 
-
-***
-
-During cloud resource management, some EC2 instances may become obsolete. This guide explains how to safely delete an EC2 instance (`xfusion-ec2`) in the **us-east-1** region using the AWS CLI and verify it is terminated.
-
-***
+## Solution
 
 ### 1. Identify the EC2 Instance ID
 
-First, retrieve the **instance ID** of the EC2 instance named `xfusion-ec2`:
+Retrieve the **instance ID** of the EC2 instance named `xfusion-ec2`:
 
 ```bash
 aws ec2 describe-instances \
@@ -52,20 +33,18 @@ aws ec2 describe-instances \
     --output text
 ```
 
-**Expected Output:**
+Expected output:
 
 ```
 i-00de7cb1a11e41b66
 ```
 
-> Note the instance ID, which will be used in the termination step.
+> Note the instance ID — it will be used in the termination step.
 
-**Common Mistakes:**
+**Common mistakes:**
 
-* Using the wrong **region** (`us-west-2`, etc.) will return no results.
-* Typo in the tag name (`xfusion-ec2`) → Instance will not be found.
-
-***
+* Using the wrong region (`us-west-2`, etc.) will return no results.
+* A typo in the tag name (`xfusion-ec2`) will cause the instance not to be found.
 
 ### 2. Terminate the EC2 Instance
 
@@ -77,7 +56,7 @@ aws ec2 terminate-instances \
     --region us-east-1
 ```
 
-**Expected Output:**
+Expected output:
 
 ```json
 {
@@ -98,14 +77,11 @@ aws ec2 terminate-instances \
 ```
 
 * `CurrentState: terminated` indicates that the instance is no longer running.
-* `PreviousState: terminated` confirms it was already shutting down or running before termination.
 
-**Common Mistakes:**
+**Common mistakes:**
 
-* Using an **incorrect instance ID** → Termination will fail.
-* Not specifying the correct **region** → AWS CLI cannot find the instance.
-
-***
+* Using an incorrect instance ID will cause termination to fail.
+* Not specifying the correct region means AWS CLI cannot find the instance.
 
 ### 3. Verify Termination
 
@@ -119,30 +95,26 @@ aws ec2 describe-instances \
     --output text
 ```
 
-**Expected Output:**
+Expected output:
 
 ```
 terminated
 ```
 
-* Once the output shows `terminated`, the instance has been successfully deleted.
+Once the output shows `terminated`, the instance has been successfully deleted.
 
 **Tips:**
 
 * If you see `shutting-down`, wait a few seconds and check again.
 * Ensure that any dependent resources (EBS volumes, Elastic IPs) are deleted or detached if no longer needed.
 
-***
+---
 
-### ✅ Summary
+## Summary
 
-| Task         | Detail                         |
-| ------------ | ------------------------------ |
-| EC2 Instance | xfusion-ec2                    |
-| Region       | us-east-1                      |
-| Action       | Terminated using AWS CLI       |
+| Task | Detail |
+| --- | --- |
+| EC2 Instance | xfusion-ec2 |
+| Region | us-east-1 |
+| Action | Terminated using AWS CLI |
 | Verification | Instance state is `terminated` |
-
-**Status:** ✅ Completed
-
-***
