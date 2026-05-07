@@ -1,18 +1,8 @@
 # Day 33: Create a Lambda Function
 
-
-
-
-
-
-
-
-
-
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha
 
 ..
-
-
 
 <figure><img src=".gitbook/assets/image (88).png" alt=""><figcaption></figcaption></figure>
 
@@ -23,3 +13,7 @@
 <figure><img src=".gitbook/assets/image (91).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src=".gitbook/assets/image (92).png" alt=""><figcaption></figcaption></figure>
+
+---
+
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha

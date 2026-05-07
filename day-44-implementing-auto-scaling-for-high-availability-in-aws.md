@@ -1,5 +1,7 @@
 # Day 44: Implementing Auto Scaling for High Availability in AWS
 
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha
+
 The DevOps team is tasked with setting up a highly available web application using AWS. To achieve this, they plan to use an Auto Scaling Group (ASG) to ensure that the required number of EC2 instances are always running, and an Application Load Balancer (ALB) to distribute traffic across these instances. The goal of this task is to set up an ASG that automatically scales EC2 instances based on **CPU utilization**, and an ALB that directs incoming traffic to the instances. The EC2 instances should have Nginx installed and running to serve web traffic.
 
 1. Create an EC2 launch template named `nautilus-launch-template` that specifies the configuration for the EC2 instances, including the **Amazon Linux 2 AMI**, **t2.micro** instance type, and a security group that allows **HTTP traffic on port 80**.
@@ -9,7 +11,6 @@ The DevOps team is tasked with setting up a highly available web application usi
 5. Configure health checks on the ALB to ensure it routes traffic only to healthy instances.
 6. Verify that the ALB's DNS name is accessible and that it displays the default Nginx page served by the EC2 instances.
 
-\
 `Notes:`
 
 * Create the resources only in `us-east-1` region.
@@ -18,7 +19,7 @@ The DevOps team is tasked with setting up a highly available web application usi
 
 This document provides a complete, production‑grade GitBook-style documentation of setting up a highly available web application on AWS using Auto Scaling Groups (ASG) and an Application Load Balancer (ALB). The entire setup is executed using the AWS CLI in the `us-east-1` region and validated end‑to‑end.The solution provisions EC2 instances running Nginx, scales them automatically based on CPU utilization, and exposes the application via an internet‑facing ALB.
 
-***
+---
 
 ### Architecture Summary
 
@@ -29,7 +30,7 @@ This document provides a complete, production‑grade GitBook-style documentatio
 * Load Balancer: Application Load Balancer (HTTP :80)
 * Target Group: Instance targets with health checks on `/`
 
-***
+---
 
 ### Prerequisites
 
@@ -37,7 +38,7 @@ This document provides a complete, production‑grade GitBook-style documentatio
 * Default VPC available in `us-east-1`
 * IAM permissions for EC2, ELBv2, Auto Scaling, and CloudWatch
 
-***
+---
 
 ### Step 1: Identify Default VPC
 
@@ -48,7 +49,7 @@ VPC_ID=$(aws ec2 describe-vpcs \
   --output text)
 ```
 
-***
+---
 
 ### Step 2: Create Security Group
 
@@ -85,7 +86,7 @@ aws ec2 authorize-security-group-ingress \
   --cidr 0.0.0.0/0
 ```
 
-***
+---
 
 ### Step 3: Create Launch Template
 
@@ -117,7 +118,7 @@ systemctl enable nginx' | base64 -w0)\"
   }"
 ```
 
-***
+---
 
 ### Step 4: Create Target Group
 
@@ -138,7 +139,7 @@ TG_ARN=$(aws elbv2 describe-target-groups \
   --output text)
 ```
 
-***
+---
 
 ### Step 5: Create Application Load Balancer
 
@@ -169,7 +170,7 @@ ALB_ARN=$(aws elbv2 describe-load-balancers \
   --output text)
 ```
 
-***
+---
 
 ### Step 6: Configure ALB Listener
 
@@ -181,7 +182,7 @@ aws elbv2 create-listener \
   --default-actions Type=forward,TargetGroupArn=$TG_ARN
 ```
 
-***
+---
 
 ### Step 7: Create Auto Scaling Group
 
@@ -196,7 +197,7 @@ aws autoscaling create-auto-scaling-group \
   --target-group-arns $TG_ARN
 ```
 
-***
+---
 
 ### Step 8: Configure CPU Target Tracking Scaling (50%)
 
@@ -213,7 +214,7 @@ aws autoscaling put-scaling-policy \
   }'
 ```
 
-***
+---
 
 ### Step 9: Validation & Health Checks
 
@@ -238,7 +239,7 @@ Final Healthy State:
 "State": "healthy"
 ```
 
-***
+---
 
 ### Step 10: Application Verification
 
@@ -265,7 +266,7 @@ Output:
 <h1>Welcome to nginx!</h1>
 ```
 
-***
+---
 
 ### Conclusion
 
@@ -276,9 +277,9 @@ This lab demonstrates a fully functional, production‑aligned AWS architecture 
 * Load-balanced Nginx web servers
 * Robust health checks and fault tolerance
 
-✅ Lab Status: PASSED
+ Lab Status: PASSED
 
-***
+---
 
 ### Cleanup (Optional)
 
@@ -292,10 +293,14 @@ aws ec2 delete-launch-template --launch-template-name nautilus-launch-template
 aws ec2 delete-security-group --group-id $SG_ID
 ```
 
-***
+---
 
 Author: DevOps Engineering TeamPlatform: AWS (us-east-1)Documentation Type: GitBook / Runbook / Lab Evidence
 
 <figure><img src=".gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src=".gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+
+---
+
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha

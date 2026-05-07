@@ -1,5 +1,7 @@
 # Day 36: Load Balancing EC2 Instances with Application Load Balancer
 
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha
+
 **Question:**
 
 You are tasked with deploying a web application on AWS using an EC2 instance and an Application Load Balancer (ALB). The workflow involves launching an EC2 instance with Ubuntu 22.04, installing Nginx via user data, configuring security groups, and ensuring the instance is publicly accessible through the ALB.
@@ -26,13 +28,13 @@ You are asked to:
 
 Include all relevant outputs in your response to demonstrate the solution.
 
-***
+---
 
 ## AWS EC2 + ALB Setup with Nginx
 
 This document details the steps to launch an EC2 instance, configure security groups, attach it to an Application Load Balancer (ALB), and verify HTTP access.
 
-***
+---
 
 ### 1. Find the Latest Ubuntu AMI
 
@@ -52,7 +54,7 @@ aws ec2 describe-images \
 ami-00de3875b03809ec5
 ```
 
-***
+---
 
 ### 2. Launch EC2 Instance with User Data to Install Nginx
 
@@ -87,7 +89,7 @@ systemctl enable nginx'
 }
 ```
 
-***
+---
 
 ### 3. Verify EC2 Instance Status
 
@@ -120,7 +122,7 @@ aws ec2 describe-instances \
 ]
 ```
 
-***
+---
 
 ### 4. Register EC2 Instance to Target Group
 
@@ -150,7 +152,7 @@ aws elbv2 describe-target-health \
 }
 ```
 
-***
+---
 
 ### 5. Verify ALB Configuration
 
@@ -198,7 +200,7 @@ aws elbv2 describe-load-balancers \
 ]
 ```
 
-***
+---
 
 ### 6. Verify Security Group Rules
 
@@ -247,7 +249,7 @@ aws ec2 authorize-security-group-ingress \
 }
 ```
 
-***
+---
 
 ### 7. Verify EC2 Public Subnet
 
@@ -267,7 +269,7 @@ aws ec2 describe-subnets \
 ]
 ```
 
-***
+---
 
 ### 8. Verify ALB Access via Browser or cURL
 
@@ -289,19 +291,21 @@ curl http://devops-alb-1557128968.us-east-1.elb.amazonaws.com
 </html>
 ```
 
-***
+---
 
-#### ✅ Summary
+####  Summary
 
 * EC2 instance deployed with Ubuntu 22.04 and Nginx installed.
 * Security groups configured for HTTP traffic.
 * Instance registered to ALB target group in the correct Availability Zone.
 * ALB is publicly accessible, routing traffic to the EC2 instance successfully.
 
-***
-
-
+---
 
 <figure><img src=".gitbook/assets/image (20).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src=".gitbook/assets/image (21).png" alt=""><figcaption></figcaption></figure>
+
+---
+
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha

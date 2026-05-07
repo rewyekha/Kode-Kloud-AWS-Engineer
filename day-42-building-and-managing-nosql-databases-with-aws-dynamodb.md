@@ -1,5 +1,7 @@
 # Day 42: Building and Managing NoSQL Databases with AWS DynamoDB
 
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha
+
 The Nautilus DevOps team is developing a simple 'To-Do' application using DynamoDB to store and manage tasks efficiently. The team needs to create a DynamoDB table to hold tasks, each identified by a unique task ID. Each task will have a description and a status, which indicates the progress of the task (e.g., 'completed' or 'in-progress').
 
 Your task is to:
@@ -15,9 +17,7 @@ Ensure the DynamoDB table is created successfully and that both tasks are insert
 
 * Create the resources only in `us-east-1` region.
 
-
-
-***
+---
 
 ## Nautilus To-Do App - DynamoDB Setup
 
@@ -27,7 +27,7 @@ Create a DynamoDB table `nautilus-tasks` and insert sample tasks for the Nautilu
 **Region**: `us-east-1`\
 **Billing Mode**: Pay-per-request
 
-***
+---
 
 ### 1. Create the DynamoDB Table
 
@@ -57,7 +57,7 @@ aws dynamodb create-table \
 }
 ```
 
-***
+---
 
 ### 2. Verify Table Status
 
@@ -76,7 +76,7 @@ aws dynamodb describe-table \
 "ACTIVE"
 ```
 
-***
+---
 
 ### 3. Insert Tasks into the Table
 
@@ -106,7 +106,7 @@ aws dynamodb put-item \
   --region us-east-1
 ```
 
-***
+---
 
 ### 4. Verify Inserted Tasks
 
@@ -152,7 +152,7 @@ aws dynamodb get-item \
 }
 ```
 
-***
+---
 
 ### Summary of All Commands Used
 
@@ -201,7 +201,7 @@ aws dynamodb get-item \
   --region us-east-1
 ```
 
-***
+---
 
 ### Lab Notes
 
@@ -210,7 +210,7 @@ aws dynamodb get-item \
 * Billing mode is set to **PAY\_PER\_REQUEST** (serverless).
 * Even though the AWS Console may show permission errors (due to lab restrictions), the resources were successfully created and verified via CLI.
 
-***
+---
 
 <figure><img src=".gitbook/assets/image (101).png" alt=""><figcaption></figcaption></figure>
 
@@ -221,3 +221,7 @@ aws dynamodb get-item \
 <figure><img src=".gitbook/assets/image (104).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src=".gitbook/assets/image (105).png" alt=""><figcaption></figcaption></figure>
+
+---
+
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha

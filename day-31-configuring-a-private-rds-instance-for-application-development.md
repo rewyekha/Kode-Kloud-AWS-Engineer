@@ -1,10 +1,12 @@
 # Day 31: Configuring a Private RDS Instance for Application Development
 
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha
+
 ## AWS RDS: Provisioning a Private MySQL Instance for Application Development
 
 > **Platform:** KodeKloud | **Cloud:** AWS | **Region:** us-east-1 **Difficulty:** Intermediate | **Topic:** AWS RDS, MySQL, VPC, Storage Autoscaling, CLI
 
-***
+---
 
 ### Table of Contents
 
@@ -23,7 +25,7 @@
 13. [Key Concepts](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#key-concepts)
 14. [Resource Reference](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#resource-reference)
 
-***
+---
 
 ### Lab Overview
 
@@ -31,7 +33,7 @@ The Nautilus Development Team is working on a new application feature that requi
 
 The DevOps team has been tasked with setting up this RDS instance, ensuring that it is correctly configured and available for use by the development team.
 
-***
+---
 
 ### Lab Objectives
 
@@ -40,19 +42,19 @@ The DevOps team has been tasked with setting up this RDS instance, ensuring that
 3. **Enable Storage Autoscaling:** Enable storage autoscaling and set the threshold value to `50GB`. Keep the rest of the configurations as default.
 4. **Instance Availability:** Ensure the instance is in the `available` state before submitting the task.
 
-***
+---
 
 ### Prerequisites
 
 | Field         | Value                                                                 |
 | ------------- | --------------------------------------------------------------------- |
-| Console URL   | `https://467239208986.signin.aws.amazon.com/console?region=us-east-1` |
-| Username      | `kk_labs_user_836851`                                                 |
-| Password      | `5A3vQ0boc8HH`                                                        |
+| Console URL   | https://<aws-account>.signin.aws.amazon.com/console?region=us-east-1 |
+| Username      | <REDACTED_USERNAME> |
+| Password      | <REDACTED_PASSWORD> |
 | Region        | `us-east-1`                                                           |
 | Access Method | AWS CLI on `aws-client` host                                          |
 
-***
+---
 
 ### Architecture
 
@@ -90,7 +92,7 @@ The DevOps team has been tasked with setting up this RDS instance, ensuring that
 └─────────────────────────────────────────────────────────────────────┘
 ```
 
-***
+---
 
 ### Phase 1: Set Environment Variables
 
@@ -109,7 +111,7 @@ SECURITY_GROUP="rds-sg"
 **Terminal Output:**
 
 ```bash
-~ on ☁️  (us-east-1) ➜  RDS_NAME="devops-rds"
+~ on   (us-east-1)   RDS_NAME="devops-rds"
 INSTANCE_TYPE="db.t3.micro"
 ENGINE="mysql"
 ENGINE_VERSION="8.4.3"
@@ -117,10 +119,10 @@ MAX_STORAGE=50
 SUBNET_GROUP="db-subnet-group"
 SECURITY_GROUP="rds-sg"
 
-~ on ☁️  (us-east-1) ➜
+~ on   (us-east-1)
 ```
 
-***
+---
 
 ### Phase 2: Gather VPC and Subnet Information
 
@@ -141,7 +143,7 @@ echo $VPC_ID
 **Terminal Output:**
 
 ```bash
-~ on ☁️  (us-east-1) ➜  VPC_ID=$(aws ec2 describe-vpcs \
+~ on   (us-east-1)   VPC_ID=$(aws ec2 describe-vpcs \
   --filters Name=isDefault,Values=true \
   --query "Vpcs[0].VpcId" \
   --output text \
@@ -150,7 +152,7 @@ echo $VPC_ID
 echo $VPC_ID
 vpc-0b73f32d24d9f9625
 
-~ on ☁️  (us-east-1) ➜
+~ on   (us-east-1)
 ```
 
 #### Step 2: Get All Subnets in the Default VPC
@@ -170,7 +172,7 @@ echo $SUBNET_IDS
 **Terminal Output:**
 
 ```bash
-~ on ☁️  (us-east-1) ➜  SUBNET_IDS=$(aws ec2 describe-subnets \
+~ on   (us-east-1)   SUBNET_IDS=$(aws ec2 describe-subnets \
   --filters Name=vpc-id,Values="$VPC_ID" \
   --query "Subnets[*].SubnetId" \
   --output text \
@@ -179,12 +181,12 @@ echo $SUBNET_IDS
 echo $SUBNET_IDS
 subnet-0968e1f342f7d5e00 subnet-0f1f9b4afc216545c subnet-0480cba21faebe63f subnet-0f42654d7f527bbc2 subnet-0637f846e34e2218e subnet-08f5b39e48ba03c99
 
-~ on ☁️  (us-east-1) ➜
+~ on   (us-east-1)
 ```
 
 Six subnets were found across six Availability Zones: `us-east-1a` through `us-east-1f`.
 
-***
+---
 
 ### Phase 3: Create DB Subnet Group
 
@@ -201,7 +203,7 @@ aws rds create-db-subnet-group \
 **Terminal Output:**
 
 ```bash
-~ on ☁️  (us-east-1) ➜  aws rds create-db-subnet-group \
+~ on   (us-east-1)   aws rds create-db-subnet-group \
   --db-subnet-group-name $SUBNET_GROUP \
   --db-subnet-group-description "Subnet group for RDS" \
   --subnet-ids $SUBNET_IDS \
@@ -269,12 +271,12 @@ aws rds create-db-subnet-group \
     }
 }
 
-~ on ☁️  (us-east-1) ➜
+~ on   (us-east-1)
 ```
 
 The subnet group `db-subnet-group` was created with `SubnetGroupStatus: Complete` and all 6 subnets active across 6 Availability Zones.
 
-***
+---
 
 ### Phase 4: Create Security Group for RDS
 
@@ -295,7 +297,7 @@ echo $RDS_SG_ID
 **Terminal Output:**
 
 ```bash
-~ on ☁️  (us-east-1) ➜  RDS_SG_ID=$(aws ec2 create-security-group \
+~ on   (us-east-1)   RDS_SG_ID=$(aws ec2 create-security-group \
   --group-name $SECURITY_GROUP \
   --description "RDS SG" \
   --vpc-id "$VPC_ID" \
@@ -306,12 +308,12 @@ echo $RDS_SG_ID
 echo $RDS_SG_ID
 sg-0c472975a9422f2ea
 
-~ on ☁️  (us-east-1) ➜
+~ on   (us-east-1)
 ```
 
 Security Group ID `sg-0c472975a9422f2ea` was created and stored in the `$RDS_SG_ID` variable.
 
-***
+---
 
 ### Phase 5: Create the RDS Instance
 
@@ -338,7 +340,7 @@ aws rds create-db-instance \
   --allocated-storage 20 \
   --max-allocated-storage $MAX_STORAGE \
   --master-username admin \
-  --master-user-password Admin1234! \
+  --master-user-password <REDACTED_PASSWORD> \
   --db-subnet-group-name $SUBNET_GROUP \
   --vpc-security-group-ids "$RDS_SG_ID" \
   --no-publicly-accessible \
@@ -350,7 +352,7 @@ aws rds create-db-instance \
 **Terminal Output:**
 
 ```bash
-~ on ☁️  (us-east-1) ➜  aws rds create-db-instance \
+~ on   (us-east-1)   aws rds create-db-instance \
   --db-instance-identifier $RDS_NAME \
   --db-instance-class $INSTANCE_TYPE \
   --engine $ENGINE \
@@ -358,7 +360,7 @@ aws rds create-db-instance \
   --allocated-storage 20 \
   --max-allocated-storage $MAX_STORAGE \
   --master-username admin \
-  --master-user-password Admin1234! \
+  --master-user-password <REDACTED_PASSWORD> \
   --db-subnet-group-name $SUBNET_GROUP \
   --vpc-security-group-ids "$RDS_SG_ID" \
   --no-publicly-accessible \
@@ -476,7 +478,7 @@ aws rds create-db-instance \
     }
 }
 
-~ on ☁️  (us-east-1) ➜
+~ on   (us-east-1)
 ```
 
 The instance was accepted by AWS with `DBInstanceStatus: creating`. Key fields confirmed in the response:
@@ -487,7 +489,7 @@ The instance was accepted by AWS with `DBInstanceStatus: creating`. Key fields c
 * `MultiAZ: false` — single AZ deployment (sandbox/free tier)
 * `DBInstanceArn: arn:aws:rds:us-east-1:467239208986:db:devops-rds`
 
-***
+---
 
 ### Phase 6: Wait for Instance to Become Available
 
@@ -502,16 +504,16 @@ aws rds wait db-instance-available \
 **Terminal Output:**
 
 ```
-~ on ☁️  (us-east-1) ➜  aws rds wait db-instance-available \
+~ on   (us-east-1)   aws rds wait db-instance-available \
   --db-instance-identifier $RDS_NAME \
   --region us-east-1
 
-~ on ☁️  (us-east-1) ➜
+~ on   (us-east-1)
 ```
 
 The command returned with no output, which indicates success. The instance is now in the `available` state.
 
-***
+---
 
 ### Phase 7: Validate the RDS Instance
 
@@ -528,7 +530,7 @@ aws rds describe-db-instances \
 **Terminal Output:**
 
 ```
-~ on ☁️  (us-east-1) ➜  aws rds describe-db-instances \
+~ on   (us-east-1)   aws rds describe-db-instances \
   --db-instance-identifier $RDS_NAME \
   --query "DBInstances[0].[DBInstanceStatus,PubliclyAccessible,EngineVersion,DBInstanceClass,MaxAllocatedStorage]" \
   --output table \
@@ -543,12 +545,12 @@ aws rds describe-db-instances \
 |  50               |
 +-------------------+
 
-~ on ☁️  (us-east-1) ➜
+~ on   (us-east-1)
 ```
 
 All five fields confirm the instance is correctly configured and ready for use.
 
-***
+---
 
 ### Summary
 
@@ -566,7 +568,7 @@ All lab objectives were completed successfully:
 | Instance status       | `available`       | Confirmed |
 | Region                | `us-east-1`       | Confirmed |
 
-***
+---
 
 ### Key Concepts
 
@@ -606,7 +608,7 @@ creating  -->  backing-up  -->  available
 
 The instance is only ready for connections once it reaches the `available` state.
 
-***
+---
 
 ### Resource Reference
 
@@ -623,7 +625,7 @@ The instance is only ready for connections once it reaches the `available` state
 | Option Group    | MySQL Options          | `default:mysql-8-4`                                |
 | CA Certificate  | TLS Certificate        | `rds-ca-rsa2048-g1`                                |
 
-***
+---
 
 _Lab completed on 2026-03-24 | AWS Region: us-east-1 | Platform: KodeKloud_
 
@@ -632,3 +634,7 @@ _Lab completed on 2026-03-24 | AWS Region: us-east-1 | Platform: KodeKloud_
 <figure><img src=".gitbook/assets/image (27).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src=".gitbook/assets/image (28).png" alt=""><figcaption></figcaption></figure>
+
+---
+
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha

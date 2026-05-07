@@ -1,5 +1,7 @@
 # Day 24: Setting Up an Application Load Balancer for an EC2 Instance
 
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha
+
 The Nautilus DevOps team is currently working on setting up a simple application on the AWS cloud. They aim to establish an Application Load Balancer (ALB) in front of an EC2 instance where an Nginx server is currently running. While the Nginx server currently serves a sample page, the team plans to deploy the actual application later.
 
 1. Set up an Application Load Balancer named `nautilus-alb`.
@@ -11,16 +13,13 @@ The Nautilus DevOps team is currently working on setting up a simple application
 
 Use below given AWS Credentials: (You can run the `showcreds` command on `aws-client` host to retrieve these credentials)
 
-\
 `Notes:`
 
 * Create the resources only in `us-east-1` region.
 * To `display` or `hide` the terminal of the AWS client machine, you can use the expand toggle button as shown below:\
   ![toggle button](https://res.cloudinary.com/dezmljkdo/image/upload/v1678742174/AWS%20Lambda/expand_panel_hjgfkl.png)
 
-
-
-***
+---
 
 ## AWS Application Load Balancer in Front of EC2 (Nginx)
 
@@ -43,7 +42,7 @@ Region:
 us-east-1
 ```
 
-***
+---
 
 ## Architecture
 
@@ -60,7 +59,7 @@ Target Group (nautilus-tg)
 EC2 Instance (Nginx :80)
 ```
 
-***
+---
 
 ## GUI Implementation (AWS Console)
 
@@ -84,7 +83,7 @@ Inbound Rule:
 | ---- | ---- | --------- |
 | HTTP | 80   | 0.0.0.0/0 |
 
-***
+---
 
 ### Step 2 — Create Target Group
 
@@ -111,7 +110,7 @@ Register target:
 nautilus-ec2 instance
 ```
 
-***
+---
 
 ### Step 3 — Create Application Load Balancer
 
@@ -144,7 +143,7 @@ HTTP : 80
 Forward to : nautilus-tg
 ```
 
-***
+---
 
 ## CLI Verification
 
@@ -164,7 +163,7 @@ Output:
 nautilus-alb-488876130.us-east-1.elb.amazonaws.com
 ```
 
-***
+---
 
 ### Check Target Group
 
@@ -185,7 +184,7 @@ Output (excerpt):
 }
 ```
 
-***
+---
 
 ### Verify Target Health
 
@@ -218,7 +217,7 @@ Output:
 
 Target is **healthy**.
 
-***
+---
 
 ### Verify Listener
 
@@ -248,7 +247,7 @@ Output:
 
 Listener correctly forwards traffic to target group.
 
-***
+---
 
 ## Initial Test (FAILED)
 
@@ -270,7 +269,7 @@ Browser error:
 The connection has timed out
 ```
 
-***
+---
 
 ## Debugging Process
 
@@ -290,7 +289,7 @@ Output:
 sg-034ffebee3f8e8793
 ```
 
-***
+---
 
 ### Inspect Security Group Rules
 
@@ -329,13 +328,13 @@ It did **NOT allow internet traffic**.
 Therefore:
 
 ```
-Internet → ALB ❌ blocked
-ALB → EC2 ✅ working
+Internet → ALB  blocked
+ALB → EC2  working
 ```
 
 Health checks passed because they originate **inside the VPC**.
 
-***
+---
 
 ## Fixing the Issue
 
@@ -358,7 +357,7 @@ Response:
 }
 ```
 
-***
+---
 
 ### Verify Updated Rule
 
@@ -387,7 +386,7 @@ Output:
 
 Now HTTP is publicly accessible.
 
-***
+---
 
 ## Final Validation
 
@@ -405,7 +404,7 @@ Output:
 
 Nginx page successfully served through ALB.
 
-***
+---
 
 ## Final Result
 
@@ -424,17 +423,17 @@ Target Group (nautilus-tg)
 EC2 Instance (Nginx :80)
 ```
 
-***
+---
 
 ## Key Lessons Learned
 
-#### 1️⃣ Health checks do not guarantee internet accessibility
+#### 1. Health checks do not guarantee internet accessibility
 
 ALB health checks originate from **inside the VPC**, so they can succeed even when public access is blocked.
 
-***
+---
 
-#### 2️⃣ Always verify ALB security groups
+#### 2. Always verify ALB security groups
 
 A common mistake is missing:
 
@@ -442,9 +441,9 @@ A common mistake is missing:
 HTTP 80 → 0.0.0.0/0
 ```
 
-***
+---
 
-#### 3️⃣ Debugging checklist for ALB
+#### 3. Debugging checklist for ALB
 
 Check in this order:
 
@@ -455,51 +454,30 @@ Check in this order:
 5. ALB security group
 6. EC2 security group
 
-
-
 <figure><img src=".gitbook/assets/image (58).png" alt=""><figcaption></figcaption></figure>
-
-
 
 <figure><img src=".gitbook/assets/image (59).png" alt=""><figcaption></figcaption></figure>
 
-
-
 <figure><img src=".gitbook/assets/image (60).png" alt=""><figcaption></figcaption></figure>
-
-
 
 <figure><img src=".gitbook/assets/image (61).png" alt=""><figcaption></figcaption></figure>
 
-
-
 <figure><img src=".gitbook/assets/image (62).png" alt=""><figcaption></figcaption></figure>
-
-
 
 <figure><img src=".gitbook/assets/image (63).png" alt=""><figcaption></figcaption></figure>
 
-
-
 <figure><img src=".gitbook/assets/image (64).png" alt=""><figcaption></figcaption></figure>
-
-
 
 <figure><img src=".gitbook/assets/image (65).png" alt=""><figcaption></figcaption></figure>
 
-
-
 <figure><img src=".gitbook/assets/image (66).png" alt=""><figcaption></figcaption></figure>
-
-
 
 <figure><img src=".gitbook/assets/image (67).png" alt=""><figcaption></figcaption></figure>
 
-
-
 <figure><img src=".gitbook/assets/image (68).png" alt=""><figcaption></figcaption></figure>
-
-
 
 <figure><img src=".gitbook/assets/image (69).png" alt=""><figcaption></figcaption></figure>
 
+---
+
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha

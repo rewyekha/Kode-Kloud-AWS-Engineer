@@ -1,8 +1,6 @@
 # Day 8: Enable Stop Protection for EC2 Instance
 
-
-
-
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha
 
 As part of the migration, there were some components added to the AWS account. Team created one of the EC2 instances where they need to make some changes now.
 
@@ -10,34 +8,31 @@ There is an EC2 instance named `datacenter-ec2` under `us-east-1` region, enable
 
 Use below given AWS Credentials: (You can run the `showcreds` command on `aws-client` host to retrieve these credentials)
 
-| Console URL | [https://415500486906.signin.aws.amazon.com/console?region=us-east-1](https://415500486906.signin.aws.amazon.com/console?region=us-east-1) |
+| Console URL | https://<aws-account>.signin.aws.amazon.com/console?region=us-east-1 |
 | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| Username    | kk\_labs\_user\_401572                                                                                                                     |
-| Password    | 9k@xd7c!^^!D                                                                                                                               |
+| Username    | <REDACTED_USERNAME> |
+| Password    | <REDACTED_PASSWORD> |
 | Start Time  | Mon Jan 12 16:37:35 UTC 2026                                                                                                               |
 | End Time    | Mon Jan 12 17:37:35 UTC 2026                                                                                                               |
 
-\
 `Notes:`
 
 * Create the resources only in `us-east-1` region.
 
-
-
 ```bash
-~ on ☁️  (us-east-1) ➜  aws ec2 describe-instances \
+~ on   (us-east-1)   aws ec2 describe-instances \
   --region us-east-1 \
   --filters "Name=tag:Name,Values=datacenter-ec2" \
   --query "Reservations[].Instances[].InstanceId" \
   --output text
 i-0dddbe6a69a39f4d0
 
-~ on ☁️  (us-east-1) ➜  aws ec2 modify-instance-attribute \
+~ on   (us-east-1)   aws ec2 modify-instance-attribute \
   --region us-east-1 \
   --instance-id i-0dddbe6a69a39f4d0 \
   --disable-api-stop
 
-~ on ☁️  (us-east-1) ➜  aws ec2 describe-instance-attribute \
+~ on   (us-east-1)   aws ec2 describe-instance-attribute \
   --region us-east-1 \
   --instance-id i-0dddbe6a69a39f4d0 \
   --attribute disableApiStop
@@ -48,15 +43,13 @@ i-0dddbe6a69a39f4d0
     }
 }
 
-~ on ☁️  (us-east-1) ➜  
+~ on   (us-east-1)
 
 ```
 
-
-
 > Stop protection prevents the instance from being stopped via API/CLI/Console.
 
-***
+---
 
 ### 1. Configure AWS CLI (on aws-client host)
 
@@ -73,14 +66,14 @@ Provide:
 * **Default region name**: us-east-1
 * **Default output format**: json
 
-````
+```
 
 Verify:
 ```bash
 aws sts get-caller-identity
-````
+```
 
-***
+---
 
 ### 2. Find the Instance ID for `datacenter-ec2`
 
@@ -98,7 +91,7 @@ Example output:
 i-0abc1234def567890
 ```
 
-***
+---
 
 ### 3. Enable Stop Protection on the Instance
 
@@ -111,7 +104,7 @@ aws ec2 modify-instance-attribute \
   --disable-api-stop
 ```
 
-***
+---
 
 ### 4. (Optional) Verify Stop Protection Is Enabled
 
@@ -132,20 +125,18 @@ Expected output:
 }
 ```
 
-***
+---
 
-#### ✅ Result
+####  Result
 
 Stop protection is now enabled for **datacenter-ec2** in **us-east-1**.
-
-
 
 ### Enable Stop Protection via AWS Console (GUI)
 
 1. **Sign in to AWS Console**
-   * Open: [https://415500486906.signin.aws.amazon.com/console?region=us-east-1](https://415500486906.signin.aws.amazon.com/console?region=us-east-1)
-   * Username: `kk_labs_user_401572`
-   * Password: `9k@xd7c!^^!D`
+   * Open: [https://<aws-account>.signin.aws.amazon.com/console?region=us-east-1](https://<aws-account>.signin.aws.amazon.com/console?region=us-east-1)
+   * Username: `<REDACTED_USERNAME>`
+   * Password: `<REDACTED_PASSWORD>`
 2. **Go to EC2**
    * From the AWS Console home page, select **Services**
    * Click **EC2**
@@ -165,8 +156,12 @@ Stop protection is now enabled for **datacenter-ec2** in **us-east-1**.
 7. **Confirmation**
    * You should see a confirmation message that stop protection has been enabled
 
-***
+---
 
-#### ✅ Result
+####  Result
 
 The EC2 instance **datacenter-ec2** is now protected from being stopped via the AWS Console, CLI, or API.
+
+---
+
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha

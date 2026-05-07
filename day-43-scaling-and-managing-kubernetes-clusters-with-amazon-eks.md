@@ -1,5 +1,7 @@
 # Day 43: Scaling and Managing Kubernetes Clusters with Amazon EKS
 
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha
+
 The Nautilus DevOps team has been tasked with preparing the infrastructure for a new Kubernetes-based application that will be deployed using Amazon EKS. The team is in the process of setting up an EKS cluster that meets their internal security and scalability standards. They require that the cluster be provisioned using the latest stable Kubernetes version to take advantage of new features and security improvements.
 
 To minimize external exposure, the EKS cluster endpoint must be kept private. Additionally, the cluster needs to use the default VPC with availability zones `a`, `b`, and `c` to ensure high availability across different physical locations.
@@ -12,13 +14,11 @@ Finally, verify that the EKS cluster is successfully created with the correct co
 * Create the resources only in `us-east-1` region.
 * To `display` or `hide` the terminal of the AWS client machine, you can use the expand toggle button as shown below:<br>
 
-
-
 ## Amazon EKS Cluster Provisioning (CLI Guide)
 
 ### Cluster: xfusion-eks (Private Endpoint, Default VPC)
 
-***
+---
 
 ### Overview
 
@@ -31,7 +31,7 @@ This document describes the step-by-step process to create an Amazon EKS cluster
 * IAM role: eksClusterRole
 * Region: us-east-1
 
-***
+---
 
 ### 1. Verify IAM Role (Initial Failure)
 
@@ -45,7 +45,7 @@ Output:
 An error occurred (NoSuchEntity) when calling the GetRole operation: The role with name eksClusterRole cannot be found.
 ```
 
-***
+---
 
 ### 2. Create IAM Role for EKS Cluster
 
@@ -68,7 +68,7 @@ cat <<EOF > eks-trust-policy.json
 EOF
 ```
 
-***
+---
 
 #### Create IAM role
 
@@ -104,7 +104,7 @@ Output:
 }
 ```
 
-***
+---
 
 ### 3. Attach Required Policy
 
@@ -116,7 +116,7 @@ aws iam attach-role-policy \
 
 (No output expected)
 
-***
+---
 
 ### 4. Verify IAM Role
 
@@ -152,7 +152,7 @@ Output:
 }
 ```
 
-***
+---
 
 ### 5. Retrieve AWS Account ID
 
@@ -167,7 +167,7 @@ Output:
 959313683568
 ```
 
-***
+---
 
 ### 6. Retrieve Latest Kubernetes Version
 
@@ -185,7 +185,7 @@ Output:
 1.35
 ```
 
-***
+---
 
 ### 7. Get Default VPC
 
@@ -204,7 +204,7 @@ Output:
 vpc-071d855b6390f1df4
 ```
 
-***
+---
 
 ### 8. Get Subnets in AZ a, b, c
 
@@ -223,7 +223,7 @@ Output:
 subnet-07c78c23f7912e3df subnet-082c41b280ae504ea subnet-06c0739eaef36fdc0
 ```
 
-***
+---
 
 ### 9. Convert Subnets to CSV Format
 
@@ -238,7 +238,7 @@ Output:
 subnet-07c78c23f7912e3df,subnet-082c41b280ae504ea,subnet-06c0739eaef36fdc0
 ```
 
-***
+---
 
 ### 10. Create EKS Cluster
 
@@ -276,7 +276,7 @@ Output:
 }
 ```
 
-***
+---
 
 ### 11. Wait for Cluster to Become Active
 
@@ -286,7 +286,7 @@ aws eks wait cluster-active --name xfusion-eks
 
 (No output expected)
 
-***
+---
 
 ### 12. Verify Cluster Status
 
@@ -302,7 +302,7 @@ Output:
 "ACTIVE"
 ```
 
-***
+---
 
 ### 13. Verify Kubernetes Version
 
@@ -318,7 +318,7 @@ Output:
 "1.35"
 ```
 
-***
+---
 
 ### 14. Verify Endpoint Configuration
 
@@ -337,7 +337,7 @@ Output:
 }
 ```
 
-***
+---
 
 ### 15. Final Validation Summary
 
@@ -352,7 +352,7 @@ Output:
 | IAM Role           | eksClusterRole     |
 | Status             | ACTIVE             |
 
-***
+---
 
 ### Conclusion
 
@@ -361,3 +361,7 @@ The Amazon EKS cluster **xfusion-eks** has been successfully provisioned using A
 <figure><img src=".gitbook/assets/image (106).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src=".gitbook/assets/image (107).png" alt=""><figcaption></figcaption></figure>
+
+---
+
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha

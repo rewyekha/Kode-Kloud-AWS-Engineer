@@ -1,5 +1,7 @@
 # Day 23: Data Migration Between S3 Buckets Using AWS CLI
 
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha
+
 As part of a data migration project, the team lead has tasked the team with migrating data from an existing S3 bucket to a new S3 bucket. The existing bucket contains a substantial amount of data that must be accurately transferred to the new bucket. The team is responsible for creating the new S3 bucket and ensuring that all data from the existing bucket is copied or synced to the new bucket completely and accurately. It is imperative to perform thorough verification steps to confirm that all data has been successfully transferred to the new bucket without any loss or corruption.
 
 As a member of the Nautilus DevOps Team, your task is to perform the following:
@@ -17,8 +19,6 @@ Use AWS CLI: Use the AWS CLI to perform the creation and data migration tasks.
 * Create the resources only in `us-east-1` region.
 * To `display` or `hide` the terminal of the AWS client machine, you can use the expand toggle button as shown below:\n![toggle button](https://res.cloudinary.com/dezmljkdo/image/upload/v1678742174/AWS%20Lambda/expand_panel_hjgfkl.png)
 
-
-
 ### Problem Statement
 
 As part of a data migration project, the team lead has tasked the team with migrating data from an existing S3 bucket to a new S3 bucket.
@@ -35,7 +35,7 @@ It is imperative to perform thorough verification steps to confirm that all data
 4. Use **AWS CLI** to perform the operations.
 5. All resources must be created in **us-east-1 region**.
 
-***
+---
 
 ## Step 1: Verify Existing Buckets
 
@@ -53,7 +53,7 @@ aws s3 ls
 2025-03-13 09:12:18 devops-s3-13316
 ```
 
-***
+---
 
 ## Step 2: Create the New S3 Bucket
 
@@ -75,7 +75,7 @@ aws s3api create-bucket \
 }
 ```
 
-***
+---
 
 ## Step 3: Verify the Bucket Creation
 
@@ -94,7 +94,7 @@ aws s3 ls
 2025-03-13 09:14:02 devops-sync-27893
 ```
 
-***
+---
 
 ## Step 4: Migrate Data Between Buckets
 
@@ -121,7 +121,7 @@ This command ensures:
 * Folder structure is preserved
 * Only missing or changed files are transferred
 
-***
+---
 
 ## Step 5: Verify Data in Source Bucket
 
@@ -139,7 +139,7 @@ aws s3 ls s3://devops-s3-13316 --recursive | wc -l
 4
 ```
 
-***
+---
 
 ## Step 6: Verify Data in Destination Bucket
 
@@ -159,7 +159,7 @@ aws s3 ls s3://devops-sync-27893 --recursive | wc -l
 
 The object counts match, indicating that the data migration was successful.
 
-***
+---
 
 ## Step 7: Final Validation Using Dry Run
 
@@ -179,7 +179,7 @@ aws s3 sync s3://devops-s3-13316 s3://devops-sync-27893 --dryrun
 
 This confirms both buckets contain identical data.
 
-***
+---
 
 ## Conclusion
 
@@ -195,3 +195,7 @@ The migration process was successfully completed using the **AWS CLI**.
 Both buckets now contain **identical data**, ensuring a successful migration.
 
 <figure><img src=".gitbook/assets/image (38).png" alt=""><figcaption></figcaption></figure>
+
+---
+
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha

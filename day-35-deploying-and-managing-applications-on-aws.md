@@ -1,10 +1,12 @@
 # Day 35: Deploying and Managing Applications on AWS
 
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha
+
 ## AWS: Connect EC2 to Private RDS MySQL Instance with PHP Application
 
 > **Platform:** KodeKloud | **Cloud:** AWS | **Region:** us-east-1 **Difficulty:** Intermediate | **Topic:** AWS RDS, EC2, MySQL, Security Groups, SSH, PHP, Apache
 
-***
+---
 
 ### Table of Contents
 
@@ -23,13 +25,13 @@
 13. [Key Concepts](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#key-concepts)
 14. [Resource Reference](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#resource-reference)
 
-***
+---
 
 ### Lab Overview
 
 The Nautilus DevOps team needs a new private RDS instance for their application. They need to set up a MySQL database and ensure that their existing EC2 instance can connect to it. A PHP application running on Apache on the EC2 instance connects to the RDS and confirms the connection via a browser-accessible page.
 
-***
+---
 
 ### Lab Objectives
 
@@ -40,19 +42,19 @@ The Nautilus DevOps team needs a new private RDS instance for their application.
 5. Copy `index.php` from `/root` on aws-client to `/var/www/html/` on `devops-ec2` with RDS connection details.
 6. Verify `Connected successfully` message in browser via EC2 public IP.
 
-***
+---
 
 ### Prerequisites
 
 | Field         | Value                                                                 |
 | ------------- | --------------------------------------------------------------------- |
-| Console URL   | `https://113662677848.signin.aws.amazon.com/console?region=us-east-1` |
-| Username      | `kk_labs_user_665192`                                                 |
-| Password      | `m0Y2Cv9r^i^M`                                                        |
+| Console URL   | https://<aws-account>.signin.aws.amazon.com/console?region=us-east-1 |
+| Username      | <REDACTED_USERNAME> |
+| Password      | <REDACTED_PASSWORD> |
 | Region        | `us-east-1`                                                           |
 | Access Method | AWS CLI on `aws-client` host                                          |
 
-***
+---
 
 ### Architecture
 
@@ -81,7 +83,7 @@ The Nautilus DevOps team needs a new private RDS instance for their application.
 └─────────────────────────────────────────────────────────────────────┘
 ```
 
-***
+---
 
 ### Phase 1: Set Environment Variables
 
@@ -101,7 +103,7 @@ REGION="us-east-1"
 **Terminal Output:**
 
 ```bash
-~ via 🐘 on ☁️  (us-east-1) ➜  RDS_ID="devops-rds"
+~ via  on   (us-east-1)   RDS_ID="devops-rds"
 DB_ENGINE="mysql"
 DB_ENGINE_VERSION="8.4.5"
 DB_INSTANCE_CLASS="db.t3.micro"
@@ -112,10 +114,10 @@ STORAGE_TYPE="gp2"
 STORAGE_SIZE=5
 REGION="us-east-1"
 
-~ via 🐘 on ☁️  (us-east-1) ➜
+~ via  on   (us-east-1)
 ```
 
-***
+---
 
 ### Phase 2: Gather VPC and EC2 Information
 
@@ -179,7 +181,7 @@ i-00f5d164f5ab1abb7
 sg-0ae121a0995aef738
 ```
 
-***
+---
 
 ### Phase 3: Create DB Subnet Group and Security Groups
 
@@ -348,7 +350,7 @@ aws ec2 authorize-security-group-ingress \
 }
 ```
 
-***
+---
 
 ### Phase 4: Create the RDS Instance
 
@@ -359,7 +361,7 @@ aws rds create-db-instance \
   --engine $DB_ENGINE \
   --engine-version $DB_ENGINE_VERSION \
   --master-username $MASTER_USER \
-  --master-user-password $MASTER_PASS \
+  --master-user-password <REDACTED_PASSWORD> \
   --db-name $DB_NAME \
   --storage-type $STORAGE_TYPE \
   --allocated-storage $STORAGE_SIZE \
@@ -422,7 +424,7 @@ echo $RDS_ENDPOINT
 devops-rds.c3yymq8o4wjf.us-east-1.rds.amazonaws.com
 ```
 
-***
+---
 
 ### Phase 5: Generate SSH Key and Add to EC2
 
@@ -476,7 +478,7 @@ chmod 600 /root/.ssh/authorized_keys
 
 After the public key was added, passwordless SSH from aws-client to EC2 as root was confirmed working.
 
-***
+---
 
 ### Phase 6: Configure and Deploy the PHP File
 
@@ -571,7 +573,7 @@ ssh -i /root/.ssh/id_rsa \
   "rm -f /var/www/html/index.html"
 ```
 
-***
+---
 
 ### Phase 7: Verify the Application
 
@@ -587,7 +589,7 @@ Connected successfully
 
 The PHP application successfully connected to the private RDS MySQL instance and returned the expected response.
 
-***
+---
 
 ### Lab Complete
 
@@ -610,7 +612,7 @@ The PHP application successfully connected to the private RDS MySQL instance and
 | `index.php` deployed        | `/var/www/html/index.php`             | Confirmed |
 | Application response        | `Connected successfully`              | Confirmed |
 
-***
+---
 
 ### Key Concepts
 
@@ -656,7 +658,7 @@ Apache serves `index.html` before `index.php` by default as defined in `/etc/apa
 
 The `--no-publicly-accessible` flag means the RDS instance has no public DNS entry and cannot be reached from the internet. Only resources within the same VPC that have a matching security group rule can establish a connection. This is the correct configuration for production database instances.
 
-***
+---
 
 ### Resource Reference
 
@@ -676,7 +678,7 @@ The `--no-publicly-accessible` flag means the RDS instance has no public DNS ent
 | Master User        | MySQL                  | `devops_admin`                                        |
 | PHP File           | Apache                 | `/var/www/html/index.php`                             |
 
-***
+---
 
 _Lab completed on 2026-04-01 | AWS Region: us-east-1 | Platform: KodeKloudbas_
 
@@ -689,3 +691,7 @@ _Lab completed on 2026-04-01 | AWS Region: us-east-1 | Platform: KodeKloudbas_
 <figure><img src=".gitbook/assets/image (96).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src=".gitbook/assets/image (98).png" alt=""><figcaption></figcaption></figure>
+
+---
+
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha

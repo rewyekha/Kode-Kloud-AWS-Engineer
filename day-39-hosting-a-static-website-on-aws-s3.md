@@ -1,5 +1,7 @@
 # Day 39: Hosting a Static Website on AWS S3
 
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha
+
 The Nautilus DevOps team has been tasked with creating an internal information portal for public access. As part of this project, they need to host a static website on AWS using an S3 bucket. The S3 bucket must be configured for public access to allow external users to access the static website directly via the S3 website URL.
 
 Task Requirements:
@@ -10,22 +12,17 @@ Task Requirements:
 4. Upload the `index.html` file from the `/root/` directory of the AWS client host to the S3 bucket.
 5. Verify that the website is accessible directly through the S3 website URL.
 
-\
 `Notes:`
 
 * Create the resources only in `us-east-1` region.
 * To `display` or `hide` the terminal of the AWS client machine, you can use the expand toggle button as shown below:\
   ![toggle button](https://res.cloudinary.com/dezmljkdo/image/upload/v1678742174/AWS%20Lambda/expand_panel_hjgfkl.png)
 
-
-
-
-
 ## AWS S3: Host a Static Website with Public Access
 
 > **Platform:** KodeKloud | **Cloud:** AWS | **Region:** us-east-1 **Difficulty:** Beginner | **Topic:** AWS S3, Static Website Hosting, Bucket Policy, Public Access
 
-***
+---
 
 ### Table of Contents
 
@@ -46,13 +43,13 @@ Task Requirements:
 7. [Key Concepts](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#key-concepts)
 8. [Resource Reference](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#resource-reference)
 
-***
+---
 
 ### Lab Overview
 
 The Nautilus DevOps team has been tasked with creating an internal information portal for public access. As part of this project, they need to host a static website on AWS using an S3 bucket. The S3 bucket must be configured for public access to allow external users to access the static website directly via the S3 website URL.
 
-***
+---
 
 ### Lab Objectives
 
@@ -62,21 +59,21 @@ The Nautilus DevOps team has been tasked with creating an internal information p
 4. Upload the `index.html` file from `/root/` on the AWS client host to the S3 bucket.
 5. Verify the website is accessible through the S3 website URL.
 
-***
+---
 
 ### Prerequisites
 
 | Field         | Value                                                                 |
 | ------------- | --------------------------------------------------------------------- |
-| Console URL   | `https://230266393235.signin.aws.amazon.com/console?region=us-east-1` |
-| Username      | `kk_labs_user_915151`                                                 |
-| Password      | `URD2k0C%1RId`                                                        |
+| Console URL   | https://<aws-account>.signin.aws.amazon.com/console?region=us-east-1 |
+| Username      | <REDACTED_USERNAME> |
+| Password      | <REDACTED_PASSWORD> |
 | Region        | `us-east-1`                                                           |
 | Access Method | AWS CLI on `aws-client` host                                          |
 | Source file   | `/root/index.html`                                                    |
 | Bucket name   | `xfusion-web-30228`                                                   |
 
-***
+---
 
 ### Architecture
 
@@ -107,7 +104,7 @@ aws-client host
               Browser / curl client
 ```
 
-***
+---
 
 ### Solution
 
@@ -123,14 +120,14 @@ ls
 **Terminal Output:**
 
 ```
-~ on ☁️  (us-east-1) ➜  cd /root
-~ on ☁️  (us-east-1) ➜  ls
+~ on   (us-east-1)   cd /root
+~ on   (us-east-1)   ls
 index.html
 ```
 
 The file `index.html` is present and ready for upload.
 
-***
+---
 
 #### Step 2: Create the S3 Bucket
 
@@ -145,7 +142,7 @@ aws s3api create-bucket \
 **Terminal Output:**
 
 ```
-~ on ☁️  (us-east-1) ➜  aws s3api create-bucket \
+~ on   (us-east-1)   aws s3api create-bucket \
   --bucket xfusion-web-30228 \
   --region us-east-1
 {
@@ -155,7 +152,7 @@ aws s3api create-bucket \
 
 The bucket `xfusion-web-30228` was created successfully. The `Location` field confirms the bucket name and that it was created in the default region.
 
-***
+---
 
 #### Step 3: Disable Public Access Block
 
@@ -171,17 +168,17 @@ aws s3api put-public-access-block \
 **Terminal Output:**
 
 ```
-~ on ☁️  (us-east-1) ➜  aws s3api put-public-access-block \
+~ on   (us-east-1)   aws s3api put-public-access-block \
   --bucket xfusion-web-30228 \
   --public-access-block-configuration \
     BlockPublicAcls=false,IgnorePublicAcls=false,BlockPublicPolicy=false,RestrictPublicBuckets=false
 
-~ on ☁️  (us-east-1) ➜
+~ on   (us-east-1)
 ```
 
 No output means the command succeeded. All four public access block settings are now disabled, allowing the bucket policy to grant public read access.
 
-***
+---
 
 #### Step 4: Create and Apply the Bucket Policy
 
@@ -207,7 +204,7 @@ EOF
 **Terminal Output:**
 
 ```
-~ on ☁️  (us-east-1) ➜  cat > policy.json << EOF
+~ on   (us-east-1)   cat > policy.json << EOF
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -222,7 +219,7 @@ EOF
 }
 EOF
 
-~ on ☁️  (us-east-1) ➜
+~ on   (us-east-1)
 ```
 
 Apply the policy to the bucket:
@@ -236,16 +233,16 @@ aws s3api put-bucket-policy \
 **Terminal Output:**
 
 ```
-~ on ☁️  (us-east-1) ➜  aws s3api put-bucket-policy \
+~ on   (us-east-1)   aws s3api put-bucket-policy \
   --bucket xfusion-web-30228 \
   --policy file://policy.json
 
-~ on ☁️  (us-east-1) ➜
+~ on   (us-east-1)
 ```
 
 No output means the policy was applied successfully. The bucket now allows anonymous read access to all objects.
 
-***
+---
 
 #### Step 5: Enable Static Website Hosting
 
@@ -259,10 +256,10 @@ aws s3 website s3://xfusion-web-30228/ \
 **Terminal Output:**
 
 ```
-~ on ☁️  (us-east-1) ➜  aws s3 website s3://xfusion-web-30228/ \
+~ on   (us-east-1)   aws s3 website s3://xfusion-web-30228/ \
   --index-document index.html
 
-~ on ☁️  (us-east-1) ➜
+~ on   (us-east-1)
 ```
 
 No output means the website hosting configuration was applied successfully. The bucket now has a website endpoint at:
@@ -271,7 +268,7 @@ No output means the website hosting configuration was applied successfully. The 
 http://xfusion-web-30228.s3-website-us-east-1.amazonaws.com
 ```
 
-***
+---
 
 #### Step 6: Upload index.html to the Bucket
 
@@ -286,7 +283,7 @@ aws s3 cp /root/index.html s3://xfusion-web-30228/ --acl public-read
 **Terminal Output:**
 
 ```
-~ on ☁️  (us-east-1) ✖ aws s3 cp /root/index.html s3://xfusion-web-30228/ \
+~ on   (us-east-1)  aws s3 cp /root/index.html s3://xfusion-web-30228/ \
   --acl public-read
 upload failed: ./index.html to s3://xfusion-web-30228/index.html An error occurred (AccessControlListNotSupported) when calling the PutObject operation: The bucket does not allow ACLs
 ```
@@ -300,13 +297,13 @@ aws s3 cp /root/index.html s3://xfusion-web-30228/
 **Terminal Output:**
 
 ```
-~ on ☁️  (us-east-1) ➜  aws s3 cp /root/index.html s3://xfusion-web-30228/
+~ on   (us-east-1)   aws s3 cp /root/index.html s3://xfusion-web-30228/
 upload: ./index.html to s3://xfusion-web-30228/index.html
 ```
 
 The file uploaded successfully. The bucket policy handles public access — no per-object ACL is needed.
 
-***
+---
 
 #### Step 7: Verify the Upload
 
@@ -319,13 +316,13 @@ aws s3 ls s3://xfusion-web-30228/
 **Terminal Output:**
 
 ```
-~ on ☁️  (us-east-1) ➜  aws s3 ls s3://xfusion-web-30228/
+~ on   (us-east-1)   aws s3 ls s3://xfusion-web-30228/
 2026-04-10 04:01:39         20 index.html
 ```
 
 The file `index.html` is present in the bucket — `20 bytes`, uploaded at `04:01:39 UTC`.
 
-***
+---
 
 #### Step 8: Verify Website is Publicly Accessible
 
@@ -338,7 +335,7 @@ curl -I http://xfusion-web-30228.s3-website-us-east-1.amazonaws.com
 **Terminal Output:**
 
 ```bash
-~ on ☁️  (us-east-1) ➜  curl -I http://xfusion-web-30228.s3-website-us-east-1.amazonaws.com
+~ on   (us-east-1)   curl -I http://xfusion-web-30228.s3-website-us-east-1.amazonaws.com
 HTTP/1.1 200 OK
 x-amz-id-2: 85FsxCOwMUQkl5wIUMgJTw9QR/XEJs74flFp3V2B+hiUVeux881Dwt8kvK0H2d868uDw1BcNjMLDZge3TD8ypbBMMJzNbwAs
 x-amz-request-id: H46NR0NB28W9CJQ5
@@ -349,7 +346,7 @@ Content-Type: text/html
 Content-Length: 20
 Server: AmazonS3
 
-~ on ☁️  (us-east-1) ➜
+~ on   (us-east-1)
 ```
 
 The S3 static website returned `HTTP/1.1 200 OK` confirming:
@@ -358,7 +355,7 @@ The S3 static website returned `HTTP/1.1 200 OK` confirming:
 * The `index.html` file is publicly accessible
 * Content-Type is `text/html` and Content-Length is `20` bytes — matching the uploaded file
 
-***
+---
 
 ### Lab Complete
 
@@ -371,7 +368,7 @@ The S3 static website returned `HTTP/1.1 200 OK` confirming:
 | File uploaded                  | `index.html` — 20 bytes at `04:01:39 UTC` | Confirmed |
 | Website accessible             | `HTTP/1.1 200 OK` from S3 website URL     | Confirmed |
 
-***
+---
 
 ### Key Concepts
 
@@ -444,7 +441,7 @@ The steps must be performed in the correct order to avoid permission errors:
 
 If the bucket policy is applied before disabling the public access block, the `put-bucket-policy` call will fail with `AccessDenied` because `BlockPublicPolicy` is still enabled.
 
-***
+---
 
 ### Resource Reference
 
@@ -460,9 +457,12 @@ If the bucket policy is applied before disabling the public access block, the `p
 | HTTP response      | Verification | `200 OK`                                                      |
 | Request ID         | AWS          | `H46NR0NB28W9CJQ5`                                            |
 
-***
+---
 
 _Lab completed on 2026-04-10 | AWS Region: us-east-1 | Platform: KodeKloud_
 
 <figure><img src=".gitbook/assets/image (6) (1).png" alt=""><figcaption></figcaption></figure>
 
+---
+
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha

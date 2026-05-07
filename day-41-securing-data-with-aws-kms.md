@@ -1,5 +1,7 @@
 # Day 41: Securing Data with AWS KMS
 
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha
+
 The Nautilus DevOps team is focusing on improving their data security by using AWS KMS. Your task is to create a KMS key and manage the encryption and decryption of a pre-existing sensitive file using the KMS key.
 
 Specific Requirements:
@@ -12,8 +14,6 @@ Make sure that the KMS key is correctly configured. The validation script will t
 `Notes:`
 
 * Create the resources only in `us-east-1` region.
-
-
 
 ## AWS KMS Encryption and Decryption Workflow
 
@@ -29,7 +29,7 @@ The implementation uses the AWS CLI to:
 * Decrypt the file
 * Verify data integrity
 
-***
+---
 
 ### Prerequisites
 
@@ -42,7 +42,7 @@ The implementation uses the AWS CLI to:
     ```
 * AWS region configured (example: us-east-1)
 
-***
+---
 
 ### Step 1: Create KMS Key
 
@@ -65,7 +65,7 @@ echo "Created Key ID: $KEY_ID"
 Created Key ID: ac6dd134-bcaf-4220-892c-a7629fd19a0e
 ```
 
-***
+---
 
 ### Step 2: Create Alias for the Key
 
@@ -81,7 +81,7 @@ aws kms create-alias \
 
 (No output indicates successful execution)
 
-***
+---
 
 ### Step 3: Encrypt the File
 
@@ -103,7 +103,7 @@ aws kms encrypt \
     /root/EncryptedData.bin
     ```
 
-***
+---
 
 ### Step 4: Decrypt the File
 
@@ -124,7 +124,7 @@ aws kms decrypt \
     /root/DecryptedData.txt
     ```
 
-***
+---
 
 ### Step 5: Verify Data Integrity
 
@@ -140,7 +140,7 @@ diff /root/SensitiveData.txt /root/DecryptedData.txt && echo "Match successful"
 Match successful
 ```
 
-***
+---
 
 ### Validation Criteria
 
@@ -152,7 +152,7 @@ The implementation meets the following requirements:
 * Decryption successfully restores the original data
 * Data integrity is verified
 
-***
+---
 
 ### Notes
 
@@ -161,7 +161,7 @@ The implementation meets the following requirements:
 * Alias usage simplifies key management and avoids hardcoding Key IDs
 * Ensure the correct AWS region is used during all operations
 
-***
+---
 
 ### Conclusion
 
@@ -170,3 +170,7 @@ This process demonstrates secure encryption and decryption of sensitive data usi
 <figure><img src=".gitbook/assets/image (99).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src=".gitbook/assets/image (100).png" alt=""><figcaption></figcaption></figure>
+
+---
+
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha

@@ -1,32 +1,31 @@
 # Day 28: Creating a Private ECR Repository
 
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha
+
 The Nautilus DevOps team has been tasked with setting up a containerized application. They need to create a private Amazon Elastic Container Registry (ECR) repository to store their Docker images. Once the repository is created, they will build a Docker image from a Dockerfile located on the `aws-client` host and push this image to the ECR repository. This process is essential for maintaining and deploying containerized applications in a streamlined manner.
 
 Create a private ECR repository named `xfusion-ecr`. There is a Dockerfile under `/root/pyapp` directory on `aws-client` host, build a docker image using this Dockerfile and push the same to the newly created ECR repo, the image tag must be `latest`.
 
 Use below given AWS Credentials: (You can run the `showcreds` command on `aws-client` host to retrieve these credentials)
 
-| Console URL | [https://139373540961.signin.aws.amazon.com/console?region=us-east-1](https://139373540961.signin.aws.amazon.com/console?region=us-east-1) |
+| Console URL | https://<aws-account>.signin.aws.amazon.com/console?region=us-east-1 |
 | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| Username    | kk\_labs\_user\_798480                                                                                                                     |
-| Password    | \*\*\*                                                                                                                                     |
+| Username    | <REDACTED_USERNAME> |
+| Password    | <REDACTED_PASSWORD> |
 | Start Time  | Fri Mar 20 03:40:08 UTC 2026                                                                                                               |
 | End Time    | Fri Mar 20 04:40:08 UTC 2026                                                                                                               |
 
-\
 `Notes:`
 
 * Create the resources only in `us-east-1` region.
 * To `display` or `hide` the terminal of the AWS client machine, you can use the expand toggle button as shown below:\
   ![toggle button](https://res.cloudinary.com/dezmljkdo/image/upload/v1678742174/AWS%20Lambda/expand_panel_hjgfkl.png)
 
+---
 
+##  AWS ECR – Creating Private Repository & Pushing Docker Image
 
-***
-
-## 🐳 AWS ECR – Creating Private Repository & Pushing Docker Image
-
-### 📌 Task Overview
+###  Task Overview
 
 The objective of this task is to:
 
@@ -51,15 +50,15 @@ The objective of this task is to:
     us-east-1
     ```
 
-***
+---
 
-## 🟡 Step 1 – Authenticate Docker with AWS ECR
+##  Step 1 – Authenticate Docker with AWS ECR
 
 ```bash
 aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 139373540961.dkr.ecr.us-east-1.amazonaws.com
 ```
 
-#### 📄 Output
+####  Output
 
 ```bash
 WARNING! Your credentials are stored unencrypted in '/root/.docker/config.json'.
@@ -69,23 +68,23 @@ https://docs.docker.com/go/credential-store/
 Login Succeeded
 ```
 
-***
+---
 
-## 📂 Step 2 – Navigate to Application Directory
+##  Step 2 – Navigate to Application Directory
 
 ```bash
 cd /root/pyapp
 ```
 
-***
+---
 
-## 🏗️ Step 3 – Build Docker Image
+##  Step 3 – Build Docker Image
 
 ```bash
 docker build -t xfusion-ecr:latest .
 ```
 
-#### 📄 Output
+####  Output
 
 ```bash
 [+] Building 187.1s (9/9) FINISHED
@@ -100,31 +99,31 @@ docker build -t xfusion-ecr:latest .
  => => naming to docker.io/library/xfusion-ecr:latest
 ```
 
-***
+---
 
-## 🏷️ Step 4 – Tag Docker Image for ECR
+##  Step 4 – Tag Docker Image for ECR
 
 ```bash
 docker tag xfusion-ecr:latest 139373540961.dkr.ecr.us-east-1.amazonaws.com/xfusion-ecr:latest
 ```
 
-***
+---
 
-## 📁 Step 5 – Verify Project Files
+##  Step 5 – Verify Project Files
 
 ```bash
 ls
 ```
 
-#### 📄 Output
+####  Output
 
 ```bash
 app.py  Dockerfile  requirements.txt
 ```
 
-***
+---
 
-### 📄 Dockerfile
+###  Dockerfile
 
 ```bash
 cat Dockerfile
@@ -140,9 +139,9 @@ RUN pip install -r requirements.txt
 CMD ["python", "app.py"]
 ```
 
-***
+---
 
-### 📄 app.py
+###  app.py
 
 ```bash
 cat app.py
@@ -154,9 +153,9 @@ cat app.py
 print("Hello, World!")
 ```
 
-***
+---
 
-### 📄 requirements.txt
+###  requirements.txt
 
 ```bash
 cat requirements.txt
@@ -166,15 +165,15 @@ cat requirements.txt
 
 _(empty file)_
 
-***
+---
 
-## 🚀 Step 6 – Push Image to AWS ECR
+##  Step 6 – Push Image to AWS ECR
 
 ```bash
 docker push 139373540961.dkr.ecr.us-east-1.amazonaws.com/xfusion-ecr:latest
 ```
 
-#### 📄 Output
+####  Output
 
 ```bash
 The push refers to repository [139373540961.dkr.ecr.us-east-1.amazonaws.com/xfusion-ecr]
@@ -190,30 +189,30 @@ c3772b569c3a: Pushed
 latest: digest: sha256:3d9031f2f7555a0bd8e59615069f909b782cc102164ca8746d6faf568aa9d8f5 size: 1783
 ```
 
-***
+---
 
-## 🧠 Final Result Summary
+##  Final Result Summary
 
-### ✅ Successfully Completed
+###  Successfully Completed
 
-* ✔ AWS ECR login successful
-* ✔ Docker image built successfully
-* ✔ Image tagged correctly for ECR
-* ✔ Image pushed to ECR repository
-* ✔ Repository: `xfusion-ecr`
-* ✔ Tag: `latest`
+*  AWS ECR login successful
+*  Docker image built successfully
+*  Image tagged correctly for ECR
+*  Image pushed to ECR repository
+*  Repository: `xfusion-ecr`
+*  Tag: `latest`
 
-***
+---
 
-## 📦 Final Image Location
+##  Final Image Location
 
 ```
 139373540961.dkr.ecr.us-east-1.amazonaws.com/xfusion-ecr:latest
 ```
 
-***
+---
 
-## 🏁 Conclusion
+##  Conclusion
 
 This task demonstrates a full container workflow:
 
@@ -229,7 +228,7 @@ AWS ECR Push
 Private Container Registry
 ```
 
-***
+---
 
 <figure><img src=".gitbook/assets/image (29).png" alt=""><figcaption></figcaption></figure>
 
@@ -240,3 +239,7 @@ Private Container Registry
 <figure><img src=".gitbook/assets/image (32).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src=".gitbook/assets/image (33).png" alt=""><figcaption></figcaption></figure>
+
+---
+
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha

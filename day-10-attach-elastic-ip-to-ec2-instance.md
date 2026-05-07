@@ -1,59 +1,60 @@
 # Day 10: Attach Elastic IP to EC2 Instance
 
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha
+
 The Nautilus DevOps team has been creating a couple of services on AWS cloud. They have been breaking down the migration into smaller tasks, allowing for better control, risk mitigation, and optimization of resources throughout the migration process. Recently they came up with requirements mentioned below.
 
 There is an instance named `nautilus-ec2` and an elastic-ip named `nautilus-ec2-eip` in `us-east-1` region. Attach the `nautilus-ec2-eip` elastic-ip to the `nautilus-ec2` instance.
 
 Use below given AWS Credentials: (You can run the `showcreds` command on `aws-client` host to retrieve these credentials)
 
-| Console URL | [https://691595780564.signin.aws.amazon.com/console?region=us-east-1](https://691595780564.signin.aws.amazon.com/console?region=us-east-1) |
+| Console URL | https://<aws-account>.signin.aws.amazon.com/console?region=us-east-1 |
 | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| Username    | kk\_labs\_user\_502315                                                                                                                     |
-| Password    | OazW5sX8sIRR                                                                                                                               |
+| Username    | <REDACTED_USERNAME> |
+| Password    | <REDACTED_PASSWORD> |
 | Start Time  | Sat Jan 17 03:55:17 UTC 2026                                                                                                               |
 | End Time    | Sat Jan 17 04:55:17 UTC 2026                                                                                                               |
 
-\
 `Notes:`
 
 * Create the resources only in `us-east-1` region.
 
-## ✅ Day 10: Attach Elastic IP to EC2 Instance
+##  Day 10: Attach Elastic IP to EC2 Instance
 
-### 🎯 Objective
+###  Objective
 
 Attach an existing **Elastic IP** named **`nautilus-ec2-eip`** to an existing **EC2 instance** named **`nautilus-ec2`** in the **`us-east-1`** region.
 
-***
+---
 
-### 📌 Given Constraints (Important)
+###  Given Constraints (Important)
 
 * **Region:** `us-east-1` only
 * **EC2 Instance:** `nautilus-ec2` (already exists)
 * **Elastic IP:** `nautilus-ec2-eip` (already allocated)
-* ❌ Do **NOT** create new resources
+*  Do **NOT** create new resources
 
-***
+---
 
-### 🧠 Concept (Exam Point)
+###  Concept (Exam Point)
 
 An **Elastic IP (EIP)** in **Amazon EC2** is a **static public IPv4 address** designed for dynamic cloud computing.
 
 Attaching an EIP ensures the public IP **does not change** after instance restarts.
 
-***
+---
 
-## 🧪 Method 1: AWS CLI (Preferred for KodeKloud)
+##  Method 1: AWS CLI (Preferred for KodeKloud)
 
-#### 🔹 Step 1: Login to aws-client host
+####  Step 1: Login to aws-client host
 
 ```bash
 ssh aws-client
 ```
 
-***
+---
 
-#### 🔹 Step 2: Load AWS credentials
+####  Step 2: Load AWS credentials
 
 ```bash
 showcreds
@@ -65,9 +66,9 @@ Copy:
 * AWS\_SECRET\_ACCESS\_KEY
 * AWS\_SESSION\_TOKEN
 
-***
+---
 
-#### 🔹 Step 3: Configure AWS CLI
+####  Step 3: Configure AWS CLI
 
 ```bash
 aws configure
@@ -80,9 +81,9 @@ Enter:
 * **Region** → `us-east-1`
 * **Output format** → `json`
 
-***
+---
 
-#### 🔹 Step 4: Get EC2 Instance ID
+####  Step 4: Get EC2 Instance ID
 
 ```bash
 aws ec2 describe-instances \
@@ -91,15 +92,15 @@ aws ec2 describe-instances \
   --output text
 ```
 
-📌 Example output:
+ Example output:
 
 ```
 i-0abc1234def567890
 ```
 
-***
+---
 
-#### 🔹 Step 5: Get Elastic IP Allocation ID
+####  Step 5: Get Elastic IP Allocation ID
 
 ```bash
 aws ec2 describe-addresses \
@@ -108,15 +109,15 @@ aws ec2 describe-addresses \
   --output text
 ```
 
-📌 Example output:
+ Example output:
 
 ```
 eipalloc-0123456789abcdef0
 ```
 
-***
+---
 
-#### 🔹 Step 6: Attach Elastic IP to EC2
+####  Step 6: Attach Elastic IP to EC2
 
 ```bash
 aws ec2 associate-address \
@@ -124,11 +125,11 @@ aws ec2 associate-address \
   --allocation-id eipalloc-0123456789abcdef0
 ```
 
-✅ Successful execution returns an **AssociationId**.
+ Successful execution returns an **AssociationId**.
 
-***
+---
 
-#### 🔹 (Optional) Verify Attachment
+####  (Optional) Verify Attachment
 
 ```bash
 aws ec2 describe-addresses \
@@ -139,36 +140,36 @@ Expected:
 
 * `InstanceId` → `nautilus-ec2`
 
-***
+---
 
-## 🖥️ Method 2: AWS Console (GUI)
+##  Method 2: AWS Console (GUI)
 
-#### 🔹 Step 1: Login to AWS Console
+####  Step 1: Login to AWS Console
 
 Open **AWS Management Console**\
-🔗 [https://691595780564.signin.aws.amazon.com/console](https://691595780564.signin.aws.amazon.com/console)
+ [https://691595780564.signin.aws.amazon.com/console](https://691595780564.signin.aws.amazon.com/console)
 
 * **Region:** `us-east-1`
 * Use provided **Username & Password**
 
-***
+---
 
-#### 🔹 Step 2: Navigate to Elastic IPs
+####  Step 2: Navigate to Elastic IPs
 
 ```
 Services → EC2 → Network & Security → Elastic IPs
 ```
 
-***
+---
 
-#### 🔹 Step 3: Select the Elastic IP
+####  Step 3: Select the Elastic IP
 
 * Choose **`nautilus-ec2-eip`**
 * Click **Actions → Associate Elastic IP address**
 
-***
+---
 
-#### 🔹 Step 4: Associate with EC2 Instance
+####  Step 4: Associate with EC2 Instance
 
 * **Resource type:** Instance
 * **Instance:** `nautilus-ec2`
@@ -182,25 +183,25 @@ Click **Associate**
 
 ![Image](https://i0.wp.com/economizecloud.wpengine.com/wp-content/uploads/2023/11/ElasticIP.png?resize=721%2C561\&ssl=1)
 
-***
+---
 
-#### 🔹 Step 5: Verify
+####  Step 5: Verify
 
 * Elastic IP status → **In use**
 * Associated instance → **nautilus-ec2**
 
-***
+---
 
-## ✅ Final Validation Checklist
+##  Final Validation Checklist
 
-✔ Elastic IP: `nautilus-ec2-eip`\
-✔ Instance: `nautilus-ec2`\
-✔ Region: `us-east-1`\
-✔ EIP status: **Associated / In use**
+ Elastic IP: `nautilus-ec2-eip`\
+ Instance: `nautilus-ec2`\
+ Region: `us-east-1`\
+ EIP status: **Associated / In use**
 
-***
+---
 
-### 🧠 KodeKloud Exam Tips
+###  KodeKloud Exam Tips
 
 * **EIP needs Allocation ID**, not IP address (for VPC)
 * `associate-address` is the key CLI command
@@ -208,31 +209,31 @@ Click **Associate**
 
 ```bash
 
-~ on ☁️  (us-east-1) ➜  aws ec2 describe-instances \
+~ on   (us-east-1)   aws ec2 describe-instances \
   --filters "Name=tag:Name,Values=nautilus-ec2" \
   --query "Reservations[].Instances[].InstanceId" \
   --output text
 i-066be603cea44b979
 
-~ on ☁️  (us-east-1) ➜  aws ec2 describe-addresses \
+~ on   (us-east-1)   aws ec2 describe-addresses \
   --filters "Name=tag:Name,Values=nautilus-ec2-eip" \
   --query "Addresses[].AllocationId" \
   --output text
 eipalloc-0ac22d845d7da377b
 
-~ on ☁️  (us-east-1) ➜  aws ec2 associate-address \
+~ on   (us-east-1)   aws ec2 associate-address \
   --instance-id i-066be603cea44b979 \
   --allocation-id eipalloc-0ac22d845d7da377b
 {
     "AssociationId": "eipassoc-0045976d3b4818dfa"
 }
 
-~ on ☁️  (us-east-1) ➜  aws ec2 describe-addresses \
+~ on   (us-east-1)   aws ec2 describe-addresses \
   --allocation-ids eipassoc-0045976d3b4818dfa
 
 An error occurred (InvalidAllocationID.NotFound) when calling the DescribeAddresses operation: The allocation ID 'eipassoc-0045976d3b4818dfa' does not exist
 
-~ on ☁️  (us-east-1) ✖ aws ec2 describe-addresses \
+~ on   (us-east-1)  aws ec2 describe-addresses \
   --allocation-ids eipalloc-0ac22d845d7da377b
 {
     "Addresses": [
@@ -257,16 +258,16 @@ An error occurred (InvalidAllocationID.NotFound) when calling the DescribeAddres
     ]
 }
 
-~ on ☁️  (us-east-1) ➜  aws ec2 describe-instances \
+~ on   (us-east-1)   aws ec2 describe-instances \
   --instance-ids i-066be603cea44b979 \
   --query "Reservations[].Instances[].PublicIpAddress" \
   --output text
 98.94.228.219
 
-~ on ☁️  (us-east-1) ➜  
+~ on   (us-east-1)
 ```
 
-### 🔍 What went wrong (very common mistake)
+###  What went wrong (very common mistake)
 
 You ran this command:
 
@@ -277,8 +278,8 @@ aws ec2 describe-addresses \
 
 But:
 
-* `eipassoc-0045976d3b4818dfa` → ❌ **Association ID**
-* `describe-addresses` expects → ✅ **Allocation ID** (`eipalloc-xxxx`)
+* `eipassoc-0045976d3b4818dfa` →  **Association ID**
+* `describe-addresses` expects →  **Allocation ID** (`eipalloc-xxxx`)
 
 That’s why AWS says:
 
@@ -286,9 +287,9 @@ That’s why AWS says:
 InvalidAllocationID.NotFound
 ```
 
-***
+---
 
-### ✅ Your attachment WAS successful
+###  Your attachment WAS successful
 
 This output confirms success:
 
@@ -300,11 +301,11 @@ This output confirms success:
 
 If association failed, AWS would have thrown an error immediately.
 
-***
+---
 
-### ✅ Correct way to verify (2 options)
+###  Correct way to verify (2 options)
 
-#### ✅ Option 1: Verify using Allocation ID (recommended)
+####  Option 1: Verify using Allocation ID (recommended)
 
 ```bash
 aws ec2 describe-addresses \
@@ -316,9 +317,9 @@ You should see:
 * `"InstanceId": "i-066be603cea44b979"`
 * `"AssociationId": "eipassoc-0045976d3b4818dfa"`
 
-***
+---
 
-#### ✅ Option 2: Verify via EC2 instance
+####  Option 2: Verify via EC2 instance
 
 ```bash
 aws ec2 describe-instances \
@@ -329,9 +330,9 @@ aws ec2 describe-instances \
 
 This should return the **Elastic IP address**, not a random public IP.
 
-***
+---
 
-### 🧠 Memory Trick (KodeKloud / Exam)
+###  Memory Trick (KodeKloud / Exam)
 
 | ID Type            | Prefix      | Used For              |
 | ------------------ | ----------- | --------------------- |
@@ -339,14 +340,17 @@ This should return the **Elastic IP address**, not a random public IP.
 | **Association ID** | `eipassoc-` | Confirms attachment   |
 | **Instance ID**    | `i-`        | EC2 instance          |
 
-👉 **describe-addresses → always uses `eipalloc-*`**
+ **describe-addresses → always uses `eipalloc-*`**
 
-***
+---
 
-### 🏁 Final Status
+###  Final Status
 
-✔ Elastic IP attached successfully\
-✔ Instance: `nautilus-ec2`\
-✔ Region: `us-east-1`\
-✔ Task completed correctly
+ Elastic IP attached successfully\
+ Instance: `nautilus-ec2`\
+ Region: `us-east-1`\
+ Task completed correctly
 
+---
+
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha

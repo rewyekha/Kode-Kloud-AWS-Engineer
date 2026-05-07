@@ -1,5 +1,7 @@
 # Day 38: Deploying Containerized Applications with Amazon ECS
 
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha
+
 The Nautilus DevOps team is tasked with deploying a containerized application using Amazon's container services. They need to create a private Amazon Elastic Container Registry (ECR) to store their Docker images and use Amazon Elastic Container Service (ECS) to deploy the application. The process involves building a Docker image from a given Dockerfile, pushing it to the ECR, and then setting up an ECS cluster to run the application.
 
 1. **Create a Private ECR Repository**:
@@ -24,10 +26,6 @@ Use below given AWS Credentials: (You can run the `showcreds` command on `aws-cl
 
 * Create the resources only in `us-east-1` region.
 
-
-
-
-
 <figure><img src=".gitbook/assets/image (7) (1).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src=".gitbook/assets/image (8) (1).png" alt=""><figcaption></figcaption></figure>
@@ -39,3 +37,7 @@ Use below given AWS Credentials: (You can run the `showcreds` command on `aws-cl
 <figure><img src=".gitbook/assets/image (11) (1).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src=".gitbook/assets/image (12) (1).png" alt=""><figcaption></figcaption></figure>
+
+---
+
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha

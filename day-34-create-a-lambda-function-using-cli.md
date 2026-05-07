@@ -1,5 +1,7 @@
 # Day 34: Create a Lambda Function Using CLI
 
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha
+
 The Nautilus DevOps team continues to explore serverless architecture by setting up another Lambda function. This time, the task must be completed using the AWS Console to familiarize the team with the web interface. The function will return a custom greeting and demonstrate the capabilities of AWS Lambda effectively.
 
 1. Create Python Script: Create a Python script named `lambda_function.py` with a function that returns the body `Welcome to KKE AWS Labs!` and status code `200`.
@@ -7,13 +9,11 @@ The Nautilus DevOps team continues to explore serverless architecture by setting
 3. Create Lambda Function: Create a Lambda function named `xfusion-lambda-cli` using the zipped file and specify `Python` as the runtime.
 4. IAM Role: Use the IAM role named `lambda_execution_role`. Use AWS CLI which is already configured on the `aws-client` host.
 
-
-
 ## AWS Lambda: Create and Deploy a Python Serverless Function via CLI
 
 > **Platform:** KodeKloud | **Cloud:** AWS | **Region:** us-east-1 **Difficulty:** Beginner | **Topic:** AWS Lambda, Python, IAM, Serverless, AWS CLI
 
-***
+---
 
 ### Table of Contents
 
@@ -31,13 +31,13 @@ The Nautilus DevOps team continues to explore serverless architecture by setting
 12. [Key Concepts](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#key-concepts)
 13. [Resource Reference](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#resource-reference)
 
-***
+---
 
 ### Lab Overview
 
 The Nautilus DevOps team continues to explore serverless architecture by setting up a Lambda function using the AWS CLI. The function returns a custom greeting and demonstrates the core capabilities of AWS Lambda — event-driven, stateless execution without server management.
 
-***
+---
 
 ### Lab Objectives
 
@@ -46,7 +46,7 @@ The Nautilus DevOps team continues to explore serverless architecture by setting
 3. Create a Lambda function named `xfusion-lambda-cli` using the zipped file with Python as the runtime.
 4. Use the existing IAM role named `lambda_execution_role`.
 
-***
+---
 
 ### Prerequisites
 
@@ -59,7 +59,7 @@ The Nautilus DevOps team continues to explore serverless architecture by setting
 | IAM Role             | `lambda_execution_role`          |
 | Handler              | `lambda_function.lambda_handler` |
 
-***
+---
 
 ### Architecture
 
@@ -92,7 +92,7 @@ aws-client host
 └─────────────────────────────────────────────────────┘
 ```
 
-***
+---
 
 ### Phase 1: Set Environment Variables
 
@@ -107,14 +107,14 @@ IAM_ROLE="lambda_execution_role"
 **Terminal Output:**
 
 ```
-~ on ☁️  (us-east-1) ➜  LAMBDA_NAME="xfusion-lambda-cli"
+~ on   (us-east-1)   LAMBDA_NAME="xfusion-lambda-cli"
 RUNTIME="python3.9"
 IAM_ROLE="lambda_execution_role"
 
-~ on ☁️  (us-east-1) ➜
+~ on   (us-east-1)
 ```
 
-***
+---
 
 ### Phase 2: Create the Python Script
 
@@ -133,7 +133,7 @@ EOF
 **Terminal Output:**
 
 ```
-~ on ☁️  (us-east-1) ➜  cat > lambda_function.py <<EOF
+~ on   (us-east-1)   cat > lambda_function.py <<EOF
 def lambda_handler(event, context):
     return {
         "statusCode": 200,
@@ -141,7 +141,7 @@ def lambda_handler(event, context):
     }
 EOF
 
-~ on ☁️  (us-east-1) ➜
+~ on   (us-east-1)
 ```
 
 The resulting `lambda_function.py` file contains:
@@ -156,7 +156,7 @@ def lambda_handler(event, context):
 
 The function name `lambda_handler` and file name `lambda_function.py` together form the handler reference `lambda_function.lambda_handler` — the format AWS Lambda uses to locate and invoke the function.
 
-***
+---
 
 ### Phase 3: Zip the Script
 
@@ -169,15 +169,15 @@ zip function.zip lambda_function.py
 **Terminal Output:**
 
 ```
-~ on ☁️  (us-east-1) ➜  zip function.zip lambda_function.py
+~ on   (us-east-1)   zip function.zip lambda_function.py
   adding: lambda_function.py (deflated 14%)
 
-~ on ☁️  (us-east-1) ➜
+~ on   (us-east-1)
 ```
 
 The file was compressed with `deflated 14%` reduction. The resulting `function.zip` contains `lambda_function.py` at the root level — the placement inside the ZIP determines the handler path.
 
-***
+---
 
 ### Phase 4: Get the IAM Role ARN
 
@@ -193,12 +193,12 @@ ROLE_ARN=$(aws iam get-role \
 **Terminal Output:**
 
 ```
-~ on ☁️  (us-east-1) ➜  ROLE_ARN=$(aws iam get-role \
+~ on   (us-east-1)   ROLE_ARN=$(aws iam get-role \
   --role-name $IAM_ROLE \
   --query "Role.Arn" \
   --output text)
 
-~ on ☁️  (us-east-1) ➜
+~ on   (us-east-1)
 ```
 
 The ARN was stored in `$ROLE_ARN` with the format:
@@ -207,7 +207,7 @@ The ARN was stored in `$ROLE_ARN` with the format:
 arn:aws:iam::495779504297:role/lambda_execution_role
 ```
 
-***
+---
 
 ### Phase 5: Create the Lambda Function
 
@@ -225,7 +225,7 @@ aws lambda create-function \
 **Terminal Output:**
 
 ```bash
-~ on ☁️  (us-east-1) ➜  aws lambda create-function \
+~ on   (us-east-1)   aws lambda create-function \
   --function-name $LAMBDA_NAME \
   --runtime $RUNTIME \
   --role "$ROLE_ARN" \
@@ -289,7 +289,7 @@ The function was accepted by AWS with the following key configuration confirmed 
 | `Architecture` | `x86_64`                                                            |
 | `LogGroup`     | `/aws/lambda/xfusion-lambda-cli`                                    |
 
-***
+---
 
 ### Phase 6: Invoke and Verify the Function
 
@@ -304,7 +304,7 @@ aws lambda invoke \
 **Terminal Output:**
 
 ```
-~ on ☁️  (us-east-1) ➜  aws lambda invoke \
+~ on   (us-east-1)   aws lambda invoke \
   --function-name $LAMBDA_NAME \
   output.json
 {
@@ -322,10 +322,10 @@ cat output.json
 **Terminal Output:**
 
 ```
-~ on ☁️  (us-east-1) ➜  cat output.json
+~ on   (us-east-1)   cat output.json
 {"statusCode": 200, "body": "Welcome to KKE AWS Labs!"}
 
-~ on ☁️  (us-east-1) ➜
+~ on   (us-east-1)
 ```
 
 The function returned exactly the expected payload:
@@ -333,7 +333,7 @@ The function returned exactly the expected payload:
 * `statusCode: 200`
 * `body: Welcome to KKE AWS Labs!`
 
-***
+---
 
 ### Lab Complete
 
@@ -349,7 +349,7 @@ The function returned exactly the expected payload:
 | Invocation status | `StatusCode: 200`                                                   | Confirmed |
 | Response body     | `Welcome to KKE AWS Labs!`                                          | Confirmed |
 
-***
+---
 
 ### Key Concepts
 
@@ -416,7 +416,7 @@ The `lambda_execution_role` grants Lambda the permissions it needs to run. At mi
 
 This allows Lambda to write execution logs to CloudWatch — which is confirmed in the response by the `LogGroup: /aws/lambda/xfusion-lambda-cli` field. Without this role, the function would fail to initialise.
 
-***
+---
 
 ### Resource Reference
 
@@ -439,8 +439,12 @@ This allows Lambda to write execution logs to CloudWatch — which is confirmed 
 | Region        | AWS        | `us-east-1`                                                         |
 | Account ID    | AWS        | `495779504297`                                                      |
 
-***
+---
 
 _Lab completed on 2026-03-28 | AWS Region: us-east-1 | Runtime: python3.9 | Platform: KodeKloud_
 
 <figure><img src=".gitbook/assets/image (22).png" alt=""><figcaption></figcaption></figure>
+
+---
+
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha
