@@ -663,7 +663,7 @@ PUB_VPC_ID=$(aws ec2 create-vpc \
 
 ```
 An error occurred (AccessDenied) when calling the PutRolePolicy operation:
-User: arn:aws:iam::138251745622:user/<REDACTED_USERNAME> is not authorized
+User: arn:aws:iam::138251745622:user/redacted-user is not authorized
 to perform: iam:PutRolePolicy on resource: role datacenter-s3-role
 ```
 
