@@ -153,6 +153,4 @@ aws iam get-user --user-name iamuser_anita
 
 ---
 
----
-
 > Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha

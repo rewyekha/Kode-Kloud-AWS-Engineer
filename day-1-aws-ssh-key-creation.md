@@ -4,4 +4,4 @@
 
 ---
 
-> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha
+> Footer Reference — Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha
