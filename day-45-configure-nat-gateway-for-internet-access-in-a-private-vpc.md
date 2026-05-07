@@ -1,5 +1,7 @@
 # Day 45: Configure NAT Gateway for Internet Access in a Private VPC
 
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha
+
 The Nautilus DevOps team is tasked with enabling internet access for an EC2 instance running in a private subnet. This instance should be able to upload a test file to a public S3 bucket once it can access the internet. To achieve this, the team must set up a NAT Gateway in a public subnet within the same VPC.
 
 1\) A VPC named `xfusion-priv-vpc` and a private subnet `xfusion-priv-subnet` have already been created.\
@@ -21,15 +23,13 @@ Once complete, verify that the EC2 instance can reach the internet by confirming
 * Use region `us-east-1`
 * To show/hide terminal: use the panel toggle button.
 
-
-
 ## AWS NAT Gateway — Enable Internet Access for Private EC2 Instance
 
 ### Overview
 
 This lab documents how to enable internet access for an EC2 instance running in a private subnet by setting up a NAT Gateway. Once internet access is established, the EC2 instance uploads a test file to a public S3 bucket via a pre-configured cron job.
 
-***
+---
 
 ### Lab Scenario
 
@@ -50,7 +50,7 @@ This lab documents how to enable internet access for an EC2 instance running in 
 
 > **Region:** `us-east-1`
 
-***
+---
 
 ### Architecture
 
@@ -78,7 +78,7 @@ EC2 Instance (nautilus-priv-ec2)
 S3 Bucket (nautilus-nat-528694802)
 ```
 
-***
+---
 
 ### Solution
 
@@ -119,7 +119,7 @@ PRIV_AZ: us-east-1a
 VPC_CIDR: 10.1.0.0/16
 ```
 
-***
+---
 
 #### Step 2 — Create the Public Subnet
 
@@ -157,7 +157,7 @@ Public CIDR will be: 10.1.2.0/24
 Public Subnet ID: subnet-0e033014380582eae
 ```
 
-***
+---
 
 #### Step 3 — Create and Attach an Internet Gateway
 
@@ -181,7 +181,7 @@ echo "IGW_ID: $IGW_ID"
 IGW_ID: igw-026c4b2002d8a4b45
 ```
 
-***
+---
 
 #### Step 4 — Create Public Route Table and Associate with Public Subnet
 
@@ -222,7 +222,7 @@ echo "Public RT ID: $PUB_RT_ID"
 Public RT ID: rtb-0ee7ecafe893dbc64
 ```
 
-***
+---
 
 #### Step 5 — Allocate Elastic IP and Create NAT Gateway
 
@@ -256,11 +256,11 @@ Waiting for NAT Gateway to become available...
 NAT Gateway is ready!
 ```
 
-***
+---
 
 #### Step 6 — Create Dedicated Private Route Table and Associate with Private Subnet
 
-> ⚠️ **Critical:** Do NOT use the main VPC route table. The lab validator requires an **explicit association** between the private subnet and a dedicated private route table. Using the main/default route table will cause the lab check to fail even if routing works correctly.
+>  **Critical:** Do NOT use the main VPC route table. The lab validator requires an **explicit association** between the private subnet and a dedicated private route table. Using the main/default route table will cause the lab check to fail even if routing works correctly.
 
 ```bash
 # Create a new dedicated private route table
@@ -306,7 +306,7 @@ Private subnet explicitly associated!
 NAT route added to private route table!
 ```
 
-***
+---
 
 #### Step 7 — Verify Routes and Associations
 
@@ -343,7 +343,7 @@ aws ec2 describe-route-tables --route-table-ids $PRIV_RT_ID \
 +------+------------------------------+-------------------------+----------------------------+
 ```
 
-***
+---
 
 #### Step 8 — Verify S3 Upload (Wait 2–3 minutes)
 
@@ -361,9 +361,9 @@ aws s3 ls s3://nautilus-nat-528694802/
 2026-04-26 15:25:03          0 nautilus-test.txt
 ```
 
-✅ The test file `nautilus-test.txt` is present in the bucket, confirming the EC2 instance in the private subnet can reach the internet via the NAT Gateway.
+ The test file `nautilus-test.txt` is present in the bucket, confirming the EC2 instance in the private subnet can reach the internet via the NAT Gateway.
 
-***
+---
 
 ### Resources Created
 
@@ -376,11 +376,11 @@ aws s3 ls s3://nautilus-nat-528694802/
 | NAT Gateway         | `nautilus-natgw`      | `nat-076bd018f26356a0a`      |
 | Private Route Table | `nautilus-priv-rt`    | `rtb-079651d4b3265d552`      |
 
-***
+---
 
 ### Key Lessons
 
-#### ❌ What Fails the Lab Checker
+####  What Fails the Lab Checker
 
 Using the **main VPC route table** for the private subnet — even though traffic routes correctly, the lab validator checks for an explicit subnet-to-route-table association.
 
@@ -392,7 +392,7 @@ PRIV_RT_ID=$(aws ec2 describe-route-tables \
 # Result: None  ← lab will fail
 ```
 
-#### ✅ What Passes the Lab Checker
+####  What Passes the Lab Checker
 
 Create a **new dedicated route table**, **explicitly associate** the private subnet to it, then add the NAT Gateway route.
 
@@ -417,3 +417,7 @@ PUB_CIDR="${BASE}.2.0/24"
 The NAT Gateway must be placed in the **public subnet** (which has an IGW route), not the private subnet. This is what allows it to forward traffic to the internet on behalf of private instances.
 
 <figure><img src=".gitbook/assets/image (108).png" alt=""><figcaption></figcaption></figure>
+
+---
+
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha

@@ -1,12 +1,14 @@
 # Day 30: Enable Internet Access for Private EC2 using NAT Instance
 
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha
+
 ## NAT Instance Lab: Enabling Internet Access for a Private EC2 Instance
 
 > **Platform:** KodeKloud | **Cloud:** AWS | **Region:** us-east-1
 >
 > **Difficulty:** Intermediate | **Topic:** Networking, NAT, VPC, EC2, S3
 
-***
+---
 
 1. [Lab Overview](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#lab-overview)
 2. [Architecture Diagram](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#architecture-diagram)
@@ -22,15 +24,15 @@
 12. [Key Concepts](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#key-concepts)
 13. [Resource Summary](https://claude.ai/chat/2167892e-87fd-41a5-a1b7-351d743253cc#resource-summary)
 
-***
+---
 
 ### Lab Overview
 
 The Nautilus DevOps team needs to enable internet access for an EC2 instance running in a **private subnet**, so it can upload a test file to a public S3 bucket. To minimize costs, the team has chosen to use a **NAT Instance** instead of a NAT Gateway.
 
-> ⚠️ **Note:** `iptables` is not installed by default on Amazon Linux 2023. It must be installed and enabled before configuring NAT.
+>  **Note:** `iptables` is not installed by default on Amazon Linux 2023. It must be installed and enabled before configuring NAT.
 
-***
+---
 
 ### Architecture Diagram
 
@@ -72,7 +74,7 @@ The Nautilus DevOps team needs to enable internet access for an EC2 instance run
                                └──────────────────┘
 ```
 
-***
+---
 
 ### Prerequisites & Existing Resources
 
@@ -86,17 +88,17 @@ The following resources already exist in the environment:
 | S3 Bucket      | `datacenter-nat-17811`   | Public bucket for test file upload         |
 | Cron Job       | on `datacenter-priv-ec2` | Uploads `datacenter-test.txt` every minute |
 
-***
+---
 
 ### Lab Objectives
 
-* ✅ Create a new **public subnet** named `datacenter-pub-subnet` in the existing VPC
-* ✅ Launch a **NAT Instance** named `datacenter-nat-instance` in the public subnet using Amazon Linux 2023
-* ✅ Configure the NAT instance with `iptables` MASQUERADE rules
-* ✅ Route private subnet traffic through the NAT instance
-* ✅ Verify `datacenter-test.txt` appears in the S3 bucket
+*  Create a new **public subnet** named `datacenter-pub-subnet` in the existing VPC
+*  Launch a **NAT Instance** named `datacenter-nat-instance` in the public subnet using Amazon Linux 2023
+*  Configure the NAT instance with `iptables` MASQUERADE rules
+*  Route private subnet traffic through the NAT instance
+*  Verify `datacenter-test.txt` appears in the S3 bucket
 
-***
+---
 
 ### Phase 1: Gather Existing Resource Information
 
@@ -183,7 +185,7 @@ rtb-0e9bf061b3aa4ca15
 | Availability Zone      | `us-east-1a`               |
 | Private Route Table ID | `rtb-0e9bf061b3aa4ca15`    |
 
-***
+---
 
 ### Phase 2: Create Public Subnet
 
@@ -244,7 +246,7 @@ aws ec2 modify-subnet-attribute \
 
 _(No output — success is silent)_
 
-***
+---
 
 ### Phase 3: Internet Gateway Setup
 
@@ -364,7 +366,7 @@ aws ec2 associate-route-table \
 }
 ```
 
-***
+---
 
 ### Phase 4: Security Group for NAT Instance
 
@@ -485,7 +487,7 @@ aws ec2 authorize-security-group-ingress \
 }
 ```
 
-***
+---
 
 ### Phase 5: Launch the NAT Instance
 
@@ -546,7 +548,7 @@ EOF
 
 #### Launch the NAT Instance
 
-> ⚠️ The `--source-dest-check` flag is **not** supported in `run-instances`. It must be disabled separately using `modify-instance-attribute` after launch.
+>  The `--source-dest-check` flag is **not** supported in `run-instances`. It must be disabled separately using `modify-instance-attribute` after launch.
 
 ```bash
 aws ec2 run-instances \
@@ -618,7 +620,7 @@ aws ec2 modify-instance-attribute \
 
 _(No output — success is silent)_
 
-***
+---
 
 ### Phase 6: Update Private Subnet Route Table
 
@@ -640,7 +642,7 @@ aws ec2 create-route \
 }
 ```
 
-***
+---
 
 ### Phase 7: Verify the Setup
 
@@ -656,9 +658,9 @@ aws s3 ls s3://datacenter-nat-17811 --region us-east-1
 2026-03-23 07:21:09         21 datacenter-test.txt
 ```
 
-✅ **Lab Complete!** The file `datacenter-test.txt` is present in the S3 bucket, confirming that the private EC2 instance successfully reached the internet through the NAT instance.
+ **Lab Complete!** The file `datacenter-test.txt` is present in the S3 bucket, confirming that the private EC2 instance successfully reached the internet through the NAT instance.
 
-***
+---
 
 ### Key Concepts
 
@@ -698,7 +700,7 @@ Private EC2 receives the response
 
 Amazon Linux 2023 uses `nftables` as its default firewall framework and does **not** include `iptables` out of the box. You must explicitly install `iptables-services` via `dnf` before you can configure NAT masquerading rules.
 
-***
+---
 
 ### Resource Summary
 
@@ -715,8 +717,12 @@ Amazon Linux 2023 uses `nftables` as its default firewall framework and does **n
 | AMI                 | Amazon Linux 2023         | `ami-0fc6cf99992956a4a`    |
 | S3 Bucket           | `datacenter-nat-17811`    | —                          |
 
-***
+---
 
 <figure><img src=".gitbook/assets/image (86).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src=".gitbook/assets/Screenshot 2026-03-23 125419.png" alt=""><figcaption></figcaption></figure>
+
+---
+
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha

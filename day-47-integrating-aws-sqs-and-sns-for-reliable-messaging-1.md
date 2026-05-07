@@ -1,5 +1,7 @@
 # Day 47: Integrating AWS SQS and SNS for Reliable Messaging
 
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha
+
 The Nautilus DevOps team needs to implement a Lambda function using a CloudFormation stack. Create a CloudFormation template named `/root/nautilus-lambda.yml` on the AWS client host and configure it to create the following components. The stack name must be `nautilus-lambda-app`.
 
 1. Create a Lambda function named `nautilus-lambda`.
@@ -8,16 +10,13 @@ The Nautilus DevOps team needs to implement a Lambda function using a CloudForma
 4. Ensure the status code is `200`.
 5. Create and use the IAM role named `lambda_execution_role`.
 
-\
 `Notes:`
 
 * Create the resources only in `us-east-1` region.
 
-
-
 ## Day 48: Automating Infrastructure Deployment with AWS CloudFormation
 
-***
+---
 
 ### Overview
 
@@ -25,7 +24,7 @@ This lab demonstrates how to automate AWS infrastructure deployment using AWS Cl
 
 All resources are provisioned in the **us-east-1 (N. Virginia)** AWS region.
 
-***
+---
 
 ### Objectives
 
@@ -37,7 +36,7 @@ By completing this lab, you will be able to:
 * Validate infrastructure deployment using AWS CLI
 * Invoke and verify Lambda execution from the CLI
 
-***
+---
 
 ### Prerequisites
 
@@ -49,7 +48,7 @@ By completing this lab, you will be able to:
   * IAM roles
   * Lambda functions
 
-***
+---
 
 ### AWS Credentials
 
@@ -60,9 +59,9 @@ Credentials are provided via the `showcreds` command on the `aws-client` host.
 | Region    | us-east-1       |
 | Auth      | Via `showcreds` |
 
-> ⚠️ Do not hardcode credentials in templates or documentation.
+>  Do not hardcode credentials in templates or documentation.
 
-***
+---
 
 ### Architecture Overview
 
@@ -87,7 +86,7 @@ The CloudFormation stack provisions the following two resources:
 | Response Status | 200                        |
 | Response Body   | `Welcome to KKE AWS Labs!` |
 
-***
+---
 
 ### CloudFormation Template
 
@@ -130,7 +129,7 @@ Resources:
               }
 ```
 
-***
+---
 
 ### Deployment Steps
 
@@ -146,7 +145,7 @@ aws cloudformation create-stack \
 
 > `CAPABILITY_NAMED_IAM` is required whenever your template creates IAM resources with custom names.
 
-***
+---
 
 #### Step 2 — Wait for Stack Creation to Complete
 
@@ -156,9 +155,9 @@ aws cloudformation wait stack-create-complete \
   --region us-east-1
 ```
 
-> ✅ No output indicates successful completion. The command blocks until the stack reaches `CREATE_COMPLETE` or fails.
+>  No output indicates successful completion. The command blocks until the stack reaches `CREATE_COMPLETE` or fails.
 
-***
+---
 
 #### Step 3 — Verify Stack Status
 
@@ -181,7 +180,7 @@ aws cloudformation describe-stacks \
 }
 ```
 
-***
+---
 
 ### Lambda Function Validation
 
@@ -209,19 +208,19 @@ cat response.json
 }
 ```
 
-***
+---
 
 ### Verification Summary
 
 | Check                           | Expected Result                | Status |
 | ------------------------------- | ------------------------------ | ------ |
-| Stack status                    | `CREATE_COMPLETE`              | ✅      |
-| IAM role created                | `lambda_execution_role` exists | ✅      |
-| Lambda function created         | `nautilus-lambda` exists       | ✅      |
-| Lambda invocation response code | `200`                          | ✅      |
-| Lambda response body            | `Welcome to KKE AWS Labs!`     | ✅      |
+| Stack status                    | `CREATE_COMPLETE`              |       |
+| IAM role created                | `lambda_execution_role` exists |       |
+| Lambda function created         | `nautilus-lambda` exists       |       |
+| Lambda invocation response code | `200`                          |       |
+| Lambda response body            | `Welcome to KKE AWS Labs!`     |       |
 
-***
+---
 
 ### Cleanup (Optional)
 
@@ -235,7 +234,7 @@ aws cloudformation delete-stack \
 
 > This will remove the Lambda function and the IAM role. Confirm deletion by checking the CloudFormation console or running `describe-stacks` again.
 
-***
+---
 
 ### Key Takeaways
 
@@ -244,12 +243,16 @@ aws cloudformation delete-stack \
 * Lambda functions can be fully deployed **without ZIP files** using the `ZipFile` inline code block
 * The **AWS CLI** is a powerful alternative to the AWS Console for automation and scripting
 
-***
+---
 
 ### Conclusion
 
 This lab successfully demonstrates how to deploy AWS infrastructure using CloudFormation and validate it using the AWS CLI. The Lambda function executed as expected, returning the correct HTTP status code and response body.
 
-***
+---
 
 <figure><img src=".gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
+
+---
+
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha

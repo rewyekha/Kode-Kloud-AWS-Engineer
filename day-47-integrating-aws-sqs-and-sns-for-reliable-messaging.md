@@ -1,5 +1,7 @@
 # Day 47: Integrating AWS SQS and SNS for Reliable Messaging
 
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha
+
 The Nautilus DevOps team needs to implement priority queuing using Amazon SQS and SNS. The goal is to create a system where messages with different priorities are handled accordingly. You are required to use AWS CloudFormation to deploy the necessary resources in your AWS account. The CloudFormation template should be created on the AWS client host at `/root/devops-priority-stack.yml`, the stack name must be `devops-priority-stack` and it should create the following resources:
 
 1. Two SQS queues named `devops-High-Priority-Queue` and `devops-Low-Priority-Queue`.
@@ -21,20 +23,17 @@ aws sns publish --topic-arn $topicarn --message 'Low Priority message 1' --messa
 aws sns publish --topic-arn $topicarn --message 'Low Priority message 2' --message-attributes '{"priority" : { "DataType":"String", "StringValue":"low"}}'
 ```
 
-\
 `Notes:`
 
 * Create the resources only in `us-east-1` region.
 
-
-
-***
+---
 
 ## Priority Queue Implementation Using AWS SNS, SQS & Lambda
 
 **CloudFormation‑Based Deployment**
 
-***
+---
 
 ### Overview
 
@@ -42,7 +41,7 @@ This document describes the end‑to‑end implementation of a **priority-based 
 
 The goal of this lab was to ensure that **high‑priority messages are always processed before low‑priority messages**, while maintaining scalability and automation.
 
-***
+---
 
 ### Objectives
 
@@ -51,11 +50,11 @@ The goal of this lab was to ensure that **high‑priority messages are always pr
 * Consume messages using an **AWS Lambda function**
 * Automate infrastructure provisioning using **CloudFormation**
 * Validate correct behavior through CLI and AWS Console
-* Pass automated lab verification successfully ✅
+* Pass automated lab verification successfully
 
-***
+---
 
-### 🧱 Architecture Summary
+###  Architecture Summary
 
 | Component         | Purpose                              |
 | ----------------- | ------------------------------------ |
@@ -67,13 +66,13 @@ The goal of this lab was to ensure that **high‑priority messages are always pr
 | IAM Role          | Grants Lambda access to SQS & SNS    |
 | S3 Bucket         | Stores Lambda deployment package     |
 
-***
+---
 
-### 🔄 Message Flow Diagram
+###  Message Flow Diagram
 
 ![](.gitbook/assets/unknown.png)
 
-***
+---
 
 ### Implementation&#x20;
 
@@ -89,7 +88,7 @@ This file was zipped for deployment:
 
 zip function-code.zip index.py
 
-***
+---
 
 #### Create S3 Bucket and Upload Lambda Package
 
@@ -105,7 +104,7 @@ Upload the zipped function code:
 aws s3 cp function-code.zip s3://kklabsuser-512892/
 ```
 
-***
+---
 
 #### Create CloudFormation Template
 
@@ -125,7 +124,7 @@ The template provisions:
 
 _(Template validated and tested successfully.)_
 
-***
+---
 
 #### Deploy CloudFormation Stack
 
@@ -143,11 +142,11 @@ Deployment was monitored until status reached:
 CREATE_COMPLETE
 ```
 
-***
+---
 
 ### Verification & Testing
 
-***
+---
 
 #### Step 5: Retrieve SNS Topic ARN
 
@@ -157,11 +156,11 @@ topicarn=$(aws sns list-topics \
   --output text)
 ```
 
-***
+---
 
 #### Step 6: Publish Test Messages
 
-**🔴 High Priority Messages**
+** High Priority Messages**
 
 ```bash
 aws sns publish --topic-arn $topicarn \
@@ -173,7 +172,7 @@ aws sns publish --topic-arn $topicarn \
   --message-attributes '{"priority":{"DataType":"String","StringValue":"high"}}'
 ```
 
-**🔵 Low Priority Messages**
+** Low Priority Messages**
 
 ```bash
 aws sns publish --topic-arn $topicarn \
@@ -185,7 +184,7 @@ aws sns publish --topic-arn $topicarn \
   --message-attributes '{"priority":{"DataType":"String","StringValue":"low"}}'
 ```
 
-***
+---
 
 #### Step 7: Observe SQS Behavior
 
@@ -197,7 +196,7 @@ aws sns publish --topic-arn $topicarn \
 
 Confirms correct SNS filtering and delivery.
 
-***
+---
 
 #### Step 8: Test Lambda Execution
 
@@ -206,7 +205,7 @@ Confirms correct SNS filtering and delivery.
 * Triggered **Test** execution **4 times**
 * Lambda consumed messages successfully from queues
 
-***
+---
 
 ### Final Validation
 
@@ -214,7 +213,7 @@ Confirms correct SNS filtering and delivery.
 * Messages delivered and processed in correct priority order
 * IAM permissions verified
 
-***
+---
 
 ### Conclusion
 
@@ -227,18 +226,16 @@ Key takeaways:
 * CloudFormation ensures repeatable, auditable infrastructure
 * Lambda integrates seamlessly for downstream processing
 
-***
+---
 
-### 📎 Appendix
+###  Appendix
 
 * Region: **us-east-1**
 * Stack Name: **xfusion-priority-stack**
 * Lambda Runtime: **Python 3.9**
 * Deployment Method: **Infrastructure as Code (IaC)**
 
-***
-
-
+---
 
 <figure><img src=".gitbook/assets/image (111).png" alt=""><figcaption></figcaption></figure>
 
@@ -259,3 +256,7 @@ Key takeaways:
 <figure><img src=".gitbook/assets/image (119).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src=".gitbook/assets/image (120).png" alt=""><figcaption></figcaption></figure>
+
+---
+
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha

@@ -1,5 +1,7 @@
 # Day 2 - Security group
 
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha
+
 The Nautilus DevOps team is strategizing the migration of a portion of their infrastructure to the AWS cloud. Recognizing the scale of this undertaking, they have opted to approach the migration in incremental steps rather than as a single massive transition. To achieve this, they have segmented large tasks into smaller, more manageable units. This granular approach enables the team to execute the migration in gradual phases, ensuring smoother implementation and minimizing disruption to ongoing operations. By breaking down the migration into smaller tasks, the Nautilus DevOps team can systematically progress through each stage, allowing for better control, risk mitigation, and optimization of resources throughout the migration process.
 
 For this task, create a security group under default VPC with the following requirements:
@@ -11,23 +13,21 @@ For this task, create a security group under default VPC with the following requ
 
 Use below given AWS Credentials: (You can run the `showcreds` command on `aws-client` host to retrieve these credentials)
 
-| Console URL | [https://813673435456.signin.aws.amazon.com/console?region=us-east-1](https://813673435456.signin.aws.amazon.com/console?region=us-east-1) |
+| Console URL | https://<aws-account>.signin.aws.amazon.com/console?region=us-east-1 |
 | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| Username    | kk\_labs\_user\_903896                                                                                                                     |
-| Password    | 5^nC0QP7K^Mb                                                                                                                               |
+| Username    | <REDACTED_USERNAME> |
+| Password    | <REDACTED_PASSWORD> |
 
 <figure><img src=".gitbook/assets/image (47).png" alt=""><figcaption></figcaption></figure>
 
-
-
 Below are the **AWS CLI steps** to create the required security group in the **default VPC** and add the inbound rules.
 
-> ⚠️ Assumption:\
+>  Assumption:\
 > • You are logged into the **aws-client** host\
 > • AWS credentials are already configured using `showcreds`\
 > • Region is already set (or you can add `--region <region>` if needed)
 
-***
+---
 
 ### 1. Verify AWS CLI Configuration
 
@@ -37,7 +37,7 @@ Below are the **AWS CLI steps** to create the required security group in the **d
 aws sts get-caller-identity
 ```
 
-***
+---
 
 ### 2. Get the Default VPC ID
 
@@ -52,7 +52,7 @@ VPC_ID=$(aws ec2 describe-vpcs \
 echo $VPC_ID
 ```
 
-***
+---
 
 ### 3. Create the Security Group
 
@@ -69,7 +69,7 @@ SG_ID=$(aws ec2 create-security-group \
 echo $SG_ID
 ```
 
-***
+---
 
 ### 4. Add Inbound Rule for HTTP (Port 80)
 
@@ -83,7 +83,7 @@ aws ec2 authorize-security-group-ingress \
   --cidr 0.0.0.0/0
 ```
 
-***
+---
 
 ### 5. Add Inbound Rule for SSH (Port 22)
 
@@ -97,7 +97,7 @@ aws ec2 authorize-security-group-ingress \
   --cidr 0.0.0.0/0
 ```
 
-***
+---
 
 ### 6. Verify the Security Group
 
@@ -108,9 +108,9 @@ aws ec2 describe-security-groups \
   --group-ids $SG_ID
 ```
 
-***
+---
 
-✅ **Result**
+ **Result**
 
 * Security Group Name: `xfusion-sg`
 * VPC: Default VPC
@@ -118,3 +118,6 @@ aws ec2 describe-security-groups \
   * HTTP (80) → `0.0.0.0/0`
   * SSH (22) → `0.0.0.0/0`
 
+---
+
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha

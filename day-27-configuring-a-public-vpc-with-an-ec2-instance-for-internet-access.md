@@ -1,8 +1,10 @@
 # Day 27: Configuring a Public VPC with an EC2 Instance for Internet Access
 
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha
+
 ## **Creating a Public VPC and EC2 Instance on AWS**
 
-***
+---
 
 ### **Question / Task**
 
@@ -16,7 +18,7 @@
 > 5. Launch a **t2.micro** EC2 instance `xfusion-pub-ec2` in this subnet with SSH port 22 open.
 > 6. Verify internet connectivity.
 
-***
+---
 
 ### **Step 1: Create the VPC**
 
@@ -44,7 +46,7 @@ aws ec2 create-vpc \
 **Explanation:**\
 This creates a new VPC with CIDR `10.0.0.0/16` and tags it `xfusion-pub-vpc`.
 
-***
+---
 
 ### **Step 2: Create a Public Subnet**
 
@@ -75,7 +77,7 @@ aws ec2 create-subnet \
 **Explanation:**\
 A subnet is created. By default, AWS does **not** assign public IPs. We fix that in the next step.
 
-***
+---
 
 ### **Step 3: Enable Auto-Assign Public IP**
 
@@ -90,7 +92,7 @@ aws ec2 modify-subnet-attribute \
 **Explanation:**\
 All instances launched in this subnet will automatically receive a public IP.
 
-***
+---
 
 ### **Step 4: Create an Internet Gateway**
 
@@ -115,7 +117,7 @@ aws ec2 create-internet-gateway \
 **Explanation:**\
 This creates an IGW to enable internet access.
 
-***
+---
 
 ### **Step 5: Attach IGW to the VPC**
 
@@ -130,7 +132,7 @@ aws ec2 attach-internet-gateway \
 **Explanation:**\
 Now the VPC can route traffic to the internet.
 
-***
+---
 
 ### **Step 6: Create a Route Table and Route**
 
@@ -181,7 +183,7 @@ aws ec2 associate-route-table \
 **Explanation:**\
 This makes the subnet a **public subnet**, allowing instances to access the internet.
 
-***
+---
 
 ### **Step 7: Create Security Group and Open SSH**
 
@@ -215,7 +217,7 @@ aws ec2 authorize-security-group-ingress \
 **Explanation:**\
 This allows SSH from anywhere for management.
 
-***
+---
 
 ### **Step 8: Create a Key Pair**
 
@@ -230,7 +232,7 @@ chmod 400 xfusion-key.pem
 **Explanation:**\
 This creates an SSH key to access the EC2 instance.
 
-***
+---
 
 ### **Step 9: Launch EC2 Instance**
 
@@ -262,7 +264,7 @@ aws ec2 run-instances \
 **Explanation:**\
 The EC2 instance is launched in the public subnet with SSH access enabled.
 
-***
+---
 
 ### **Step 10: Verify Public IP**
 
@@ -279,7 +281,7 @@ aws ec2 describe-instances \
 3.239.104.156
 ```
 
-***
+---
 
 ### **Step 11: Connect via SSH and Test Internet**
 
@@ -298,9 +300,9 @@ PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
 ```
 
 **Explanation:**\
-SSH works and instance can reach the internet. ✅
+SSH works and instance can reach the internet.
 
-***
+---
 
 ### **Step 12: Summary**
 
@@ -314,10 +316,14 @@ SSH works and instance can reach the internet. ✅
 | EC2 Instance     | xfusion-pub-ec2       | Running, Public IP |
 | Key Pair         | `xfusion-key`         | Ready for SSH      |
 
-***
+---
 
-✅ **The public-facing VPC environment is ready for applications.**
+ **The public-facing VPC environment is ready for applications.**
 
-***
+---
 
 <figure><img src=".gitbook/assets/image (34).png" alt=""><figcaption></figcaption></figure>
+
+---
+
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha

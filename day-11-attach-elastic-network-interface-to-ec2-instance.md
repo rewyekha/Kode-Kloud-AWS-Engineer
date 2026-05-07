@@ -1,5 +1,7 @@
 # Day 11: Attach Elastic Network Interface to EC2 Instance
 
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha
+
 The Nautilus DevOps team has been creating a couple of services on AWS cloud. They have been breaking down the migration into smaller tasks, allowing for better control, risk mitigation, and optimization of resources throughout the migration process. Recently they came up with requirements mentioned below.
 
 An instance named `datacenter-ec2` and an elastic network interface named `datacenter-eni` already exists in `us-east-1` region.
@@ -11,14 +13,13 @@ Please make sure instance initialisation has been completed before submitting th
 
 Use below given AWS Credentials. (You can run the `showcreds` command on `aws-client` host to retrieve these credentials)
 
-| Console URL | [https://045946725843.signin.aws.amazon.com/console?region=us-east-1](https://045946725843.signin.aws.amazon.com/console?region=us-east-1) |
+| Console URL | https://<aws-account>.signin.aws.amazon.com/console?region=us-east-1 |
 | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| Username    | kk\_labs\_user\_565961                                                                                                                     |
-| Password    | b!BR^eBOZl%5                                                                                                                               |
+| Username    | <REDACTED_USERNAME> |
+| Password    | <REDACTED_PASSWORD> |
 | Start Time  | Wed Feb 11 05:28:31 UTC 2026                                                                                                               |
 | End Time    | Wed Feb 11 06:28:31 UTC 2026                                                                                                               |
 
-\
 `Notes:`
 
 * Create the resources only in `us-east-1` region.
@@ -35,29 +36,29 @@ The Nautilus DevOps team is migrating services to AWS. This guide explains how t
 > * Ensure the EC2 instance is **fully initialized** before attaching the ENI.
 > * Wait for the ENI status to show **in-use** before submitting the task.
 
-***
+---
 
 ### AWS Credentials
 
 | Field       | Value                                                                              |
 | ----------- | ---------------------------------------------------------------------------------- |
-| Console URL | [AWS Console](https://045946725843.signin.aws.amazon.com/console?region=us-east-1) |
-| Username    | `kk_labs_user_565961`                                                              |
-| Password    | `b!BR^eBOZl%5`                                                                     |
+| Console URL | https://<aws-account>.signin.aws.amazon.com/console?region=us-east-1 |
+| Username    | <REDACTED_USERNAME> |
+| Password    | <REDACTED_PASSWORD> |
 
 > You can also retrieve credentials via `showcreds` command on the `aws-client` host if using CLI.
 
-***
+---
 
 ### Method 1: Using AWS Console (GUI)
 
 #### Step 1: Log in and Verify Region
 
-1. Open [AWS Console](https://045946725843.signin.aws.amazon.com/console?region=us-east-1).
+1. Open [AWS Console](https://<aws-account>.signin.aws.amazon.com/console?region=us-east-1).
 2. Enter **Username** and **Password**.
 3. Ensure the **region is set to `us-east-1`** (top-right corner).
 
-***
+---
 
 #### Step 2: Verify EC2 Instance Initialization
 
@@ -66,7 +67,7 @@ The Nautilus DevOps team is migrating services to AWS. This guide explains how t
 3. Check **Instance State** → should be **running**.
 4. Confirm **Status Checks** show **2/2 checks passed**.
 
-***
+---
 
 #### Step 3: Attach ENI
 
@@ -76,7 +77,7 @@ The Nautilus DevOps team is migrating services to AWS. This guide explains how t
 4. Choose **Instance** → `datacenter-ec2`.
 5. Click **Attach**.
 
-***
+---
 
 #### Step 4: Confirm Attachment
 
@@ -84,7 +85,7 @@ The Nautilus DevOps team is migrating services to AWS. This guide explains how t
 2. Ensure `datacenter-eni` is listed.
 3. Verify **Status** shows **in-use**.
 
-***
+---
 
 ### Method 2: Using AWS CLI
 
@@ -101,7 +102,7 @@ aws ec2 describe-instances \
 
 * Ensure **State.Name** is `running`.
 
-***
+---
 
 #### Step 2: Attach ENI to EC2 Instance
 
@@ -115,7 +116,7 @@ aws ec2 attach-network-interface \
 
 * **`device-index`**: Choose 1 if the instance has its primary ENI already attached.
 
-***
+---
 
 #### Step 3: Verify ENI Attachment
 
@@ -128,7 +129,7 @@ aws ec2 describe-network-interfaces \
 
 * Confirm **Status** is `in-use` and **Attachment.InstanceId** is `datacenter-ec2`.
 
-***
+---
 
 #### Step 4: Confirm Network Interface on Instance
 
@@ -141,10 +142,14 @@ aws ec2 describe-instances \
 
 * `datacenter-eni` should appear in the list.
 
-***
+---
 
 ### Notes
 
 * Only attach resources in **us-east-1**.
 * Do not detach other ENIs unless required.
 * Ensure EC2 instance initialization is complete before submitting the task.
+
+---
+
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha

@@ -1,5 +1,7 @@
 # Table of contents
 
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha
+
 * [SUMMARY](README.md)
 * [Day 1 - AWS SSH Key Creation](day-1-aws-ssh-key-creation.md)
 * [Day 2 - Security group](day-2-security-group.md)
@@ -51,3 +53,7 @@
 * [Day 47: Integrating AWS SQS and SNS for Reliable Messaging](day-47-integrating-aws-sqs-and-sns-for-reliable-messaging-1.md)
 * [Day 49: Centralized Audit Logging with VPC Peering](day-49-centralized-audit-logging-with-vpc-peering.md)
 * [Day 50: Expanding EC2 Instance Storage for Development Needs](day-50-expanding-ec2-instance-storage-for-development-needs.md)
+
+---
+
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha

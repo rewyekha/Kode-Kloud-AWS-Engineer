@@ -1,5 +1,7 @@
 # Day 32: Snapshot and Restoration of an RDS Instance
 
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha
+
 The Nautilus Development Team is preparing for a major update to their database infrastructure. To ensure a smooth transition and to safeguard data, the team has requested the DevOps team to take a snapshot of the current RDS instance and restore it to a new instance. This process is crucial for testing and validation purposes before the update is rolled out to the production environment. The snapshot will serve as a backup, and the new instance will be used to verify that the backup process works correctly and that the application can function seamlessly with the restored data.
 
 As a member of the Nautilus DevOps Team, your task is to perform the following:
@@ -11,23 +13,20 @@ As a member of the Nautilus DevOps Team, your task is to perform the following:
 
 Use below given AWS Credentials: (You can run the `showcreds` command on `aws-client` host to retrieve these credentials)
 
-\
 `Notes:`
 
 * Create the resources only in `us-east-1` region.
 * To `display` or `hide` the terminal of the AWS client machine, you can use the expand toggle button as shown below:\
   ![toggle button](https://res.cloudinary.com/dezmljkdo/image/upload/v1678742174/AWS%20Lambda/expand_panel_hjgfkl.png)
 
-
-
-***
+---
 
 ## RDS: Snapshot and Restore an Instance Using AWS CLI
 
 > **Platform:** AWS | **Series:** Nautilus DevOps — Stratos Datacenter\
 > **Difficulty:** Intermediate | **Topic:** AWS RDS, Snapshots, Restore, AWS CLI
 
-***
+---
 
 ### Table of Contents
 
@@ -45,7 +44,7 @@ Use below given AWS Credentials: (You can run the `showcreds` command on `aws-cl
 4. [Lab Complete](https://chatgpt.com/c/69c23ef8-1ae0-8323-80bb-0c3f7948a669#lab-complete)
 5. [Key Concepts](https://chatgpt.com/c/69c23ef8-1ae0-8323-80bb-0c3f7948a669#key-concepts)
 
-***
+---
 
 ### Lab Question
 
@@ -58,7 +57,7 @@ Requirements:
 3. Ensure the new instance uses class `db.t3.micro`.
 4. Verify the new instance is in `available` state.
 
-***
+---
 
 ### Infrastructure Details
 
@@ -72,7 +71,7 @@ Requirements:
 
 > **Target:** AWS RDS (us-east-1 region)
 
-***
+---
 
 ### Solution
 
@@ -91,7 +90,7 @@ REGION="us-east-1"
 Terminal Output:
 
 ```bash
-~ on ☁️  (us-east-1) ➜  SOURCE_RDS="devops-rds"
+~ on   (us-east-1)   SOURCE_RDS="devops-rds"
 SNAPSHOT="devops-snapshot"
 TARGET_RDS="devops-snapshot-restore"
 CLASS="db.t3.micro"
@@ -100,7 +99,7 @@ REGION="us-east-1"
 
 Variables are successfully initialized.
 
-***
+---
 
 #### Step 2: Wait for Source RDS Instance
 
@@ -120,7 +119,7 @@ Terminal Output:
 
 No output indicates the instance is already available.
 
-***
+---
 
 #### Step 3: Create Snapshot
 
@@ -151,7 +150,7 @@ Terminal Output:
 
 Snapshot creation has started successfully.
 
-***
+---
 
 #### Step 4: Wait for Snapshot Completion
 
@@ -171,7 +170,7 @@ Terminal Output:
 
 Snapshot is now ready for restoration.
 
-***
+---
 
 #### Step 5: Verify Snapshot Dependency Error
 
@@ -193,7 +192,7 @@ An error occurred (DBInstanceNotFound) when calling the DescribeDBInstances oper
 
 This confirms the restore step has not yet been executed.
 
-***
+---
 
 #### Step 6: Restore Snapshot to New Instance
 
@@ -225,7 +224,7 @@ Terminal Output:
 
 Restoration process has started successfully.
 
-***
+---
 
 #### Step 7: Wait for Restored Instance
 
@@ -245,7 +244,7 @@ Terminal Output:
 
 The restored instance is now available.
 
-***
+---
 
 #### Step 8: Verify Restored Instance
 
@@ -271,7 +270,7 @@ Terminal Output:
 
 The restored instance is successfully available with correct configuration.
 
-***
+---
 
 ### Lab Complete
 
@@ -284,7 +283,7 @@ The restored instance is successfully available with correct configuration.
 | Instance class    | db.t3.micro             | Verified  |
 | Final state       | available               | Confirmed |
 
-***
+---
 
 ### Key Concepts
 
@@ -298,7 +297,7 @@ An RDS snapshot is a point-in-time backup of a database instance. It captures:
 
 Snapshots are used for backup and cloning purposes.
 
-***
+---
 
 #### Snapshot vs Restore
 
@@ -309,7 +308,7 @@ Snapshots are used for backup and cloning purposes.
 
 Snapshots do not create instances automatically; restore must be explicitly executed.
 
-***
+---
 
 #### AWS CLI Wait Commands
 
@@ -321,7 +320,7 @@ aws rds wait db-instance-available
 
 This ensures automation scripts run reliably without race conditions.
 
-***
+---
 
 #### Instance Class
 
@@ -331,7 +330,7 @@ db.t3.micro
 
 Defines CPU, memory, and performance characteristics of the database instance.
 
-***
+---
 
 #### Restore Behavior
 
@@ -343,7 +342,7 @@ When restoring:
 
 Only specified parameters like instance class are overridden.
 
-***
+---
 
 _Lab completed on 2026-03-25 | Region: us-east-1 | Service: AWS RDS | Tool: AWS CLI_
 
@@ -352,3 +351,7 @@ _Lab completed on 2026-03-25 | Region: us-east-1 | Service: AWS RDS | Tool: AWS 
 <figure><img src=".gitbook/assets/image (24).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src=".gitbook/assets/image (25).png" alt=""><figcaption></figcaption></figure>
+
+---
+
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha

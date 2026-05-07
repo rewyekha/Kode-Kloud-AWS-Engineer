@@ -1,33 +1,27 @@
 # Day 16: Create IAM User
 
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha
+
 When establishing infrastructure on the AWS cloud, Identity and Access Management (IAM) is among the first and most critical services to configure. IAM facilitates the creation and management of user accounts, groups, roles, policies, and other access controls. The Nautilus DevOps team is currently in the process of configuring these resources and has outlined the following requirements:
 
 For this task, create an IAM user named `iamuser_anita`.\
-<br>
-
-<br>
 
 Use below given AWS Credentials: (You can run the `showcreds` command on `aws-client` host to retrieve these credentials)
 
-| Console URL | [https://971482151402.signin.aws.amazon.com/console?region=us-east-1](https://971482151402.signin.aws.amazon.com/console?region=us-east-1) |
+| Console URL | https://<aws-account>.signin.aws.amazon.com/console?region=us-east-1 |
 | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| Username    | kk\_labs\_user\_701657                                                                                                                     |
-| Password    | h@Yn%wF^fa2^                                                                                                                               |
+| Username    | <REDACTED_USERNAME> |
+| Password    | <REDACTED_PASSWORD> |
 | Start Time  | Fri Feb 27 04:39:39 UTC 2026                                                                                                               |
 | End Time    | Fri Feb 27 05:39:39 UTC 2026                                                                                                               |
 
-\
 `Notes:`
 
 * Create the resources only in `us-east-1` region.
 * To `display` or `hide` the terminal of the AWS client machine, you can use the expand toggle button as shown below:\
   ![toggle button](https://res.cloudinary.com/dezmljkdo/image/upload/v1678742174/AWS%20Lambda/expand_panel_hjgfkl.png)
 
-
-
-
-
-***
+---
 
 ## Day 16: Create IAM User in AWS
 
@@ -42,22 +36,22 @@ The Nautilus DevOps Team needed to create an **IAM user** in AWS to manage acces
 * Use AWS region `us-east-1`.
 * Optional: Attach administrative or required policies (if permissions allow).
 
-***
+---
 
 ### Environment & Credentials
 
-* **AWS Console URL:** [https://971482151402.signin.aws.amazon.com/console?region=us-east-1](https://971482151402.signin.aws.amazon.com/console?region=us-east-1)
-* **Username:** `kk_labs_user_701657`
-* **Password:** `h@Yn%wF^fa2^`
+* **AWS Console URL:** [https://<aws-account>.signin.aws.amazon.com/console?region=us-east-1](https://<aws-account>.signin.aws.amazon.com/console?region=us-east-1)
+* **Username:** `<REDACTED_USERNAME>`
+* **Password:** `<REDACTED_PASSWORD>`
 * **Region:** us-east-1
 
 > Note: The account used has limited permissions and may not allow attaching managed policies.
 
-***
+---
 
 ### Solution Steps
 
-#### 1️⃣ Configure AWS CLI
+#### 1. Configure AWS CLI
 
 ```bash
 aws configure
@@ -72,9 +66,9 @@ Default region name: us-east-1
 Default output format: json
 ```
 
-***
+---
 
-#### 2️⃣ Create IAM User
+#### 2. Create IAM User
 
 ```bash
 aws iam create-user --user-name iamuser_anita
@@ -94,25 +88,25 @@ aws iam create-user --user-name iamuser_anita
 }
 ```
 
-✅ Confirms the user was successfully created.
+ Confirms the user was successfully created.
 
-***
+---
 
-#### 3️⃣ Create Login Profile (Console Access)
+#### 3. Create Login Profile (Console Access)
 
 ```bash
 aws iam create-login-profile \
     --user-name iamuser_anita \
-    --password "Anita@1234!" \
+    --password <REDACTED_PASSWORD> \
     --password-reset-required
 ```
 
 * Forces user to **reset password at first login**.
 * Allows access to AWS Management Console.
 
-***
+---
 
-#### 4️⃣ Optional: Attach Managed Policy
+#### 4. Optional: Attach Managed Policy
 
 ```bash
 aws iam attach-user-policy \
@@ -120,11 +114,11 @@ aws iam attach-user-policy \
     --policy-arn arn:aws:iam::aws:policy/AdministratorAccess
 ```
 
-> ⚠ **Note:** In this lab environment, permission may be **denied**. This is normal and expected if your account lacks `iam:AttachUserPolicy`.
+>  **Note:** In this lab environment, permission may be **denied**. This is normal and expected if your account lacks `iam:AttachUserPolicy`.
 
-***
+---
 
-#### 5️⃣ Verify IAM User
+#### 5. Verify IAM User
 
 ```bash
 aws iam get-user --user-name iamuser_anita
@@ -146,9 +140,9 @@ aws iam get-user --user-name iamuser_anita
 
 * Confirms the user exists in **us-east-1**.
 
-***
+---
 
-### ✅ Task Completion
+###  Task Completion
 
 * IAM User **`iamuser_anita`** created successfully.
 * Login profile configured for AWS Console access.
@@ -157,4 +151,6 @@ aws iam get-user --user-name iamuser_anita
 
 > The user can now be used for console login or programmatic access (API/CLI) with the credentials configured.
 
-***
+---
+
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha

@@ -1,5 +1,7 @@
 # Day 40: Troubleshooting Internet Accessibility for an EC2-Hosted Application
 
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha
+
 The Nautilus Development Team recently deployed a new web application hosted on an EC2 instance within a public VPC named `devops-vpc`. The application, running on an Nginx server, should be accessible from the internet on port 80. Despite configuring the security group `devops-sg` to allow traffic on port 80 and verifying the EC2 instance settings, the application remains inaccessible from the internet. The team suspects that the issue might be related to the VPC configuration, as all other components appear to be set up correctly. The DevOps team has been asked to troubleshoot and resolve the issue to ensure the application is accessible to external users.
 
 As a member of the Nautilus DevOps Team, your task is to perform the following:
@@ -12,7 +14,7 @@ Use below given AWS Credentials: (You can run the `showcreds` command on `aws-cl
 
 * Create the resources only in `us-east-1` region.<br>
 
-***
+---
 
 ## Fixing Internet Accessibility for EC2 in a Public VPC
 
@@ -22,7 +24,7 @@ The Nautilus DevOps Team deployed a web application on an EC2 instance (`devops-
 
 This document explains the root cause, investigation steps, and resolution.
 
-***
+---
 
 ### Architecture Components
 
@@ -32,7 +34,7 @@ This document explains the root cause, investigation steps, and resolution.
 * Route Table: `devops-rtb`
 * Internet Gateway: `igw-06edf0c88a363358e`
 
-***
+---
 
 ### Problem Statement
 
@@ -41,7 +43,7 @@ This document explains the root cause, investigation steps, and resolution.
 * Nginx was running on the instance
 * Application was not accessible from the internet
 
-***
+---
 
 ### Initial Verification
 
@@ -59,7 +61,7 @@ curl 13.220.8.86
 
 Connection attempt failed, indicating a networking issue.
 
-***
+---
 
 ### Route Table Verification
 
@@ -75,7 +77,7 @@ aws ec2 describe-route-tables \
 
 Initially, the route to `0.0.0.0/0` was in a **blackhole** state, indicating that the Internet Gateway was either not attached or invalid.
 
-***
+---
 
 ### Root Cause
 
@@ -86,7 +88,7 @@ Because of this:
 * The default route (`0.0.0.0/0`) had no valid target
 * Traffic from the internet could not reach the EC2 instance
 
-***
+---
 
 ### Resolution (GUI Method)
 
@@ -96,7 +98,7 @@ Because of this:
 * Go to VPC Dashboard
 * Select **Internet Gateways**
 
-***
+---
 
 #### Step 2: Attach Internet Gateway
 
@@ -104,7 +106,7 @@ Because of this:
 * Click **Actions → Attach to VPC**
 * Choose VPC: `devops-vpc`
 
-***
+---
 
 #### Step 3: Verify Route Table
 
@@ -116,7 +118,7 @@ Because of this:
 | ----------- | --------------------- | ------ |
 | 0.0.0.0/0   | igw-06edf0c88a363358e | Active |
 
-***
+---
 
 ### Verification via CLI
 
@@ -146,7 +148,7 @@ aws ec2 describe-internet-gateways \
 vpc-056a2f562c8d332a3
 ```
 
-***
+---
 
 ### Final Connectivity Test
 
@@ -167,7 +169,7 @@ curl 13.220.8.86
 </html>
 ```
 
-***
+---
 
 ### Conclusion
 
@@ -177,7 +179,7 @@ The issue was caused by a missing Internet Gateway attachment to the VPC. Once t
 * Internet traffic was properly routed
 * The EC2-hosted Nginx application became accessible
 
-***
+---
 
 ### Key Takeaways
 
@@ -190,7 +192,7 @@ The issue was caused by a missing Internet Gateway attachment to the VPC. Once t
   * Route table status
   * Subnet association
 
-***
+---
 
 <figure><img src=".gitbook/assets/image (2) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
@@ -203,3 +205,7 @@ The issue was caused by a missing Internet Gateway attachment to the VPC. Once t
 <figure><img src=".gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src=".gitbook/assets/image (5) (1).png" alt=""><figcaption></figcaption></figure>
+
+---
+
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha

@@ -1,5 +1,7 @@
 # Day 15: Create Volume Snapshot
 
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha
+
 The Nautilus DevOps team has some volumes in different regions in their AWS account. They are going to setup some automated backups so that all important data can be backed up on regular basis. For now they shared some requirements to take a snapshot of one of the volumes they have.
 
 Create a snapshot of an existing volume named `nautilus-vol` in `us-east-1` region.
@@ -12,14 +14,13 @@ Create a snapshot of an existing volume named `nautilus-vol` in `us-east-1` regi
 
 Use below given AWS Credentials: (You can run the `showcreds` command on `aws-client` host to retrieve these credentials)
 
-| Console URL | [https://284304506227.signin.aws.amazon.com/console?region=us-east-1](https://284304506227.signin.aws.amazon.com/console?region=us-east-1) |
+| Console URL | https://<aws-account>.signin.aws.amazon.com/console?region=us-east-1 |
 | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| Username    | kk\_labs\_user\_956360                                                                                                                     |
-| Password    | WNb^I@ZtP^!1                                                                                                                               |
+| Username    | <REDACTED_USERNAME> |
+| Password    | <REDACTED_PASSWORD> |
 | Start Time  | Thu Feb 26 05:02:08 UTC 2026                                                                                                               |
 | End Time    | Thu Feb 26 06:02:08 UTC 2026                                                                                                               |
 
-\
 `Notes:`
 
 * Create the resources only in `us-east-1` region.
@@ -28,3 +29,6 @@ Use below given AWS Credentials: (You can run the `showcreds` command on `aws-cl
 
 <figure><img src=".gitbook/assets/image (55).png" alt=""><figcaption></figcaption></figure>
 
+---
+
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha

@@ -4,6 +4,8 @@ description: Created by Reyas Khan
 
 # SUMMARY
 
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha
+
 <figure><img src=".gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 * [Day 1 - AWS SSH Key Creation](day-1-aws-ssh-key-creation.md)
@@ -55,3 +57,7 @@ description: Created by Reyas Khan
 * [Day 47: Integrating AWS SQS and SNS for Reliable Messaging](day-47-integrating-aws-sqs-and-sns-for-reliable-messaging.md)
 * [Day 47: Integrating AWS SQS and SNS for Reliable Messaging](day-47-integrating-aws-sqs-and-sns-for-reliable-messaging-1.md)
 * [Day 49: Centralized Audit Logging with VPC Peering](day-49-centralized-audit-logging-with-vpc-peering.md)
+
+---
+
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha

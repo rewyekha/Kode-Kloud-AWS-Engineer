@@ -1,6 +1,8 @@
 # Day 29: Establishing Secure Communication Between Public and Private VPCs via VPC Peering
 
-***
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha
+
+---
 
 ## VPC Peering Between Public and Private VPCs
 
@@ -8,7 +10,7 @@
 
 This document demonstrates how to configure VPC Peering between a default public VPC and a private VPC to enable communication between EC2 instances in both networks.
 
-***
+---
 
 ### Architecture
 
@@ -22,7 +24,7 @@ This document demonstrates how to configure VPC Peering between a default public
 * VPC Peering Connection
   * Name: `devops-vpc-peering`
 
-***
+---
 
 ### Step 1: Create VPC Peering Connection
 
@@ -40,7 +42,7 @@ This document demonstrates how to configure VPC Peering between a default public
 
 **Status:** Active
 
-***
+---
 
 ### Step 2: Update Route Tables
 
@@ -51,7 +53,7 @@ Add route:
 * Destination: `10.1.0.0/16`
 * Target: `devops-vpc-peering`
 
-***
+---
 
 #### Private VPC Route Table
 
@@ -60,7 +62,7 @@ Add route:
 * Destination: Default VPC CIDR (e.g., `172.31.0.0/16`)
 * Target: `devops-vpc-peering`
 
-***
+---
 
 ### Step 3: Update Security Groups
 
@@ -71,7 +73,7 @@ Add inbound rule:
 * Type: All ICMP (IPv4)
 * Source: Default VPC CIDR (e.g., `172.31.0.0/16`)
 
-***
+---
 
 ### Step 4: Retrieve Public Key from AWS Client
 
@@ -87,7 +89,7 @@ cat /root/.ssh/id_rsa.pub
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7examplekeycontent user@aws-client
 ```
 
-***
+---
 
 ### Step 5: Add Public Key to Public EC2
 
@@ -108,7 +110,7 @@ chmod 700 ~/.ssh
 chmod 600 ~/.ssh/authorized_keys
 ```
 
-***
+---
 
 ### Step 6: SSH into Public EC2 from AWS Client
 
@@ -143,7 +145,7 @@ Last login: Sat Mar 21 23:57:11 2026 from 18.206.107.29
 [ec2-user@ip-172-31-24-213 ~]$
 ```
 
-***
+---
 
 ### Step 7: Test Connectivity to Private EC2
 
@@ -173,7 +175,7 @@ PING 10.1.1.242 (10.1.1.242) 56(84) bytes of data.
 rtt min/avg/max/mdev = 0.744/0.819/1.196/0.101 ms
 ```
 
-***
+---
 
 ### Verification Checklist
 
@@ -183,7 +185,7 @@ rtt min/avg/max/mdev = 0.744/0.819/1.196/0.101 ms
 * SSH access to public EC2 is successful
 * Ping from public EC2 to private EC2 is successful
 
-***
+---
 
 ### Conclusion
 
@@ -191,7 +193,7 @@ The VPC Peering connection has been successfully established between the default
 
 This setup demonstrates secure private communication without requiring internet gateways or NAT configurations.
 
-***
+---
 
 <figure><img src=".gitbook/assets/image (80).png" alt=""><figcaption></figcaption></figure>
 
@@ -203,6 +205,8 @@ This setup demonstrates secure private communication without requiring internet 
 
 <figure><img src=".gitbook/assets/image (84).png" alt=""><figcaption></figcaption></figure>
 
-
-
 <figure><img src=".gitbook/assets/image (85).png" alt=""><figcaption></figcaption></figure>
+
+---
+
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha

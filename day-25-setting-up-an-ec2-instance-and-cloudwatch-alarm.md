@@ -1,12 +1,14 @@
 # Day 25: Setting Up an EC2 Instance and CloudWatch Alarm
 
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha
+
 ## Setting Up EC2 Instance and CloudWatch Alarm for CPU Utilization Monitoring
 
 ### Overview
 
 This guide describes how the Nautilus DevOps team set up an Amazon EC2 instance and configured a CloudWatch alarm to monitor CPU utilization. The alarm notifies an existing SNS topic when the CPU usage exceeds 90% for a consecutive 5-minute period.
 
-***
+---
 
 ### Objectives
 
@@ -15,15 +17,15 @@ This guide describes how the Nautilus DevOps team set up an Amazon EC2 instance 
 * Configure the alarm to trigger when CPU utilization exceeds 90% for 1 consecutive 5-minute period.
 * Send alarm notifications to the existing SNS topic **xfusion-sns-topic**.
 
-***
+---
 
 ### Prerequisites
 
-* AWS account access with credentials for `kk_labs_user_418850`.
+* AWS account access with credentials for `<REDACTED_USERNAME>`.
 * Region set to `us-east-1`.
 * Access to the existing SNS topic `xfusion-sns-topic`.
 
-***
+---
 
 ### Steps
 
@@ -54,7 +56,7 @@ This guide describes how the Nautilus DevOps team set up an Amazon EC2 instance 
 * Name the alarm **xfusion-alarm**.
 * Create the alarm.
 
-***
+---
 
 ### Verification
 
@@ -63,7 +65,7 @@ This guide describes how the Nautilus DevOps team set up an Amazon EC2 instance 
   * The CloudWatch alarm `xfusion-alarm` exists and monitors the correct metric with the specified threshold.
   * The alarm action is linked to `xfusion-sns-topic`.
 
-***
+---
 
 ### Notes
 
@@ -71,7 +73,7 @@ This guide describes how the Nautilus DevOps team set up an Amazon EC2 instance 
 * The alarm may show **INSUFFICIENT\_DATA** initially until enough metric data is collected.
 * To test the alarm, CPU load on the instance must exceed the threshold for at least 5 minutes.
 
-***
+---
 
 ### AWS CLI Commands Used for Verification
 
@@ -91,14 +93,11 @@ aws cloudwatch describe-alarms \
   --output table
 ```
 
-***
+---
 
 ### Conclusion
 
 The EC2 instance and CloudWatch alarm were successfully created according to the lab requirements. The alarm monitors CPU utilization and is configured to notify the existing SNS topic when CPU usage exceeds the specified threshold.
-
-
-
 <figure><img src=".gitbook/assets/image (70).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src=".gitbook/assets/image (71).png" alt=""><figcaption></figcaption></figure>
@@ -115,10 +114,10 @@ The EC2 instance and CloudWatch alarm were successfully created according to the
 
 <figure><img src=".gitbook/assets/image (77).png" alt=""><figcaption></figcaption></figure>
 
-
-
 <figure><img src=".gitbook/assets/image (78).png" alt=""><figcaption></figcaption></figure>
 
-
-
 <figure><img src=".gitbook/assets/image (79).png" alt=""><figcaption></figcaption></figure>
+
+---
+
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha

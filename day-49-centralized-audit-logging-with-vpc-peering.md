@@ -1,5 +1,7 @@
 # Day 49: Centralized Audit Logging with VPC Peering
 
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha
+
 The Nautilus DevOps team needs to build a secure and scalable log aggregation setup within their AWS environment. The goal is to gather log files from an internal EC2 instance running in a private VPC, transfer them securely to another EC2 instance in a public VPC, and then push those logs to a secure S3 bucket.
 
 1\) A VPC named `devops-priv-vpc` already exists with a private subnet named `devops-priv-subnet`, a route table named `devops-priv-rt`, and an EC2 instance named `devops-priv-ec2` (using `ubuntu` image). This instance uses the SSH key pair `devops-key.pem` already available on the AWS client host at `/root/.ssh/`.
@@ -18,14 +20,13 @@ The Nautilus DevOps team needs to build a secure and scalable log aggregation se
 * On the public instance, configure a cron job to push that same file to the created S3 bucket.
 * The uploaded file must be stored in the S3 bucket under the path `devops-priv-vpc/boot/boots.log`.
 
-\
 `Notes:`
 
 * Create the resources only in `us-east-1` region.
 
 ## AWS Datacenter Log Aggregation Setup
 
-***
+---
 
 ### Overview
 
@@ -37,7 +38,7 @@ This document covers the end-to-end setup of a secure log aggregation pipeline o
 
 The pipeline runs automatically every minute via cron jobs on both EC2 instances.
 
-***
+---
 
 ### Architecture
 
@@ -66,7 +67,7 @@ The pipeline runs automatically every minute via cron jobs on both EC2 instances
                                              └──────────────────────────────────┘
 ```
 
-***
+---
 
 ### Prerequisites
 
@@ -77,7 +78,7 @@ The pipeline runs automatically every minute via cron jobs on both EC2 instances
   * Route table: `datacenter-priv-rt`
   * EC2 instance: `datacenter-priv-ec2` (Ubuntu 20.04)
 
-***
+---
 
 ### Step 1 — Discover Existing Private VPC
 
@@ -103,7 +104,7 @@ echo "Private VPC: $PRIV_VPC_ID | CIDR: $PRIV_CIDR"
 Private VPC: vpc-010c2c8253302b2a4 | CIDR: 10.10.0.0/16
 ```
 
-***
+---
 
 ### Step 2 — Create Public VPC and Networking
 
@@ -207,7 +208,7 @@ aws ec2 associate-route-table \
 }
 ```
 
-***
+---
 
 ### Step 3 — Launch Public EC2 Instance
 
@@ -231,7 +232,7 @@ echo "Public EC2: $PUB_EC2_ID"
 Public EC2: i-0e8661a9e05ba1565
 ```
 
-***
+---
 
 ### Step 4 — Create S3 Bucket
 
@@ -250,7 +251,7 @@ aws s3api create-bucket \
 }
 ```
 
-***
+---
 
 ### Step 5 — Configure VPC Peering
 
@@ -324,7 +325,7 @@ aws ec2 create-route \
 +----------------------+------------------------+-------------------+----------+
 ```
 
-***
+---
 
 ### Step 6 — IAM Role and Instance Profile
 
@@ -408,7 +409,7 @@ aws ec2 describe-iam-instance-profile-associations \
 +----------------------+--------------+
 ```
 
-***
+---
 
 ### Step 7 — Establish SSH Connectivity
 
@@ -529,7 +530,7 @@ ssh -i /home/ec2-user/datacenter-key.pem \
 -r-------- 1 ubuntu ubuntu 1675 May  2 09:00 /home/ubuntu/datacenter-key.pem
 ```
 
-***
+---
 
 ### Step 8 — Configure Cron Jobs
 
@@ -599,7 +600,7 @@ crontab -l
 * * * * * aws s3 cp /home/ec2-user/boots.log s3://datacenter-s3-logs-30900/datacenter-priv-vpc/boot/boots.log
 ```
 
-***
+---
 
 ### Step 9 — Verify S3 Upload
 
@@ -628,9 +629,9 @@ aws s3 ls s3://datacenter-s3-logs-30900/datacenter-priv-vpc/boot/
 2026-05-02 09:05:02         27 boots.log
 ```
 
-✅ **Lab complete** — `boots.log` is successfully stored at `s3://datacenter-s3-logs-30900/datacenter-priv-vpc/boot/boots.log` and both cron jobs run every minute automatically.
+ **Lab complete** — `boots.log` is successfully stored at `s3://datacenter-s3-logs-30900/datacenter-priv-vpc/boot/boots.log` and both cron jobs run every minute automatically.
 
-***
+---
 
 ### Issues Encountered and Resolutions
 
@@ -654,7 +655,7 @@ PUB_VPC_ID=$(aws ec2 create-vpc \
   --output text)
 ```
 
-***
+---
 
 #### Issue #2 — `iam:PutRolePolicy` Access Denied
 
@@ -662,7 +663,7 @@ PUB_VPC_ID=$(aws ec2 create-vpc \
 
 ```
 An error occurred (AccessDenied) when calling the PutRolePolicy operation:
-User: arn:aws:iam::138251745622:user/kk_labs_user_170641 is not authorized
+User: arn:aws:iam::138251745622:user/redacted-user is not authorized
 to perform: iam:PutRolePolicy on resource: role datacenter-s3-role
 ```
 
@@ -683,7 +684,7 @@ An error occurred (NoSuchEntity): Policy arn:aws:iam::aws:policy/AmazonS3PutObje
 does not exist or is not attachable.
 ```
 
-***
+---
 
 #### Issue #3 — SSH to Public EC2 Failing (Wrong Username)
 
@@ -701,7 +702,7 @@ ubuntu@54.235.40.68: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).
 ssh -i /root/.ssh/datacenter-key.pem ec2-user@$PUB_IP
 ```
 
-***
+---
 
 #### Issue #4 — VPC Peering Route Added to Wrong Route Table (Root Cause of SSH Timeout)
 
@@ -748,7 +749,7 @@ aws ec2 create-route \
   --vpc-peering-connection-id $PEERING_ID
 ```
 
-***
+---
 
 #### Issue #5 — Cross-VPC Security Group Reference
 
@@ -774,7 +775,7 @@ aws ec2 authorize-security-group-ingress \
   --cidr 10.20.0.0/16
 ```
 
-***
+---
 
 #### Issue #6 — SCP from Inside Private EC2 Failing (No Key Available)
 
@@ -797,7 +798,7 @@ scp -i /home/ec2-user/datacenter-key.pem \
   ubuntu@10.10.1.194:/home/ubuntu/datacenter-key.pem
 ```
 
-***
+---
 
 #### Issue #7 — Cron Using Wrong Log Filename
 
@@ -825,7 +826,7 @@ crontab -r
 EOF
 ```
 
-***
+---
 
 ### Final Resource Summary
 
@@ -886,3 +887,7 @@ EOF
 <figure><img src=".gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src=".gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
+
+---
+
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha

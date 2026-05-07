@@ -1,10 +1,12 @@
 # Day 37: Managing EC2 Access with S3 Role-based Permissions
 
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha
+
 ## Nautilus DevOps — EC2 to S3 Integration Lab
 
 **AWS Region:** us-east-1 **Account ID:** 254597876252 **Date:** April 4, 2026
 
-***
+---
 
 ### Table of Contents
 
@@ -17,7 +19,7 @@
 7. [Step 5 — Test S3 Access from the EC2 Instance](https://claude.ai/chat/85f5b2d7-5dbe-46f3-abb7-eb5d74f7a104#step-5--test-s3-access-from-the-ec2-instance)
 8. [Lab Completion Summary](https://claude.ai/chat/85f5b2d7-5dbe-46f3-abb7-eb5d74f7a104#lab-completion-summary)
 
-***
+---
 
 ### Lab Task Overview
 
@@ -32,14 +34,14 @@ This lab covers the end-to-end setup of an EC2-to-S3 integration on AWS. The Nau
 5. Create an IAM role named `datacenter-role`, attach the policy, and associate it with the EC2 instance.
 6. SSH into the EC2 instance as `root` and validate S3 upload and list operations.
 
-***
+---
 
 ### Environment Details
 
 | Parameter         | Value                                                               |
 | ----------------- | ------------------------------------------------------------------- |
-| Console URL       | https://254597876252.signin.aws.amazon.com/console?region=us-east-1 |
-| IAM Username      | kk\_labs\_user\_214087                                              |
+| Console URL       | https://<aws-account>.signin.aws.amazon.com/console?region=us-east-1 |
+| IAM Username      | <REDACTED_USERNAME>                                              |
 | Region            | us-east-1                                                           |
 | EC2 Instance Name | datacenter-ec2                                                      |
 | Instance ID       | i-0d54d8ade5d07fd8b                                                 |
@@ -51,7 +53,7 @@ This lab covers the end-to-end setup of an EC2-to-S3 integration on AWS. The Nau
 | IAM Role          | datacenter-role                                                     |
 | IAM Policy        | datacenter-s3-policy                                                |
 
-***
+---
 
 ### Step 1 — Verify the EC2 Instance
 
@@ -77,7 +79,7 @@ aws ec2 describe-instances \
 
 > The instance is confirmed running. Instance ID `i-0d54d8ade5d07fd8b` will be used in all subsequent steps.
 
-***
+---
 
 ### Step 2 — Create SSH Key Pair and Authorize on EC2
 
@@ -154,7 +156,7 @@ ubuntu@ip-172-31-39-150:~$
 
 > The public key is now present in `/root/.ssh/authorized_keys` on the EC2 instance, enabling direct SSH access as `root` from the `aws-client` host.
 
-***
+---
 
 ### Step 3 — Create a Private S3 Bucket
 
@@ -185,7 +187,7 @@ aws s3api put-public-access-block \
 
 > The bucket was created successfully. The public access block prevents any accidental public exposure through ACLs or bucket policies.
 
-***
+---
 
 ### Step 4 — Create IAM Policy, Role, and Attach to EC2
 
@@ -356,7 +358,7 @@ aws ec2 describe-iam-instance-profile-associations \
 
 > The IAM role `datacenter-role` is now in `associated` state on the EC2 instance. The instance will use this role's credentials automatically via the instance metadata service (IMDS). No static credentials are required.
 
-***
+---
 
 ### Step 5 — Test S3 Access from the EC2 Instance
 
@@ -414,7 +416,7 @@ aws s3 ls s3://datacenter-s3-254597876252/
 
 > The file `testfile.txt` was successfully uploaded and listed. The EC2 instance is accessing S3 exclusively through the attached IAM role, with no hardcoded credentials on the instance.
 
-***
+---
 
 ### Lab Completion Summary
 
@@ -429,8 +431,12 @@ aws s3 ls s3://datacenter-s3-254597876252/
 | 7    | SSH'd into EC2 as `root` and uploaded file to S3           | Complete | `testfile.txt` uploaded                       |
 | 8    | Listed S3 bucket contents from EC2                         | Complete | `testfile.txt` confirmed present              |
 
-***
+---
 
 All lab objectives have been met. The EC2 instance `datacenter-ec2` is successfully integrated with the private S3 bucket `datacenter-s3-254597876252` via IAM role-based access. No static credentials were used or stored on the instance.
 
 <figure><img src=".gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
+
+---
+
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha

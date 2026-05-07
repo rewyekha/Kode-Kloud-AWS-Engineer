@@ -1,31 +1,25 @@
 # Day 17: Create IAM Group
 
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha
+
 The Nautilus DevOps team has been creating a couple of services on AWS cloud. They have been breaking down the migration into smaller tasks, allowing for better control, risk mitigation, and optimization of resources throughout the migration process. Recently they came up with requirements mentioned below.
 
 Create an IAM group named `iamgroup_ammar`.\
-<br>
-
-<br>
 
 Use below given AWS Credentials: (You can run the `showcreds` command on `aws-client` host to retrieve these credentials)
 
-| Console URL | [https://544126452056.signin.aws.amazon.com/console?region=us-east-1](https://544126452056.signin.aws.amazon.com/console?region=us-east-1) |
+| Console URL | https://<aws-account>.signin.aws.amazon.com/console?region=us-east-1 |
 | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| Username    | kk\_labs\_user\_863563                                                                                                                     |
-| Password    | Cm1GYtwQ!5or                                                                                                                               |
+| Username    | <REDACTED_USERNAME> |
+| Password    | <REDACTED_PASSWORD> |
 | Start Time  | Sat Feb 28 16:48:17 UTC 2026                                                                                                               |
 | End Time    | Sat Feb 28 17:48:17 UTC 2026                                                                                                               |
 
-\
 `Notes:`
 
 * Create the resources only in `us-east-1` region.
 * To `display` or `hide` the terminal of the AWS client machine, you can use the expand toggle button as shown below:\
   ![toggle button](https://res.cloudinary.com/dezmljkdo/image/upload/v1678742174/AWS%20Lambda/expand_panel_hjgfkl.png)
-
-
-
-
 
 ## Create IAM Group: `iamgroup_ammar`
 
@@ -41,7 +35,7 @@ iamgroup_ammar
 
 using the **us-east-1** region.
 
-***
+---
 
 ### Service Used
 
@@ -56,7 +50,7 @@ IAM allows you to:
 
 An **IAM group** is a collection of IAM users that share the same permissions.
 
-***
+---
 
 ### Prerequisites
 
@@ -64,7 +58,7 @@ An **IAM group** is a collection of IAM users that share the same permissions.
 * Access to `aws-client` machine (for CLI method)
 * Region set to: `us-east-1`
 
-***
+---
 
 ## Method 1: Using AWS Console
 
@@ -91,7 +85,7 @@ iamgroup_ammar
 4. Skip attaching policies (unless specified)
 5. Click **Create group**
 
-***
+---
 
 ## Method 2: Using AWS CLI (aws-client host)
 
@@ -122,7 +116,7 @@ You should see:
 }
 ```
 
-***
+---
 
 ## Verification
 
@@ -132,7 +126,7 @@ The task is successful if:
 * The group is visible in the IAM Console under **User groups**
 * Region is confirmed as `us-east-1`
 
-***
+---
 
 ## Best Practices
 
@@ -141,7 +135,7 @@ The task is successful if:
 * Follow the principle of least privilege
 * Always verify the active AWS region before creating resources
 
-***
+---
 
 ## Conclusion
 
@@ -149,3 +143,6 @@ The IAM group `iamgroup_ammar` has been successfully created in the `us-east-1` 
 
 This setup enables centralized permission management for users assigned to this group.
 
+---
+
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha

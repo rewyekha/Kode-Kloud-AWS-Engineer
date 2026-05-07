@@ -1,5 +1,7 @@
 # Day 50: Expanding EC2 Instance Storage for Development Needs
 
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha
+
 The Nautilus DevOps Team has recently been informed by the Development Team that their EC2 instance is running out of storage space. This instance, crucial for development activities, is named `datacenter-ec2` and currently has an attached volume of `8 GiB`. To accommodate the increasing data requirements, the storage needs to be expanded to `12 GiB`. This change should ensure that the expanded space is immediately available for use within the instance without disrupting ongoing activities.
 
 1. Identify Volume: Find the volume attached to the `datacenter-ec2` instance.
@@ -11,11 +13,9 @@ The Nautilus DevOps Team has recently been informed by the Development Team that
 
 * Create the resources only in `us-east-1` region.
 
-
-
 ## Expanding EBS Volume Storage on a Live EC2 Instance
 
-***
+---
 
 ### Overview
 
@@ -23,7 +23,7 @@ The Nautilus DevOps team was informed by the Development Team that their EC2 ins
 
 All resources are in the **us-east-1 (N. Virginia)** AWS region.
 
-***
+---
 
 ### Objectives
 
@@ -33,7 +33,7 @@ All resources are in the **us-east-1 (N. Virginia)** AWS region.
 * Grow the live XFS filesystem using `xfs_growfs` without unmounting
 * Verify the expanded space is reflected inside the instance
 
-***
+---
 
 ### Prerequisites
 
@@ -42,7 +42,7 @@ All resources are in the **us-east-1 (N. Virginia)** AWS region.
 * EC2 instance `datacenter-ec2` running and accessible
 * Permissions to modify EBS volumes and SSH into the instance
 
-***
+---
 
 ### Architecture Overview
 
@@ -64,7 +64,7 @@ All resources are in the **us-east-1 (N. Virginia)** AWS region.
 └─────────────────────────────────────────────┘
 ```
 
-***
+---
 
 ### Step-by-Step Walkthrough
 
@@ -87,7 +87,7 @@ echo $INSTANCE_ID
 i-05836b492f7edcd1f
 ```
 
-***
+---
 
 #### Step 2 — Identify the Attached EBS Volume
 
@@ -129,7 +129,7 @@ aws ec2 describe-volumes \
 +------+---------+--------------------------+
 ```
 
-***
+---
 
 #### Step 3 — Expand the EBS Volume to 12 GiB
 
@@ -181,9 +181,9 @@ aws ec2 describe-volumes \
 +------+---------+--------------------------+
 ```
 
-> ⚠️ At this point, AWS has expanded the underlying EBS volume. However, the OS inside the instance still sees the old 8 GiB partition. The next steps reflect this change inside the instance.
+>  At this point, AWS has expanded the underlying EBS volume. However, the OS inside the instance still sees the old 8 GiB partition. The next steps reflect this change inside the instance.
 
-***
+---
 
 #### Step 4 — SSH into the EC2 Instance
 
@@ -215,7 +215,7 @@ Warning: Permanently added '54.160.245.198' (ECDSA) to the list of known hosts.
         _/m/'
 ```
 
-***
+---
 
 #### Step 5 — Verify Block Device Layout
 
@@ -237,7 +237,7 @@ xvda      202:0    0  12G  0 disk
 
 > The disk (`xvda`) already shows **12G** because AWS expanded the volume. However, partition `xvda1` still shows only **8G** — this is what needs to be extended.
 
-***
+---
 
 #### Step 6 — Extend the Partition with `growpart`
 
@@ -253,7 +253,7 @@ sudo growpart /dev/xvda 1
 CHANGED: partition=1 start=24576 old: size=16752607 end=16777183 new: size=25141215 end=25165791
 ```
 
-***
+---
 
 #### Step 7 — Grow the XFS Filesystem
 
@@ -281,7 +281,7 @@ data blocks changed from 2094075 to 3142651
 
 > `data blocks changed from 2094075 to 3142651` confirms the filesystem was successfully grown.
 
-***
+---
 
 #### Step 8 — Verify the Expanded Filesystem
 
@@ -304,21 +304,21 @@ tmpfs           475M     0  475M   0% /tmp
 tmpfs            95M    0   95M    0% /run/user/1000
 ```
 
-✅ `/dev/xvda1` now shows **12G** with **11G** available — the expanded storage is fully reflected in the running instance.
+ `/dev/xvda1` now shows **12G** with **11G** available — the expanded storage is fully reflected in the running instance.
 
-***
+---
 
 ### Verification Summary
 
 | Check                    | Before | After  | Status |
 | ------------------------ | ------ | ------ | ------ |
-| EBS volume size (AWS)    | 8 GiB  | 12 GiB | ✅      |
-| Partition size (`xvda1`) | 8G     | 12G    | ✅      |
-| Filesystem size (`/`)    | 8.0G   | 12G    | ✅      |
-| Available space          | 6.5G   | 11G    | ✅      |
-| Instance downtime        | —      | None   | ✅      |
+| EBS volume size (AWS)    | 8 GiB  | 12 GiB |       |
+| Partition size (`xvda1`) | 8G     | 12G    |       |
+| Filesystem size (`/`)    | 8.0G   | 12G    |       |
+| Available space          | 6.5G   | 11G    |       |
+| Instance downtime        | —      | None   |       |
 
-***
+---
 
 ### How It Works — Concept Explained
 
@@ -342,7 +342,7 @@ Expanding an EBS volume on a live Linux instance requires **three separate steps
 > * XFS (Amazon Linux 2023, AL2): `sudo xfs_growfs -d /`
 > * ext4 (Ubuntu, Debian): `sudo resize2fs /dev/xvda1`
 
-***
+---
 
 ### Key Takeaways
 
@@ -352,7 +352,7 @@ Expanding an EBS volume on a live Linux instance requires **three separate steps
 * Always run `lsblk` and `df -h` before and after to confirm each layer of the expansion
 * The entire operation caused **zero downtime** for the running instance
 
-***
+---
 
 ### Key Commands Reference
 
@@ -365,3 +365,7 @@ Expanding an EBS volume on a live Linux instance requires **three separate steps
 | `df -h`                           | Verify filesystem sizes        |
 
 <figure><img src=".gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+---
+
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha

@@ -1,5 +1,7 @@
 # Day 46: Event-Driven Processing with Amazon S3 and Lambda
 
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha
+
 The DevOps team is working on automating file management between two S3 buckets. The task is to create a public S3 bucket for file uploads and a private S3 bucket for securely storing the files. A Lambda function will be triggered automatically whenever a file is uploaded to the public S3 bucket, which will copy the file to the private bucket. Additionally, logs of the operation will be stored in a DynamoDB table. The logs should include details such as the source bucket, destination bucket, and the object key of the file that was copied. This will help the team maintain better security and visibility for file transfers.
 
 1. Create a public S3 bucket named `xfusion-public-3381`. Ensure that the bucket allows public access to its objects.
@@ -29,7 +31,7 @@ The DevOps team needed an automated solution to manage files between two S3 buck
 
 This lab was completed successfully using **AWS CLI** in **us-east-1** region.
 
-***
+---
 
 ## Architecture
 
@@ -51,7 +53,7 @@ Writes Logs to DynamoDB
 (xfusion-S3CopyLogs)
 ```
 
-***
+---
 
 ## Resources Created
 
@@ -63,7 +65,7 @@ Writes Logs to DynamoDB
 | IAM Role        | lambda\_execution\_role |
 | DynamoDB Table  | xfusion-S3CopyLogs      |
 
-***
+---
 
 ## Step 1: Configure AWS Region
 
@@ -71,7 +73,7 @@ Writes Logs to DynamoDB
 aws configure set region us-east-1
 ```
 
-***
+---
 
 ## Step 2: Create Public S3 Bucket
 
@@ -90,7 +92,7 @@ aws s3api create-bucket \
 }
 ```
 
-***
+---
 
 ## Step 3: Enable Public Access
 
@@ -116,7 +118,7 @@ aws s3api put-bucket-policy --bucket xfusion-public-3381 --policy '{
 }'
 ```
 
-***
+---
 
 ## Step 4: Create Private Bucket
 
@@ -135,7 +137,7 @@ aws s3api create-bucket \
 }
 ```
 
-***
+---
 
 ## Step 5: Block Public Access on Private Bucket
 
@@ -146,7 +148,7 @@ aws s3api put-public-access-block \
 BlockPublicAcls=true,IgnorePublicAcls=true,BlockPublicPolicy=true,RestrictPublicBuckets=true
 ```
 
-***
+---
 
 ## Step 6: Create DynamoDB Table
 
@@ -170,7 +172,7 @@ aws dynamodb create-table \
 }
 ```
 
-***
+---
 
 ## Step 7: Modify Lambda Source Code
 
@@ -201,7 +203,7 @@ table = dynamodb.Table('xfusion-S3CopyLogs')
 destination_bucket = "xfusion-private-20362"
 ```
 
-***
+---
 
 ## Step 8: Create IAM Role for Lambda
 
@@ -228,7 +230,7 @@ aws iam create-role \
 --assume-role-policy-document file:///tmp/trust-policy.json
 ```
 
-***
+---
 
 ## Step 9: Attach Policies
 
@@ -240,7 +242,7 @@ Allow:
 
 (Used custom IAM policy + AWSLambdaBasicExecutionRole)
 
-***
+---
 
 ## Step 10: Deploy Lambda Function
 
@@ -270,7 +272,7 @@ aws lambda create-function \
 }
 ```
 
-***
+---
 
 ## Step 11: Configure S3 Trigger
 
@@ -299,7 +301,7 @@ aws s3api put-bucket-notification-configuration \
 }'
 ```
 
-***
+---
 
 ## Step 12: Test Upload
 
@@ -313,7 +315,7 @@ aws s3 cp /root/sample.zip s3://xfusion-public-3381/
 upload: ./sample.zip to s3://xfusion-public-3381/sample.zip
 ```
 
-***
+---
 
 ## Step 13: Verify File Copied
 
@@ -327,9 +329,9 @@ aws s3 ls s3://xfusion-private-20362/
 2026-04-27 15:20:06        164 sample.zip
 ```
 
-✅ Lambda successfully copied file.
+ Lambda successfully copied file.
 
-***
+---
 
 ## Step 14: Verify DynamoDB Logs
 
@@ -368,23 +370,23 @@ aws dynamodb scan \
 }
 ```
 
-✅ Logs successfully written.
+ Logs successfully written.
 
-***
+---
 
 ## Final Validation
 
 | Check                  | Status |
 | ---------------------- | ------ |
-| Public Bucket Created  | ✅      |
-| Private Bucket Created | ✅      |
-| Lambda Created         | ✅      |
-| Trigger Configured     | ✅      |
-| File Copied            | ✅      |
-| DynamoDB Logs Created  | ✅      |
-| Lab Passed             | ✅      |
+| Public Bucket Created  |       |
+| Private Bucket Created |       |
+| Lambda Created         |       |
+| Trigger Configured     |       |
+| File Copied            |       |
+| DynamoDB Logs Created  |       |
+| Lab Passed             |       |
 
-***
+---
 
 ## Final Working Command Set (Quick Version)
 
@@ -400,7 +402,7 @@ aws s3api put-bucket-notification-configuration ...
 aws s3 cp /root/sample.zip s3://xfusion-public-3381/
 ```
 
-***
+---
 
 ## Real World Use Cases
 
@@ -410,8 +412,10 @@ aws s3 cp /root/sample.zip s3://xfusion-public-3381/
 * Compliance file transfers
 * Media processing pipelines
 
-***
-
-
+---
 
 <figure><img src=".gitbook/assets/image (109).png" alt=""><figcaption></figcaption></figure>
+
+---
+
+> Portfolio: https://reyaskhan.me | GitHub: https://github.com/rewyekha
